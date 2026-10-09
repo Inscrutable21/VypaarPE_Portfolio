@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -26,39 +26,86 @@
   <!-- Confetti Canvas -->
   <canvas id="confettiCanvas"></canvas>
 
-  <!-- Navigation Bar -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="brand-logo" id="mainBrandLogo">
-        <div class="brand-icon-wrapper">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
+  <!-- Sticky Header Container with Top Banner and Floating Nav Card -->
+  <div class="site-header-fixed">
+    <!-- Top Announcement Bar (Sculpt / GTM Keynote) -->
+    <aside class="top-announcement-bar">
+      <div class="announcement-inner">
+        <div class="announcement-left">
+          <span class="sculpt-logo">SCULPT</span>
+          <span class="announcement-message">The most creative minds in GTM. October 8, San Francisco</span>
         </div>
-        <span>Vyapar<span class="pe">Pe</span></span>
-      </a>
-
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#products">Products</a></li>
-          <li><a href="#hero">Hero Video</a></li>
-          <li><a href="#billing">POS Billing</a></li>
-          <li><a href="#calculator">Calculator</a></li>
-          <li><a href="#dashboard">Live Feed</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="lang-toggle-btn" id="langToggleBtn" title="Switch Language">
-          <span>🌐 English</span>
-        </button>
-        <button class="btn btn-secondary btn-sm open-login-modal-btn">Merchant Login</button>
-        <button class="btn btn-primary btn-sm open-order-modal-btn">Get Soundbox</button>
+        <a href="#hero" class="announcement-cta">
+          <span>SCULPT KEYNOTE RECAP</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
       </div>
-    </div>
-  </header>
+    </aside>
+
+    <!-- Floating White Navbar Hanging Over Hero -->
+    <header class="navbar">
+      <div class="nav-container">
+        <div class="nav-left-group">
+          <a href="#" class="brand-logo" id="mainBrandLogo" title="Clay">
+            <div class="clay-rainbow-icon">
+              <svg width="28" height="22" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer cyan dome -->
+                <path d="M1 23 C1 11.2 11.2 1 24 1 C26.6 1 28.5 1.5 29 2 V23 H1 Z" fill="#38BDF8"/>
+                <!-- Middle coral arch -->
+                <path d="M6 23 C6 13.8 13.8 6 24 6 C26.1 6 27.7 6.5 28.5 7 V23 H6 Z" fill="#FB7185"/>
+                <!-- Inner yellow arch -->
+                <path d="M11 23 C11 16.5 16.5 11 24 11 C25.5 11 26.8 11.4 27.5 11.8 V23 H11 Z" fill="#FACC15"/>
+              </svg>
+            </div>
+            <span class="brand-text">clay</span>
+          </a>
+
+          <nav class="main-nav-links-wrap">
+            <ul class="nav-links">
+              <li><a href="#products">Product</a></li>
+              <li><a href="#solutions" class="active-nav-link">Solutions</a></li>
+              <li><a href="#billing">Resources</a></li>
+              <li><a href="#calculator">Company</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="nav-actions">
+          <!-- Search Shortcut (Cmd+K) -->
+          <button class="nav-search-pill" id="navSearchPill" title="Search (⌘ K)">
+            <kbd class="kbd-cmd">&#8984;</kbd>
+            <kbd class="kbd-letter">K</kbd>
+            <svg class="nav-search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <span class="nav-vertical-divider"></span>
+
+          <!-- Log in -->
+          <button class="btn-nav-login open-login-modal-btn">Log in</button>
+
+          <!-- Get a demo -->
+          <button class="btn-nav-demo open-order-modal-btn">Get a demo</button>
+
+          <!-- Start free trial -->
+          <button class="btn-nav-trial open-order-modal-btn">Start free trial</button>
+
+          <!-- Mobile hamburger toggle button -->
+          <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
 
   <main>
     <!-- Hero Section -->

@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeroVideo();
+  initNavFeatures();
   initAudioSynthesizer();
   initHeroSimulator();
   initVoicePlayground();
@@ -19,6 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageToggle();
   initScrollHeader();
 });
+
+function initNavFeatures() {
+  const navSearchPill = document.getElementById('navSearchPill');
+  if (navSearchPill) {
+    navSearchPill.addEventListener('click', () => {
+      const query = prompt('Quick Search: Type a section to jump to (Products, Pricing, Billing, Calculator, Live Feed, FAQ):');
+      if (query) {
+        const q = query.toLowerCase().trim();
+        if (q.includes('prod') || q.includes('soundbox') || q.includes('pos')) location.hash = '#products';
+        else if (q.includes('bill') || q.includes('receipt') || q.includes('gst')) location.hash = '#billing';
+        else if (q.includes('calc') || q.includes('loan') || q.includes('save')) location.hash = '#calculator';
+        else if (q.includes('price') || q.includes('plan')) location.hash = '#pricing';
+        else if (q.includes('faq') || q.includes('help')) location.hash = '#faq';
+        else if (q.includes('feed') || q.includes('dash')) location.hash = '#dashboard';
+        else location.hash = '#hero';
+      }
+    });
+  }
+
+  // Keyboard shortcut Cmd/Ctrl + K
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (navSearchPill) navSearchPill.click();
+    }
+  });
+
+  const mobileNavToggle = document.getElementById('mobileNavToggle');
+  const mainNavLinksWrap = document.querySelector('.main-nav-links-wrap');
+  if (mobileNavToggle && mainNavLinksWrap) {
+    mobileNavToggle.addEventListener('click', () => {
+      mainNavLinksWrap.classList.toggle('mobile-open');
+    });
+  }
+}
 
 function initHeroVideo() {
   const heroVideo = document.getElementById('heroVideo');
