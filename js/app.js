@@ -629,8 +629,8 @@ function addLiveTransaction(txn) {
       <div style="display:flex; align-items:center; gap:0.75rem;">
         <span class="feed-app-badge ${txn.app.class}">${txn.app.name}</span>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; color:#fff;">${txn.name}</div>
-          <div style="font-size:0.75rem; color:#94a3b8;">${txn.time} • UPI Direct</div>
+          <div style="font-size:0.9rem; font-weight:600; color:var(--text-main);">${txn.name}</div>
+          <div style="font-size:0.75rem; color:#64748b;">${txn.time} • UPI Direct</div>
         </div>
       </div>
       <div class="feed-amt">+₹${txn.amount.toLocaleString('en-IN')}</div>
