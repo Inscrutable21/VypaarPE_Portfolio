@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VyaparPe | 0% Fee Merchant Payments, 4G Soundbox & Smart POS</title>
+  <meta name="description" content="VyaparPe powers 2.8M+ Indian merchants with 0% fee UPI QR payments, 4G multi-language Smart Soundbox, instant bank settlement, and working capital loans.">
+  <meta name="keywords" content="VyaparPe, Merchant QR, Soundbox, Smart POS, UPI payments, 0% MDR, Bharat business, Dukandaar billing">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="VyaparPe - India's Most Loved Merchant Soundbox & QR">
+  <meta property="og:description" content="Accept payments at 0% fees with instant voice alerts in 11 Indian languages and real-time bank settlement.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300f59b'/><path d='M30 30 L50 70 L70 30' stroke='%2307090e' stroke-width='14' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" id="mainBrandLogo">
+        <div class="brand-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span>Vyapar<span class="pe">Pe</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#products">Products</a></li>
+          <li><a href="#simulator">Soundbox Demo</a></li>
+          <li><a href="#billing">POS Billing</a></li>
+          <li><a href="#calculator">Calculator</a></li>
+          <li><a href="#dashboard">Live Feed</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-toggle-btn" id="langToggleBtn" title="Switch Language">
+          <span>🌐 English</span>
+        </button>
+        <button class="btn btn-secondary btn-sm open-login-modal-btn">Merchant Login</button>
+        <button class="btn btn-primary btn-sm open-order-modal-btn">Get Soundbox</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Left Content -->
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="badge badge-glow">
+                <span class="pulse-dot"></span>
+                <span>NPCI Certified • 0% UPI MDR Guaranteed</span>
+              </span>
+            </div>
+
+            <h1 class="hero-title" id="heroTitle">
+              0% Fees. Instant Payouts. <span class="gradient-text">India's Most Loved</span> Merchant Soundbox & QR.
+            </h1>
+
+            <p class="hero-subtitle" id="heroSubtitle">
+              Accept payments from GPay, PhonePe, Paytm, RuPay Credit Cards, and NFC tap cards. Get instant crystal-clear voice alerts in 11 Indian languages with zero monthly rental lock-in.
+            </p>
+
+            <div class="hero-cta-group">
+              <button class="btn btn-primary open-order-modal-btn" id="heroOrderBtn">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                Order Smart Soundbox & QR
+              </button>
+              <a href="#simulator" class="btn btn-secondary" id="heroDemoBtn">
+                ⚡ Try Live Simulator
+              </a>
+            </div>
+
+            <div class="hero-trust-chips">
+              <div class="trust-chip">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                <span>₹0 Setup & 0% UPI Fee</span>
+              </div>
+              <div class="trust-chip">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>2-Second Direct Bank Payout</span>
+              </div>
+              <div class="trust-chip">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                <span>RBI Regulated Bank Partners</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right: Interactive 4G Soundbox Terminal Widget -->
+          <div class="hero-visual" id="simulator">
+            <div class="interactive-terminal-card">
+              
+              <!-- Floating Alert Banner on Success -->
+              <div class="payment-toast-alert" id="heroPaymentToast">
+                <span class="toast-sound-icon">🔊</span>
+                <div class="toast-content">
+                  <h4>व्यापार पे पर पेमेंट प्राप्त हुआ!</h4>
+                  <p><span id="toastAmount">₹500</span> received via UPI (Sharma Store)</p>
+                </div>
+              </div>
+
+              <div class="terminal-header">
+                <div class="terminal-status">
+                  <span class="pulse-dot"></span>
+                  <span>4G SMART SOUNDBOX • LIVE</span>
+                </div>
+                <div class="terminal-signal">
+                  <span>📶 Jio 4G + Airtel Auto-SIM</span>
+                </div>
+              </div>
+
+              <!-- Device Image Preview with Dynamic Overlay -->
+              <div class="terminal-device-preview">
+                <img src="assets/images/soundbox.jpg" alt="VyaparPe 4G Smart Soundbox Device with Emerald Neon Glow" id="heroSoundboxImg">
+                <div class="terminal-screen-overlay">
+                  <div>
+                    <div class="terminal-disp-label">Payment Amount</div>
+                    <div class="terminal-disp-val" id="terminalDisplayVal">₹500</div>
+                  </div>
+                  <span class="badge badge-glow">Ready to Receive</span>
+                </div>
+              </div>
+
+              <!-- Quick Pay Amount Selector -->
+              <div class="terminal-controls">
+                <div class="quick-pay-label">
+                  <span>Select Test Customer Amount</span>
+                  <span style="color:var(--primary); font-size:0.8rem;">Tap to test alert</span>
+                </div>
+
+                <div class="amount-pills">
+                  <button class="amount-pill hero-amt-pill" data-amount="100">₹100</button>
+                  <button class="amount-pill hero-amt-pill" data-amount="250">₹250</button>
+                  <button class="amount-pill hero-amt-pill active" data-amount="500">₹500</button>
+                  <button class="amount-pill hero-amt-pill" data-amount="1500">₹1,500</button>
+                </div>
+
+                <div class="custom-amount-input-wrap">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="customAmountInput" class="custom-amount-input" value="500" placeholder="Custom amount" min="1" max="100000">
+                </div>
+
+                <button class="btn btn-primary simulate-btn" id="simulatePaymentBtn">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                  <span>⚡ Simulate Payment Alert</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics Strip -->
+    <section class="metrics-strip">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <div class="metric-num">₹5,400+ Cr</div>
+            <div class="metric-label">Monthly Transaction Volume</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-num">2.8M+</div>
+            <div class="metric-label">Active Dukandaars & Stores</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-num">0.00%</div>
+            <div class="metric-label">UPI MDR Fee Forever</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-num">&lt; 1.8s</div>
+            <div class="metric-label">Instant Real-Time Settlement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Ecosystem Section -->
+    <section class="ecosystem-section" id="products">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-glow">HARDWARE & SOFTWARE ECOSYSTEM</span>
+          <h2 class="section-title">Built for Bharat's <span class="gradient-text">Fastest Counters</span></h2>
+          <p class="section-desc">From tea stalls to bustling supermarket chains, VyaparPe provides rugged, smart devices designed to keep cash registers ringing without delays.</p>
+        </div>
+
+        <!-- Ecosystem Tabs -->
+        <div class="eco-tabs-nav">
+          <button class="eco-tab-btn active" data-tab="tab-soundbox">
+            <span>🔊 Smart Soundbox 4G Pro</span>
+          </button>
+          <button class="eco-tab-btn" data-tab="tab-qr">
+            <span>📱 Dynamic Standee QR & Tap</span>
+          </button>
+          <button class="eco-tab-btn" data-tab="tab-pos">
+            <span>🖨️ Vyapar POS & Invoicing</span>
+          </button>
+          <button class="eco-tab-btn" data-tab="tab-khata">
+            <span>📒 Vyapar Khata & Fast Loans</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Soundbox -->
+        <div class="eco-tab-pane active" id="tab-soundbox">
+          <div class="product-detail-card">
+            <div class="product-media-wrapper">
+              <img src="assets/images/soundbox.jpg" alt="VyaparPe Soundbox 4G Pro with LED indicator and display">
+            </div>
+            <div class="product-info">
+              <span class="badge badge-glow">BESTSELLER ACROSS BHARAT</span>
+              <h3>VyaparPe Soundbox 4G Pro</h3>
+              <p class="product-tagline">Never miss a payment in noisy bazaar conditions</p>
+              <p class="product-description">
+                Featuring a 3W high-decibel crystal speaker, multi-SIM 4G fallback (Jio + Airtel), and 7-day long-lasting battery. Hear payment confirmations instantly in 11 Indian regional languages.
+              </p>
+              <ul class="product-specs-list">
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>11 Regional Languages</strong>
+                    <span>Hindi, English, Tamil, Telugu, Marathi, etc.</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>7 Days Battery Backup</strong>
+                    <span>2600mAh Li-ion battery with Type-C fast charge</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Dual 4G Smart Roaming</strong>
+                    <span>Automatic switch to strongest cell tower signal</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Crisp OLED Display</strong>
+                    <span>Instant amount verification for customer & merchant</span>
+                  </div>
+                </li>
+              </ul>
+              <button class="btn btn-primary open-order-modal-btn">Order 4G Soundbox (₹1/Day)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Dynamic QR Standee -->
+        <div class="eco-tab-pane" id="tab-qr">
+          <div class="product-detail-card">
+            <div class="product-media-wrapper">
+              <img src="assets/images/qr_stand.jpg" alt="VyaparPe All-in-One Standee QR with NFC Tap Support">
+            </div>
+            <div class="product-info">
+              <span class="badge badge-cyan">ALL-IN-ONE COUNTER STANDEE</span>
+              <h3>VyaparPe Dynamic Standee & NFC Tap</h3>
+              <p class="product-tagline">Accept UPI, RuPay Cards & Contactless Tap on one stand</p>
+              <p class="product-description">
+                Engineered with scratch-proof acrylic glass and an integrated NFC contactless chip. Customers can scan via Google Pay, PhonePe, Paytm, or simply tap their RuPay/Visa/Mastercard debit cards.
+              </p>
+              <ul class="product-specs-list">
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>100% Weatherproof Build</strong>
+                    <span>Sunlight & spill resistant acrylic build</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Tap & Pay NFC Chip</strong>
+                    <span>Contactless card payments up to ₹5,000 without PIN</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>0% UPI & RuPay MDR</strong>
+                    <span>Keep 100% of your earnings with zero deductions</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Lifetime Free Replacement</strong>
+                    <span>Damaged or faded? We replace it free in 24 hours</span>
+                  </div>
+                </li>
+              </ul>
+              <button class="btn btn-primary open-order-modal-btn">Get Free QR Standee</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: POS Terminal -->
+        <div class="eco-tab-pane" id="tab-pos">
+          <div class="product-detail-card">
+            <div class="product-media-wrapper">
+              <img src="assets/images/pos_device.jpg" alt="VyaparPe Smart Android POS Terminal with Inbuilt Thermal Printer">
+            </div>
+            <div class="product-info">
+              <span class="badge badge-glow">ENTERPRISE GRADE</span>
+              <h3>Vyapar Smart POS & Thermal Printer</h3>
+              <p class="product-tagline">Billing, barcode scanning, payments & receipts in one hand</p>
+              <p class="product-description">
+                Powered by Android 13 with an integrated 58mm high-speed Japanese thermal printer. Scan barcodes, generate GST compliant bills, swipe debit/credit cards, and accept UPI in under 3 seconds.
+              </p>
+              <ul class="product-specs-list">
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>High Speed Thermal Printer</strong>
+                    <span>Prints 58mm paper receipts in 0.8 seconds</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>1D/2D Barcode Scanner</strong>
+                    <span>Ultra-fast laser camera for supermarket inventory</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>GST E-Invoicing Inbuilt</strong>
+                    <span>Compliant with Indian Tax Authority norms</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>All Cards Supported</strong>
+                    <span>RuPay, Visa, Mastercard, Amex chip & swipe</span>
+                  </div>
+                </li>
+              </ul>
+              <button class="btn btn-primary open-order-modal-btn">Order Smart POS Terminal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Khata & Fast Credit -->
+        <div class="eco-tab-pane" id="tab-khata">
+          <div class="product-detail-card">
+            <div class="product-media-wrapper" style="background:#111827; display:flex; align-items:center; justify-content:center; padding:2rem;">
+              <div style="text-align:center;">
+                <div style="font-size:4rem; margin-bottom:1rem;">📒 ⚡ 💰</div>
+                <h4 style="font-size:1.8rem; color:#00f59b;">Vyapar Digital Khata</h4>
+                <p style="color:#94a3b8; max-width:320px; margin:0.5rem auto;">Automated Udhar recovery on WhatsApp + Collateral-free loans up to ₹10 Lakhs</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="badge badge-cyan">WORKING CAPITAL</span>
+              <h3>Vyapar Khata & Instant Business Loans</h3>
+              <p class="product-tagline">Turn daily digital collections into collateral-free working capital</p>
+              <p class="product-description">
+                Keep track of your customer credit (Udhar) with automated WhatsApp payment links. Consistent QR collections automatically unlock pre-approved business loans up to ₹10 Lakhs with daily micro-repayments.
+              </p>
+              <ul class="product-specs-list">
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Zero Paperwork Loans</strong>
+                    <span>Disbursed directly into your account in 5 minutes</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Easy Daily Repayments</strong>
+                    <span>Small daily auto-deductions so you never feel the burden</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>WhatsApp Udhar Reminders</strong>
+                    <span>Collect pending Udhar 3x faster with 1-tap UPI links</span>
+                  </div>
+                </li>
+                <li class="spec-item">
+                  <div class="spec-icon">✓</div>
+                  <div class="spec-text">
+                    <strong>Lowest Interest Rates</strong>
+                    <span>Starting from just 0.99% per month</span>
+                  </div>
+                </li>
+              </ul>
+              <a href="#calculator" class="btn btn-primary">Check Loan Eligibility</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Multi-Language Voice Alert Playground -->
+    <section class="voice-playground-section" id="voice-playground">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-cyan">INTERACTIVE VOICE PLAYGROUND</span>
+          <h2 class="section-title">Experience Soundbox in <span class="gradient-cyan">Your Own Language</span></h2>
+          <p class="section-desc">Select an Indian language, type any amount, and hear how VyaparPe loud audio announcement sounds in real-time right now!</p>
+        </div>
+
+        <div class="playground-box">
+          <!-- Language Pills -->
+          <div class="language-pills-wrap">
+            <button class="lang-pill voice-lang-pill active" data-lang="hi">🇮🇳 Hindi (हिंदी)</button>
+            <button class="lang-pill voice-lang-pill" data-lang="en">🇬🇧 English</button>
+            <button class="lang-pill voice-lang-pill" data-lang="mr">🇮🇳 Marathi (मराठी)</button>
+            <button class="lang-pill voice-lang-pill" data-lang="ta">🇮🇳 Tamil (தமிழ்)</button>
+            <button class="lang-pill voice-lang-pill" data-lang="te">🇮🇳 Telugu (తెలుగు)</button>
+            <button class="lang-pill voice-lang-pill" data-lang="gu">🇮🇳 Gujarati (ગુજરાતી)</button>
+            <button class="lang-pill voice-lang-pill" data-lang="bn">🇮🇳 Bengali (বাংলা)</button>
+          </div>
+
+          <!-- Controls -->
+          <div class="voice-control-row">
+            <div class="form-group">
+              <label for="voicePlaygroundShop">Store / Shop Name</label>
+              <input type="text" id="voicePlaygroundShop" class="input-control" value="Maa Bhagwati Kirana Store">
+            </div>
+            <div class="form-group">
+              <label for="voicePlaygroundAmt">Test Transaction Amount (₹)</label>
+              <input type="number" id="voicePlaygroundAmt" class="input-control" value="250" min="1" max="100000">
+            </div>
+            <div class="form-group">
+              <label>Audio Fidelity</label>
+              <div style="font-size:0.95rem; font-weight:600; color:var(--primary); padding-top:0.5rem;">
+                3W High-Gain DSP Speaker
+              </div>
+            </div>
+            <div class="form-group">
+              <label>&nbsp;</label>
+              <button class="btn btn-primary" id="testVoiceBtn">
+                ▶ Play Audio Alert
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Announcement Display & Waveform -->
+          <div class="voice-preview-bubble">
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Simulated Speaker Announcement</div>
+              <div class="voice-bubble-text" id="voiceBubbleText">"व्यापार पे पर 250 रुपये प्राप्त हुए!"</div>
+            </div>
+            <div class="waveform-anim">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vyapar Instant Billing POS & GST Invoicing Tool -->
+    <section class="billing-tool-section" id="billing">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-glow">FREE MERCHANT TOOL</span>
+          <h2 class="section-title">Vyapar Billing Lite & <span class="gradient-text">Instant GST Receipt</span></h2>
+          <p class="section-desc">Try our in-browser POS invoicing engine. Add customer items, calculate taxes, and generate an instant dynamic UPI QR receipt.</p>
+        </div>
+
+        <div class="billing-grid">
+          
+          <!-- Billing Form -->
+          <div class="billing-form-card">
+            <h3 style="font-size:1.4rem; margin-bottom:1.2rem;">Create Quick Invoice / Bill</h3>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+              <div class="form-group">
+                <label for="billingCustomerName">Customer Name</label>
+                <input type="text" id="billingCustomerName" class="input-control" value="Rajesh Kumar" placeholder="Customer name">
+              </div>
+              <div class="form-group">
+                <label for="billingCustomerPhone">Customer WhatsApp / Phone</label>
+                <input type="text" id="billingCustomerPhone" class="input-control" value="9876543210" placeholder="10-digit number">
+              </div>
+            </div>
+
+            <!-- Add Item Row -->
+            <div style="display:grid; grid-template-columns:1.5fr 1fr 0.8fr 0.8fr auto; gap:0.6rem; align-items:end; margin-bottom:1.5rem;">
+              <div class="form-group">
+                <label for="billingItemName">Item Name</label>
+                <input type="text" id="billingItemName" class="input-control" placeholder="e.g. Mustard Oil 1L">
+              </div>
+              <div class="form-group">
+                <label for="billingItemPrice">Price (₹)</label>
+                <input type="number" id="billingItemPrice" class="input-control" placeholder="150" min="1">
+              </div>
+              <div class="form-group">
+                <label for="billingItemQty">Qty</label>
+                <input type="number" id="billingItemQty" class="input-control" value="1" min="1">
+              </div>
+              <div class="form-group">
+                <label for="billingItemGst">GST %</label>
+                <select id="billingItemGst" class="input-control" style="background:#07090e;">
+                  <option value="0">0%</option>
+                  <option value="5" selected>5%</option>
+                  <option value="12">12%</option>
+                  <option value="18">18%</option>
+                </select>
+              </div>
+              <button class="btn btn-primary btn-sm" id="addBillingItemBtn" style="height:44px;">
+                + Add Item
+              </button>
+            </div>
+
+            <!-- Items Table -->
+            <table class="items-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Rate</th>
+                  <th>Qty</th>
+                  <th>GST</th>
+                  <th>Total</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="billingItemsTbody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Printable Thermal Receipt Preview -->
+          <div class="receipt-card">
+            <div class="receipt-header">
+              <div class="receipt-store-title">SHARMA DAILY MART</div>
+              <div class="receipt-sub">Main Road, Sector 14, Gurugram</div>
+              <div class="receipt-sub">GSTIN: 07AAAAA0000A1Z5</div>
+              <div class="receipt-sub" id="receiptDate">Today, 07:30 PM</div>
+            </div>
+
+            <div class="receipt-line-items" id="receiptItemsList">
+              <!-- Rendered items -->
+            </div>
+
+            <div class="receipt-totals">
+              <div class="receipt-row">
+                <span>Subtotal:</span>
+                <span id="receiptSubtotal">₹0.00</span>
+              </div>
+              <div class="receipt-row">
+                <span>GST Tax:</span>
+                <span id="receiptGst">₹0.00</span>
+              </div>
+              <div class="receipt-row receipt-grand-total">
+                <span>GRAND TOTAL:</span>
+                <span id="receiptGrandTotal">₹0.00</span>
+              </div>
+            </div>
+
+            <div class="receipt-qr-box">
+              <div style="font-size:0.75rem; color:#4b5563; margin-bottom:0.5rem; font-weight:700;">SCAN TO PAY VIA ANY UPI APP</div>
+              <canvas id="receiptQrCanvas" width="130" height="130"></canvas>
+              <div style="font-size:0.7rem; color:#6b7280; margin-top:0.4rem;">GPay • PhonePe • Paytm • BHIM • RuPay</div>
+            </div>
+
+            <div style="text-align:center; font-size:0.75rem; color:#6b7280;">
+              *** THANK YOU FOR SHOPPING! ***<br>
+              Powered by VyaparPe Smart Billing
+            </div>
+
+            <div class="receipt-actions">
+              <button class="btn btn-secondary btn-sm" style="flex:1; color:#07090e; border-color:#d1d5db;" id="printReceiptBtn">
+                🖨️ Print 58mm Bill
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Merchant Savings & Fast Business Loan Calculator -->
+    <section class="calculator-section" id="calculator">
+      <div class="container">
+        <div class="calc-card">
+          
+          <div class="calc-inputs">
+            <span class="badge badge-glow">TRANSPARENT VALUE CALCULATOR</span>
+            <h3 style="font-size:2rem; margin:1rem 0 0.8rem;">How Much Will <span class="gradient-text">VyaparPe Save You?</span></h3>
+            <p style="color:var(--text-muted); font-size:0.95rem;">
+              Traditional bank POS swipe machines silently bleed your profits with 1.8% to 2.2% MDR charges. See your annual savings with VyaparPe 0% UPI and calculate your pre-approved business loan limit.
+            </p>
+
+            <div class="calc-slider-wrap">
+              <div class="calc-slider-header">
+                <span style="font-weight:600; font-size:1rem;">Your Monthly Digital Turnover</span>
+                <span class="slider-val-badge" id="turnoverValueDisplay">₹3,00,000</span>
+              </div>
+              <input type="range" id="monthlyTurnoverRange" class="custom-range" min="50000" max="2500000" step="25000" value="300000">
+              <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-dim); margin-top:0.5rem;">
+                <span>₹50,000</span>
+                <span>₹10,00,000</span>
+                <span>₹25,00,000+</span>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <button class="btn btn-primary open-order-modal-btn">Switch to 0% VyaparPe</button>
+              <button class="btn btn-secondary open-login-modal-btn">Check Credit Score</button>
+            </div>
+          </div>
+
+          <div class="calc-results-box">
+            <div class="result-card-stat">
+              <div class="stat-label">Traditional Card POS Swipe Charges (at 2% MDR)</div>
+              <div class="stat-amount" id="traditionalFeesDisplay" style="color:#ef4444;">₹6,000/mo</div>
+              <span style="font-size:0.8rem; color:var(--text-dim);">Deducted automatically by traditional banks</span>
+            </div>
+
+            <div class="result-card-stat">
+              <div class="stat-label">Your Annual Savings with VyaparPe 0% UPI</div>
+              <div class="stat-amount green" id="annualSavingsDisplay">₹72,000</div>
+              <span style="font-size:0.8rem; color:var(--primary);">100% money saved straight into your pocket</span>
+            </div>
+
+            <div class="result-card-stat">
+              <div class="stat-label">Pre-Approved Working Capital Loan Limit</div>
+              <div class="stat-amount gold" id="loanLimitDisplay">₹8,40,000</div>
+              <span style="font-size:0.8rem; color:var(--text-dim);">Collateral-free • Disbursed in 5 mins • Easy daily repay</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Real-Time Merchant Dashboard Simulator -->
+    <section class="dashboard-preview-section" id="dashboard">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-cyan">MERCHANT APP EXPERIENCE</span>
+          <h2 class="section-title">Live Real-Time <span class="gradient-cyan">Merchant Dashboard</span></h2>
+          <p class="section-desc">Experience what Dukandaars see every day: instant notifications, live settlement tracker, and hourly sales analytics.</p>
+        </div>
+
+        <div class="dash-shell">
+          <!-- Top Bar -->
+          <div class="dash-header-bar">
+            <div class="dash-merchant-badge">
+              <div class="merchant-avatar">SM</div>
+              <div>
+                <h4 style="font-size:1.1rem; color:#fff;">Sharma Daily Mart</h4>
+                <div style="font-size:0.8rem; color:var(--primary);">● Store Online • Soundbox 4G Connected</div>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:0.8rem;">
+              <button class="btn btn-secondary btn-sm" id="toggleFeedBtn">⏸ Pause Live Feed</button>
+              <button class="btn btn-primary btn-sm" id="dashSettleBtn">⚡ Settle to Bank (₹0 Fee)</button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="dash-kpis-grid">
+            <div class="kpi-card">
+              <div class="stat-label">Today's Collections</div>
+              <div class="kpi-val" id="dashTodayTotal">₹48,650</div>
+              <div class="kpi-trend">
+                <span>▲ +18.4%</span>
+                <span style="color:var(--text-dim); font-weight:normal;">vs yesterday</span>
+              </div>
+            </div>
+
+            <div class="kpi-card cyan">
+              <div class="stat-label">Completed Transactions</div>
+              <div class="kpi-val" id="dashTodayCount">64</div>
+              <div class="kpi-trend" style="color:var(--accent-cyan);">
+                <span>100% Success Rate</span>
+              </div>
+            </div>
+
+            <div class="kpi-card gold">
+              <div class="stat-label">Settled Directly to Bank A/C</div>
+              <div class="kpi-val">₹42,100</div>
+              <div class="kpi-trend" style="color:var(--accent-gold);">
+                <span>HDFC Bank (Instant IMPS)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feed & Analytics Split -->
+          <div class="dash-columns-split">
+            
+            <!-- Live Feed Stream -->
+            <div class="live-feed-card">
+              <div class="feed-header">
+                <span style="font-weight:700; font-size:1rem; color:#fff;">Live Inbound Transactions</span>
+                <span class="badge badge-glow" style="font-size:0.75rem;">Realtime Stream</span>
+              </div>
+
+              <div class="feed-stream" id="liveTxnFeedList">
+                <div class="feed-item">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span class="feed-app-badge feed-app-gpay">GPay</span>
+                    <div>
+                      <div style="font-size:0.9rem; font-weight:600; color:#fff;">Aarav Sharma</div>
+                      <div style="font-size:0.75rem; color:#94a3b8;">1 min ago • UPI Direct</div>
+                    </div>
+                  </div>
+                  <div class="feed-amt">+₹500</div>
+                </div>
+
+                <div class="feed-item">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span class="feed-app-badge feed-app-phonepe">PhonePe</span>
+                    <div>
+                      <div style="font-size:0.9rem; font-weight:600; color:#fff;">Priya Patel</div>
+                      <div style="font-size:0.75rem; color:#94a3b8;">3 mins ago • UPI Direct</div>
+                    </div>
+                  </div>
+                  <div class="feed-amt">+₹1,240</div>
+                </div>
+
+                <div class="feed-item">
+                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span class="feed-app-badge feed-app-paytm">Paytm</span>
+                    <div>
+                      <div style="font-size:0.9rem; font-weight:600; color:#fff;">Sneha Gupta</div>
+                      <div style="font-size:0.75rem; color:#94a3b8;">6 mins ago • UPI Direct</div>
+                    </div>
+                  </div>
+                  <div class="feed-amt">+₹350</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulated SVG Analytics Chart -->
+            <div class="live-feed-card">
+              <div class="feed-header">
+                <span style="font-weight:700; font-size:1rem; color:#fff;">Today's Hourly Peak Sales</span>
+                <span style="font-size:0.8rem; color:var(--text-muted);">8 AM - 8 PM</span>
+              </div>
+
+              <div style="padding:1rem 0;">
+                <svg viewBox="0 0 320 130" style="width:100%; height:130px; overflow:visible;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00f59b" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#00f59b" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Area fill -->
+                  <path d="M 0 110 Q 40 95, 80 70 T 160 30 T 240 50 T 320 15 L 320 130 L 0 130 Z" fill="url(#chartGrad)"/>
+                  <!-- Stroke line -->
+                  <path d="M 0 110 Q 40 95, 80 70 T 160 30 T 240 50 T 320 15" fill="none" stroke="#00f59b" stroke-width="3"/>
+                  <!-- Points -->
+                  <circle cx="80" cy="70" r="4" fill="#00f59b"/>
+                  <circle cx="160" cy="30" r="5" fill="#00d2ff"/>
+                  <circle cx="240" cy="50" r="4" fill="#00f59b"/>
+                  <circle cx="320" cy="15" r="5" fill="#00f59b"/>
+                </svg>
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-dim); margin-top:0.5rem;">
+                  <span>9 AM (Opening)</span>
+                  <span>1 PM (Lunch Peak)</span>
+                  <span>5 PM (Evening)</span>
+                  <span>8 PM (Dinner Rush)</span>
+                </div>
+              </div>
+
+              <div style="background:rgba(255,255,255,0.03); border-radius:8px; padding:0.8rem; font-size:0.85rem; color:var(--text-muted); display:flex; justify-content:space-between;">
+                <span>Peak Rush Hour: <strong>1:00 PM - 2:30 PM</strong></span>
+                <span style="color:var(--primary); font-weight:600;">₹18,400 recorded</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-glow">TRANSPARENT PRICING</span>
+          <h2 class="section-title">No Lock-ins. <span class="gradient-text">Zero Hidden Costs.</span></h2>
+          <p class="section-desc">Pick what works for your business. Upgrade or cancel anytime without hidden penalties.</p>
+        </div>
+
+        <div class="pricing-grid">
+          
+          <!-- Plan 1 -->
+          <div class="pricing-card">
+            <div>
+              <h3>Starter Digital QR</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">Perfect for roadside stalls & individual micro-merchants.</p>
+              <div class="price-box">
+                <span class="price-num">₹0</span>
+                <span style="color:var(--text-dim);">/ Lifetime Free</span>
+              </div>
+              <ul class="pricing-features-list">
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> 0% UPI MDR Fee on all apps</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Acrylic Counter Standee Included</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Daily Instant Bank Settlement</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> WhatsApp payment receipts</li>
+              </ul>
+            </div>
+            <button class="btn btn-secondary open-order-modal-btn">Get Free QR Standee</button>
+          </div>
+
+          <!-- Plan 2 (Featured) -->
+          <div class="pricing-card featured">
+            <span class="featured-pill">MOST POPULAR ACROSS BHARAT</span>
+            <div>
+              <h3>4G Smart Soundbox Pro</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">For busy retail shops, restaurants, pharmacies & salons.</p>
+              <div class="price-box">
+                <span class="price-num">₹1</span>
+                <span style="color:var(--text-dim);">/ per day (or ₹499 one-time)</span>
+              </div>
+              <ul class="pricing-features-list">
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Instant Voice Alerts in 11 Languages</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Dual 4G SIM (Jio + Airtel lifetime free data)</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> 7-Day Ultra Battery Backup</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Up to ₹10 Lakhs Business Loan Access</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Free Doorstep Replacement Guarantee</li>
+              </ul>
+            </div>
+            <button class="btn btn-primary open-order-modal-btn">Order 4G Soundbox Now</button>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="pricing-card">
+            <div>
+              <h3>Smart POS Touch & Print</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">All-in-one terminal for supermarkets, apparel & cafes.</p>
+              <div class="price-box">
+                <span class="price-num">₹5,999</span>
+                <span style="color:var(--text-dim);">/ One-time device ownership</span>
+              </div>
+              <ul class="pricing-features-list">
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> High-Speed Inbuilt 58mm Thermal Printer</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Accept Debit/Credit Cards & NFC Tap</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Inbuilt Barcode Scanner for Inventory</li>
+                <li><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> GST Invoicing & Inventory Software Free</li>
+              </ul>
+            </div>
+            <button class="btn btn-secondary open-order-modal-btn">Order Smart POS</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Merchant Testimonials / Stories -->
+    <section class="stories-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-glow">VOICES OF BHARAT</span>
+          <h2 class="section-title">Trusted by 2.8 Million <span class="gradient-text">Local Dukandaars</span></h2>
+          <p class="section-desc">See how merchants across Indian cities and towns are boosting their daily profits with VyaparPe.</p>
+        </div>
+
+        <div class="stories-grid">
+          
+          <div class="story-card">
+            <p class="merchant-quote">
+              "Earlier, dishonest customers used to show fake screenshot screens during busy evening rush hours. With VyaparPe Soundbox, unless the speaker loudly says 'Payment received', no customer leaves my shop!"
+            </p>
+            <div class="merchant-profile">
+              <div class="merchant-img-placeholder">MS</div>
+              <div>
+                <strong style="color:#fff; display:block;">Manish Sharma</strong>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Sharma General Store, Ahmedabad</span>
+                <div style="color:var(--primary); font-size:0.8rem; margin-top:2px;">★ ★ ★ ★ ★ Verified Dukandaar</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <p class="merchant-quote">
+              "Traditional bank swipe machines charged me ₹4,000 every single month in POS swipe MDR. Switched to VyaparPe QR and saved more than ₹50,000 this year alone. Plus, settlements come in 2 seconds."
+            </p>
+            <div class="merchant-profile">
+              <div class="merchant-img-placeholder">RV</div>
+              <div>
+                <strong style="color:#fff; display:block;">Rameshwar Rao</strong>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Sri Balaji Sweet House, Hyderabad</span>
+                <div style="color:var(--primary); font-size:0.8rem; margin-top:2px;">★ ★ ★ ★ ★ Verified Dukandaar</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <p class="merchant-quote">
+              "When I needed ₹3 Lakhs to expand my garment stock before Diwali, my bank asked for mountains of paperwork. VyaparPe gave me an instant loan directly in the app based on my QR QR sales in 10 minutes!"
+            </p>
+            <div class="merchant-profile">
+              <div class="merchant-img-placeholder">PS</div>
+              <div>
+                <strong style="color:#fff; display:block;">Pooja Sonkar</strong>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Ananya Fashion Boutique, Jaipur</span>
+                <div style="color:var(--primary); font-size:0.8rem; margin-top:2px;">★ ★ ★ ★ ★ Verified Dukandaar</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-glow">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">Everything You <span class="gradient-text">Need to Know</span></h2>
+          <p class="section-desc">Clear answers to common questions about QR, soundbox, bank settlement, and charges.</p>
+        </div>
+
+        <div class="faq-list">
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are there really 0% charges on UPI payments?</span>
+              <span class="faq-toggle-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes, 100%! As mandated by NPCI and Government of India guidelines, all peer-to-merchant (P2M) UPI payments through Google Pay, PhonePe, Paytm, BHIM and RuPay Credit on UPI have 0% MDR fee. You receive full 100% of the customer's payment with zero cuts.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How fast does the money enter my bank account?</span>
+              <span class="faq-toggle-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              VyaparPe supports Instant Real-time Settlement. Payments are credited to your registered bank account via IMPS within 2 seconds of payment completion. You can also choose scheduled T+0 auto-sweep at the end of each business day.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do I need Wi-Fi or internet connection in my shop for the Soundbox?</span>
+              <span class="faq-toggle-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              No Wi-Fi needed! The VyaparPe 4G Smart Soundbox comes with pre-activated Dual 4G SIM cards (Jio + Airtel) with lifetime free cellular data. It connects automatically to whichever network has stronger coverage in your area.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does the battery last on a single charge?</span>
+              <span class="faq-toggle-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              The Soundbox 4G Pro has a powerful 2600mAh battery that lasts up to 7 full business days on a single charge. It comes with a standard Type-C fast-charging cable and adapter.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What documents are required to get VyaparPe Soundbox and QR?</span>
+              <span class="faq-toggle-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Minimal KYC only: your Aadhaar card, PAN card, and any active bank account passbook/cheque for payout link. You do NOT need a GST certificate to start accepting payments.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon-wrapper">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span>Vyapar<span class="pe">Pe</span></span>
+          </div>
+          <p>India's leading merchant operating system empowering retail stores, dukans, and entrepreneurs with next-generation digital payments and financial services.</p>
+          <div style="font-size:0.85rem; color:var(--primary); display:flex; align-items:center; gap:0.4rem;">
+            <span class="pulse-dot"></span> All Systems Operational • 99.99% Uptime
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="#products">Smart Soundbox 4G Pro</a></li>
+            <li><a href="#products">Dynamic Standee QR</a></li>
+            <li><a href="#products">Vyapar POS Terminal</a></li>
+            <li><a href="#billing">Vyapar Billing Lite</a></li>
+            <li><a href="#calculator">Working Capital Loans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="#">Kirana & Grocery</a></li>
+            <li><a href="#">Restaurants & Cafes</a></li>
+            <li><a href="#">Retail & Garments</a></li>
+            <li><a href="#">Pharmacies & Clinics</a></li>
+            <li><a href="#">RuPay Credit on UPI</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Compliance & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">NPCI Security Standards</a></li>
+            <li><a href="#">PCI-DSS Level 1</a></li>
+            <li><a href="#">RBI Guidelines</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 VyaparPe Technologies India Pvt Ltd. All rights reserved.</div>
+        <div style="display:flex; gap:1.5rem;">
+          <span>ISO 27001 Certified</span>
+          <span>PCI-DSS Level 1</span>
+          <span>256-Bit SSL Encrypted</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Order Soundbox & QR Kit -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+      <button class="modal-close-btn modal-close-trigger">&times;</button>
+      <h3 style="font-size:1.6rem; margin-bottom:0.4rem;">Get VyaparPe for Your Store</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Free doorstep delivery within 24-48 hours across India.</p>
+
+      <form id="orderSoundboxForm">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label for="orderShopName">Dukan / Store Name</label>
+          <input type="text" id="orderShopName" class="input-control" placeholder="e.g. Mahadev Kirana Store" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label for="orderMerchantName">Merchant Full Name</label>
+          <input type="text" id="orderMerchantName" class="input-control" placeholder="e.g. Suresh Kumar" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+          <div class="form-group">
+            <label for="orderPhone">Mobile Number (for UPI & OTP)</label>
+            <input type="tel" id="orderPhone" class="input-control" placeholder="9876543210" pattern="[0-9]{10}" required>
+          </div>
+          <div class="form-group">
+            <label for="orderCity">City / Town</label>
+            <input type="text" id="orderCity" class="input-control" placeholder="e.g. Surat, Pune, Delhi" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label for="orderDeviceSelect">Select Preferred Device Kit</label>
+          <select id="orderDeviceSelect" class="input-control" style="background:#07090e;">
+            <option value="4G Smart Soundbox Pro + QR">4G Smart Soundbox Pro + Standee QR (₹1/Day)</option>
+            <option value="All-in-One Standee QR">Only All-in-One Standee QR (100% Free)</option>
+            <option value="Smart POS Touch & Print">Smart Android POS Terminal (₹5,999)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.9rem;">
+          Confirm Order & Free Delivery
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Merchant Login -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-content">
+      <button class="modal-close-btn modal-close-trigger">&times;</button>
+      <h3 style="font-size:1.6rem; margin-bottom:0.4rem;">Merchant Portal Login</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Enter your registered 10-digit mobile number.</p>
+
+      <form id="merchantLoginForm">
+        <div class="form-group" style="margin-bottom:1.2rem;">
+          <label for="loginPhone">Mobile Number</label>
+          <div style="position:relative;">
+            <span style="position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:var(--text-muted); font-weight:600;">+91</span>
+            <input type="tel" id="loginPhone" class="input-control" style="padding-left:3.2rem;" placeholder="9876543210" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.9rem;">
+          Send Instant OTP
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating 24/7 AI Dukandaar Assistant Widget -->
+  <div class="floating-assistant-wrap">
+    <button class="assistant-toggle-btn" id="assistantToggleBtn" title="VyaparPe Dukandaar Assistant">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+
+    <div class="assistant-panel" id="assistantPanel">
+      <div class="assistant-header">
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <span class="pulse-dot"></span>
+          <span style="font-weight:700; font-size:0.95rem; color:#fff;">VyaparPe Assistant</span>
+        </div>
+        <button id="assistantCloseBtn" style="color:var(--text-muted); font-size:1.2rem; cursor:pointer;">&times;</button>
+      </div>
+
+      <div class="assistant-chat-body" id="assistantChatBody">
+        <div class="chat-bubble chat-bot">
+          Namaste Dukandaar Ji! 🙏 I am your VyaparPe 24x7 Assistant. How can I help you grow your business today?
+        </div>
+      </div>
+
+      <div class="quick-prompts-row">
+        <button class="quick-prompt-chip">0% UPI Charges?</button>
+        <button class="quick-prompt-chip">Soundbox Features</button>
+        <button class="quick-prompt-chip">Bank Settlement Time?</button>
+        <button class="quick-prompt-chip">Business Loan Eligibility</button>
+      </div>
+
+      <div class="assistant-input-bar">
+        <input type="text" id="assistantInput" class="input-control" placeholder="Ask anything about VyaparPe..." style="font-size:0.85rem;">
+        <button id="assistantSendBtn" class="btn btn-primary btn-sm">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
