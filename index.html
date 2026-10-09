@@ -41,7 +41,7 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#products">Products</a></li>
-          <li><a href="#simulator">Soundbox Demo</a></li>
+          <li><a href="#hero">Hero Video</a></li>
           <li><a href="#billing">POS Billing</a></li>
           <li><a href="#calculator">Calculator</a></li>
           <li><a href="#dashboard">Live Feed</a></li>
@@ -62,117 +62,19 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-grid">
-          
-          <!-- Hero Left Content -->
-          <div class="hero-content">
-            <div class="hero-badge-wrap">
-              <span class="badge badge-glow">
-                <span class="pulse-dot"></span>
-                <span>NPCI Certified • 0% UPI MDR Guaranteed</span>
-              </span>
-            </div>
-
-            <h1 class="hero-title" id="heroTitle">
-              0% Fees. Instant Payouts. <span class="gradient-text">India's Most Loved</span> Merchant Soundbox & QR.
-            </h1>
-
-            <p class="hero-subtitle" id="heroSubtitle">
-              Accept payments from GPay, PhonePe, Paytm, RuPay Credit Cards, and NFC tap cards. Get instant crystal-clear voice alerts in 11 Indian languages with zero monthly rental lock-in.
-            </p>
-
-            <div class="hero-cta-group">
-              <button class="btn btn-primary open-order-modal-btn" id="heroOrderBtn">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                Order Smart Soundbox & QR
-              </button>
-              <a href="#simulator" class="btn btn-secondary" id="heroDemoBtn">
-                ⚡ Try Live Simulator
-              </a>
-            </div>
-
-            <div class="hero-trust-chips">
-              <div class="trust-chip">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-                <span>₹0 Setup & 0% UPI Fee</span>
-              </div>
-              <div class="trust-chip">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                <span>2-Second Direct Bank Payout</span>
-              </div>
-              <div class="trust-chip">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                <span>RBI Regulated Bank Partners</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hero Right: Interactive 4G Soundbox Terminal Widget -->
-          <div class="hero-visual" id="simulator">
-            <div class="interactive-terminal-card">
-              
-              <!-- Floating Alert Banner on Success -->
-              <div class="payment-toast-alert" id="heroPaymentToast">
-                <span class="toast-sound-icon">🔊</span>
-                <div class="toast-content">
-                  <h4>व्यापार पे पर पेमेंट प्राप्त हुआ!</h4>
-                  <p><span id="toastAmount">₹500</span> received via UPI (Sharma Store)</p>
-                </div>
-              </div>
-
-              <div class="terminal-header">
-                <div class="terminal-status">
-                  <span class="pulse-dot"></span>
-                  <span>4G SMART SOUNDBOX • LIVE</span>
-                </div>
-                <div class="terminal-signal">
-                  <span>📶 Jio 4G + Airtel Auto-SIM</span>
-                </div>
-              </div>
-
-              <!-- Device Image Preview with Dynamic Overlay -->
-              <div class="terminal-device-preview">
-                <img src="assets/images/soundbox.jpg" alt="VyaparPe 4G Smart Soundbox Device with Emerald Neon Glow" id="heroSoundboxImg">
-                <div class="terminal-screen-overlay">
-                  <div>
-                    <div class="terminal-disp-label">Payment Amount</div>
-                    <div class="terminal-disp-val" id="terminalDisplayVal">₹500</div>
-                  </div>
-                  <span class="badge badge-glow">Ready to Receive</span>
-                </div>
-              </div>
-
-              <!-- Quick Pay Amount Selector -->
-              <div class="terminal-controls">
-                <div class="quick-pay-label">
-                  <span>Select Test Customer Amount</span>
-                  <span style="color:var(--primary); font-size:0.8rem;">Tap to test alert</span>
-                </div>
-
-                <div class="amount-pills">
-                  <button class="amount-pill hero-amt-pill" data-amount="100">₹100</button>
-                  <button class="amount-pill hero-amt-pill" data-amount="250">₹250</button>
-                  <button class="amount-pill hero-amt-pill active" data-amount="500">₹500</button>
-                  <button class="amount-pill hero-amt-pill" data-amount="1500">₹1,500</button>
-                </div>
-
-                <div class="custom-amount-input-wrap">
-                  <span class="currency-symbol">₹</span>
-                  <input type="number" id="customAmountInput" class="custom-amount-input" value="500" placeholder="Custom amount" min="1" max="100000">
-                </div>
-
-                <button class="btn btn-primary simulate-btn" id="simulatePaymentBtn">
-                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                  <span>⚡ Simulate Payment Alert</span>
-                </button>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
+    <section class="hero hero-fullwidth" id="hero">
+      <div class="hero-video-wrapper">
+        <video 
+          id="heroVideo" 
+          src="assets/videos/hero-section.mp4" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          preload="auto"
+        >
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
 

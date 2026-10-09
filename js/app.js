@@ -5,6 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroVideo();
   initAudioSynthesizer();
   initHeroSimulator();
   initVoicePlayground();
@@ -18,6 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageToggle();
   initScrollHeader();
 });
+
+function initHeroVideo() {
+  const heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.setAttribute('muted', '');
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Retry playing once user interacts if browser restricts
+        document.addEventListener('click', () => {
+          heroVideo.play();
+        }, { once: true });
+      });
+    }
+  }
+}
 
 /* ==========================================================================
    1. Web Audio API Sound Synthesizer (Zero External Dependencies)

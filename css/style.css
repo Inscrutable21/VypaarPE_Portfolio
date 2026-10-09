@@ -379,8 +379,51 @@ button, input, select, textarea {
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 5rem 0 4rem;
+  width: 100%;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
+  background: #000;
+}
+
+.hero.hero-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+  line-height: 0;
+}
+
+.hero-video-wrapper video {
+  width: 100%;
+  height: auto;
+  min-width: 100%;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-video-wrapper video::-webkit-media-controls {
+  display: none !important;
+}
+
+.hero-video-wrapper video::-webkit-media-controls-enclosure {
+  display: none !important;
 }
 
 .hero-grid {
