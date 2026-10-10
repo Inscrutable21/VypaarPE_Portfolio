@@ -469,35 +469,39 @@ textarea {
 .hero-content-overlay {
   position: absolute;
   top: 60%;
-  left: 7%;
-  right: 7%;
-  width: calc(100% - 14%);
+  left: 6%;
+  right: 6%;
+  width: calc(100% - 12%);
   transform: translateY(-50%);
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6rem;
+  gap: 3.5rem;
   pointer-events: none;
   padding: 0;
 }
 
 .hero-left-col {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   pointer-events: auto;
 }
 
 .hero-heading {
   font-family: var(--font-sans);
-  font-size: var(--_typography---h1--font-size);
-  line-height: var(--heading-–-h1--line-height);
+  font-size: clamp(2.3rem, 4.3vw, 4.4rem);
+  line-height: 1.05;
   font-variation-settings: "wght" 850;
   font-weight: var(--_typography---h1--font-weight);
-  letter-spacing: var(--_typography---h1--letter-spacing);
+  letter-spacing: -0.035em;
   margin-bottom: 0;
   color: #ffffff;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
   text-align: left;
+}
+
+.hero-heading-line {
+  white-space: nowrap;
 }
 
 .hero-right-col {
@@ -506,14 +510,14 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   pointer-events: auto;
-  max-width: 440px;
+  max-width: 580px;
   margin-top: 0;
 }
 
 .hero-subheading {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
-  line-height: 1.55;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  line-height: 1.5;
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 1.6rem;
@@ -640,6 +644,14 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+  }
+
+  .hero-heading-line {
+    white-space: normal;
+  }
+
+  .hero-subheading-break {
+    display: inline;
   }
 
   .announcement-inner {
