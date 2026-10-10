@@ -991,36 +991,67 @@ function triggerConfetti() {
 function initLogoMarquee() {
   const wrap = document.querySelector('.home-logo_wrap');
   const base = document.querySelector('.home-logo_base');
+  const heroVideo = document.getElementById('heroVideo');
   if (!wrap || !base) return;
 
-  // Find column 7 (e.g. Anthropic/Perplexity) to set initial view matching user screenshot
-  const cardCol7 = base.querySelector('[data-col="7"]');
-  if (cardCol7) {
-    const offset = cardCol7.offsetLeft - 60;
-    if (offset > 0) {
-      wrap.scrollLeft = offset;
+  // Build the track structure for seamless infinite scrolling
+  let track = wrap.querySelector('.home-logo_track');
+  if (!track) {
+    track = document.createElement('div');
+    track.className = 'home-logo_track';
+    base.parentNode.insertBefore(track, base);
+    track.appendChild(base);
+
+    // Duplicate grid for completely seamless looping
+    const clone = base.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.classList.add('home-logo_clone');
+    clone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+    track.appendChild(clone);
+  }
+
+  // Calculate single set width
+  let singleWidth = base.offsetWidth || 2700;
+  function updateDimensions() {
+    if (base.offsetWidth > 0) {
+      singleWidth = base.offsetWidth;
     }
   }
+  window.addEventListener('resize', updateDimensions);
+  setTimeout(updateDimensions, 500);
+
+  // Initial offset to showcase key logos (column 7 - Anthropic/Perplexity)
+  let initialOffset = 0;
+  const cardCol7 = base.querySelector('[data-col="7"]');
+  if (cardCol7) {
+    initialOffset = Math.max(0, cardCol7.offsetLeft - 60);
+  }
+
+  let currentScroll = initialOffset;
+  wrap.scrollLeft = currentScroll;
 
   let isHovered = false;
   let isDown = false;
   let startX = 0;
-  let scrollLeft = 0;
+  let dragStartScroll = 0;
 
   wrap.addEventListener('mouseenter', () => { isHovered = true; });
   wrap.addEventListener('mouseleave', () => { isHovered = false; isDown = false; });
   wrap.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
-  wrap.addEventListener('touchend', () => { isHovered = false; }, { passive: true });
+  wrap.addEventListener('touchend', () => { isHovered = false; isDown = false; }, { passive: true });
 
-  // Mouse Drag to scroll
+  // Mouse drag to scroll
   wrap.addEventListener('mousedown', (e) => {
     isDown = true;
     startX = e.pageX - wrap.offsetLeft;
-    scrollLeft = wrap.scrollLeft;
+    dragStartScroll = wrap.scrollLeft;
   });
 
-  wrap.addEventListener('mouseup', () => {
-    isDown = false;
+  window.addEventListener('mouseup', () => {
+    if (isDown) {
+      isDown = false;
+      currentScroll = wrap.scrollLeft;
+    }
   });
 
   wrap.addEventListener('mousemove', (e) => {
@@ -1028,20 +1059,101 @@ function initLogoMarquee() {
     e.preventDefault();
     const x = e.pageX - wrap.offsetLeft;
     const walk = (x - startX) * 1.5;
-    wrap.scrollLeft = scrollLeft - walk;
+    wrap.scrollLeft = (dragStartScroll - walk + singleWidth * 10) % singleWidth;
+    currentScroll = wrap.scrollLeft;
   });
 
-  // Smooth slow continuous auto-scroll
-  let speed = 0.55;
-  function step() {
-    if (!isHovered && !isDown) {
-      wrap.scrollLeft += speed;
-      // Loop if reached end
-      if (wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 10) {
-        wrap.scrollLeft = 0;
+  // Continuous loop in sync with heroVideo playback
+  function syncWithVideo() {
+    if (!isDown && singleWidth > 0) {
+      if (heroVideo && heroVideo.duration > 0 && !isNaN(heroVideo.duration)) {
+        // Exact video progress: 0.0 to 1.0 matching the 10-second contraption scene
+        const progress = (heroVideo.currentTime / heroVideo.duration) % 1;
+        const targetScroll = (initialOffset + progress * singleWidth) % singleWidth;
+
+        if (!isHovered) {
+          // Wrap-boundary aware lerp so it never jumps backwards
+          let diff = targetScroll - currentScroll;
+          if (diff < -singleWidth / 2) diff += singleWidth;
+          else if (diff > singleWidth / 2) diff -= singleWidth;
+
+          currentScroll += diff * 0.12;
+          if (currentScroll >= singleWidth) currentScroll -= singleWidth;
+          if (currentScroll < 0) currentScroll += singleWidth;
+
+          wrap.scrollLeft = currentScroll;
+        }
+      } else if (!isHovered) {
+        // Fallback smooth linear glide if video is buffering or unavailable
+        currentScroll = (currentScroll + 0.65) % singleWidth;
+        wrap.scrollLeft = currentScroll;
       }
     }
-    requestAnimationFrame(step);
+    requestAnimationFrame(syncWithVideo);
   }
-  requestAnimationFrame(step);
+  requestAnimationFrame(syncWithVideo);
+
+  // Setup floating quote cursor follower
+  initLogoCursor();
+}
+
+/**
+ * Interactive floating cursor showing customer avatar and quote attribution
+ */
+function initLogoCursor() {
+  const cursor = document.querySelector('[data-logo="cursor"]');
+  if (!cursor) return;
+
+  const cursorAvatar = cursor.querySelector('[data-logo-cursor="avatar"]');
+  const cursorName = cursor.querySelector('[data-logo-cursor="name"]');
+  const cursorTitle = cursor.querySelector('[data-logo-cursor="title"]');
+
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+  let activeCard = null;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function updateCursor() {
+    if (activeCard) {
+      cursorX += (mouseX - cursorX) * 0.22;
+      cursorY += (mouseY - cursorY) * 0.22;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -125%)`;
+    }
+    requestAnimationFrame(updateCursor);
+  }
+  requestAnimationFrame(updateCursor);
+
+  document.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.logo-card');
+    if (card && card.querySelector('[data-logo="name"]')) {
+      const nameEl = card.querySelector('[data-logo="name"]');
+      const titleEl = card.querySelector('[data-logo="title"]');
+      const avatarEl = card.querySelector('[data-logo="avatar"]');
+      const name = nameEl ? nameEl.textContent.trim() : '';
+
+      if (name) {
+        activeCard = card;
+        if (cursorName) cursorName.textContent = name;
+        if (cursorTitle) cursorTitle.textContent = titleEl ? titleEl.textContent.trim() : '';
+        if (cursorAvatar && avatarEl && avatarEl.src) {
+          cursorAvatar.src = avatarEl.src;
+        }
+        cursor.classList.add('is-active');
+        cursorX = mouseX;
+        cursorY = mouseY;
+      }
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const card = e.target.closest('.logo-card');
+    if (card && (!e.relatedTarget || !card.contains(e.relatedTarget))) {
+      activeCard = null;
+      cursor.classList.remove('is-active');
+    }
+  });
 }
