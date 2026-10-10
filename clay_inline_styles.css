@@ -1,0 +1,847 @@
+html.w-mod-js:not(.w-mod-ix3):is([data-hero-pillar]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-hero-pillar]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-hero-container]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-hero-container]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-hero-header]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-hero-header]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([hero-content]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([hero-content]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-scroll-text]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-scroll-text]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-section-pillar]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-section-pillar]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-user-card]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([data-user-card]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([scroll="pop-in"]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([scroll="pop-in"]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([scroll="text-in"]) {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3):is([scroll="text-in"]) * {visibility: hidden !important;}html.w-mod-js:not(.w-mod-ix3) :is([data-hero-pillar], [data-hero-container], [data-hero-header], [hero-content], [data-scroll-text], [data-section-pillar], [data-user-card], .cl-hero-text-child, .cl-border-line-right, .cl-curved-corner, .cl-border-line-left, .cl-border-line-btm, .cl-border-line-top, [scroll="pop-in"], [scroll="text-in"], .cl-filter_parent .cl-filter_child, .cl-super-text_parent .cl-super_text.left, .cl-super-text_parent .cl-super_text.right, .cs-card_button-tooltip.on-scroll, .cl-icon_parent, .plane-img, .cl-super_text.ab-btm, .clouds-bg, .cl-card-bg-one, .cl-card-bg-two, .cl-view-item.list, .cl-view-item.gird, .cl-clay-stamp, .cl-video_popup, .cl-player, .cl-playbtn_parent.close-btn) {visibility: hidden !important;}
+.anti-flicker, .anti-flicker * {visibility: hidden !important; opacity: 0 !important;}
+[data-wf-hidden-variation], [data-wf-hidden-variation] * {
+        display: none !important;
+      }
+
+
+  ::-moz-selection {
+    background-color: #1D2026;
+    color: #fff;
+  }
+  ::selection {
+    background-color: #1D2026;
+    color: #fff;
+
+  }
+
+  /* For A/B testing */
+
+  [variant="B"] {
+    display: none !important;
+  }
+
+
+
+
+/* --- CARDS --- */
+
+/* Card clip → grid, so cards stack in one cell */
+[data-module="rotate"] :has(> [data-uses="card"]) {
+  display: grid;
+}
+
+/* Every card occupies the same grid cell (stacked) */
+[data-module="rotate"] [data-uses="card"] {
+  grid-area: 1 / 1;
+}
+
+/* Show only the first card; script re-reveals the active one */
+[data-module="rotate"] [data-uses="card"]:not(:first-child) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* --- TEXT STACK --- */
+
+/* Shared text clip → grid + start-aligned (matches script) */
+[data-module="rotate"] [data-uses="text-list"] {
+  display: grid;
+  justify-content: start;
+  justify-items: start;
+}
+
+/* Each lifted text occupies the same cell (stacked) */
+[data-module="rotate"] [data-uses="text-list"] > [data-uses="text"] {
+  grid-area: 1 / 1;
+}
+
+/* Hide in-card text copies until the script lifts them into the list.
+   Self-clearing: once moved out of the card, this selector no longer matches. */
+[data-module="rotate"] [data-uses="card"] [data-uses="text"] {
+  opacity: 0;
+  visibility: hidden;
+}
+  .u-hide-live {
+  display: none !important;
+}
+
+
+
+/* =====================================================================
+   1. GRID CONTAINER
+   --unit-h and --unit-w are the only two spatial numbers.
+   One unit is one standard logo card.
+   ===================================================================== */
+.home-logo_base{
+  --unit-h: 5rem;        /* one row */
+  --unit-w: 10.05rem;    /* one slot = one logo card */
+  --unit-gap: 0.75rem;
+
+  display: grid;
+  grid-template-rows: repeat(3, var(--unit-h));
+  grid-auto-columns: var(--unit-w);
+  gap: var(--unit-gap);
+  grid-auto-flow: column dense;   /* only used by cards with blank props */
+
+  align-items: stretch;
+  align-content: stretch;
+}
+
+
+/* =====================================================================
+   2. PLACEMENT
+   One rule. Section 3 is only lookup tables feeding it.
+   ===================================================================== */
+.logo-card{
+  grid-column: var(--col, auto) / span var(--span, 1);
+  grid-row:    var(--row, auto) / span var(--tall, 1);
+}
+
+
+/* =====================================================================
+   3. LOOKUP TABLES
+   Generated, not hand-edited. Slots go to 32, roughly double the current
+   wall. If it ever passes 32, regenerate rather than appending by hand —
+   a card past the end fails silently by flowing instead of pinning.
+   ===================================================================== */
+
+/* row: only ever 1, 2 or 3 */
+.logo-card[data-row="1"]{--row:1}
+.logo-card[data-row="2"]{--row:2}
+.logo-card[data-row="3"]{--row:3}
+
+/* height in rows: blank = 1 */
+.logo-card[data-tall="2"]{--tall:2}
+.logo-card[data-tall="3"]{--tall:3}
+
+/* width in slots: blank = 1 */
+.logo-card[data-span="1"]{--span:1}    .logo-card[data-span="2"]{--span:2}
+.logo-card[data-span="3"]{--span:3}    .logo-card[data-span="4"]{--span:4}
+.logo-card[data-span="5"]{--span:5}    .logo-card[data-span="6"]{--span:6}
+.logo-card[data-span="7"]{--span:7}    .logo-card[data-span="8"]{--span:8}
+
+/* starting slot */
+.logo-card[data-col="1"]{--col:1}      .logo-card[data-col="2"]{--col:2}
+.logo-card[data-col="3"]{--col:3}      .logo-card[data-col="4"]{--col:4}
+.logo-card[data-col="5"]{--col:5}      .logo-card[data-col="6"]{--col:6}
+.logo-card[data-col="7"]{--col:7}      .logo-card[data-col="8"]{--col:8}
+.logo-card[data-col="9"]{--col:9}      .logo-card[data-col="10"]{--col:10}
+.logo-card[data-col="11"]{--col:11}    .logo-card[data-col="12"]{--col:12}
+.logo-card[data-col="13"]{--col:13}    .logo-card[data-col="14"]{--col:14}
+.logo-card[data-col="15"]{--col:15}    .logo-card[data-col="16"]{--col:16}
+.logo-card[data-col="17"]{--col:17}    .logo-card[data-col="18"]{--col:18}
+.logo-card[data-col="19"]{--col:19}    .logo-card[data-col="20"]{--col:20}
+.logo-card[data-col="21"]{--col:21}    .logo-card[data-col="22"]{--col:22}
+.logo-card[data-col="23"]{--col:23}    .logo-card[data-col="24"]{--col:24}
+.logo-card[data-col="25"]{--col:25}    .logo-card[data-col="26"]{--col:26}
+.logo-card[data-col="27"]{--col:27}    .logo-card[data-col="28"]{--col:28}
+.logo-card[data-col="29"]{--col:29}    .logo-card[data-col="30"]{--col:30}
+.logo-card[data-col="31"]{--col:31}    .logo-card[data-col="32"]{--col:32}
+
+
+/* =====================================================================
+   4. CONTENT PROTECTION
+   The tracks are fixed, so no card needs a min-width. These stop card
+   content pushing outward from the inside.
+   ===================================================================== */
+
+/* flex children default to min-width:auto and refuse to shrink below
+   their content — this releases them so text yields, not the card */
+.logo-card > *{ min-width: 0; }
+
+/* the wordmark never shrinks or grows; text yields to it instead */
+.home-logo_img{ flex: 0 0 auto; }
+.home-logo_stat{ flex: 0 0 auto; }
+.home-logo_quote{ flex: 1 1 auto; min-width: 0; }
+
+/* backstop for an over-long quote */
+.text-size-small.cc-logo{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+
+
+/* =====================================================================
+   5. RESPONSIVE
+   Placement is desktop-only. Below tablet, --col and --row go back to
+   auto, which hands the wall to auto-placement. That is the whole mobile
+   reflow: no second set of numbers in the props.
+   ===================================================================== */
+@media (max-width: 991px){
+  .home-logo_base{ --unit-w: 9.3rem; }
+  .logo-card{ --col: auto; --row: auto; }
+}
+
+@media (max-width: 767px){
+  .home-logo_base{
+    --unit-w: 8.7rem;
+    grid-template-rows: repeat(2, var(--unit-h));
+  }
+  .logo-card[data-tall="3"]{ --tall: 2; }   /* would overflow 2 rows */
+}
+
+
+/* slot stripes + DOM-order counter seed */
+html.wf-design-mode .home-logo_base{
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(11,89,67,.05) 0 var(--unit-w, 10.05rem),
+    transparent var(--unit-w, 10.05rem)
+      calc(var(--unit-w, 10.05rem) + var(--unit-gap, 0.75rem))
+  );
+  counter-reset: logo-card;
+}
+
+/* shared chip styling: ::before = position, ::after = DOM order */
+html.wf-design-mode .logo-card{
+  outline: 1px dashed rgba(11,89,67,.2);
+  outline-offset: -1px;
+  counter-increment: logo-card;
+}
+html.wf-design-mode .logo-card::before,
+html.wf-design-mode .logo-card::after{
+  position: absolute;
+  z-index: 10;
+  white-space: nowrap;
+  font-family: ui-monospace, monospace;
+  font-size: .5rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  padding: .15rem .3rem;
+  border-radius: .2rem;
+  pointer-events: none;
+  transition: background .15s, color .15s;
+}
+
+/* top left: grid position */
+html.wf-design-mode .logo-card::before{
+  content: "c" attr(data-col) " r" attr(data-row) " w" attr(data-span);
+  top: .3rem;
+  left: .4rem;
+  background: rgba(11,89,67,.08);
+  color: rgba(11,89,67,.75);
+}
+html.wf-design-mode .logo-card[data-tall="2"]::before{
+  content: "c" attr(data-col) " r" attr(data-row) " w" attr(data-span) " 2rows";
+}
+html.wf-design-mode .logo-card[data-tall="2"]{
+  outline-style: solid;
+  outline-color: rgba(11,89,67,.3);
+}
+
+/* bottom right: DOM order. Diagonal from the position chip so the two
+   never collide on a narrow card, and clear of the hover arrow. */
+html.wf-design-mode .logo-card::after{
+  content: "#" counter(logo-card);
+  bottom: .4rem;
+  right: .4rem;
+  background: rgba(14,26,22,.06);
+  color: rgba(14,26,22,.5);
+}
+
+/* hover: both chips go solid */
+html.wf-design-mode .logo-card:hover::before{
+  background: #0B5943;
+  color: #F1EFEA;
+}
+html.wf-design-mode .logo-card:hover::after{
+  background: #0E1A16;
+  color: #F1EFEA;
+}
+
+/* warnings: red means the card is flowing, not pinned */
+html.wf-design-mode .logo-card:not([data-col]),
+html.wf-design-mode .logo-card[data-col=""],
+html.wf-design-mode .logo-card[data-row=""]{
+  outline: 2px solid #E5484D;
+  outline-offset: -2px;
+}
+html.wf-design-mode .logo-card:not([data-col])::before,
+html.wf-design-mode .logo-card[data-col=""]::before,
+html.wf-design-mode .logo-card[data-row=""]::before{
+  content: "set Col and Row";
+  background: #E5484D;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* unmask the edges so first and last cards are selectable */
+html.wf-design-mode .home-logo_shade{ display: none; }
+
+/* legend. On .home-logo_wrap, not the grid, or it would eat a slot.
+   If it collides with the intro paragraph, change top to .5rem. */
+html.wf-design-mode .home-logo_wrap{ position: relative; }
+html.wf-design-mode .home-logo_wrap::before{
+  content: "Flat grid / 3 rows / 1 slot = 1 logo card / top-left chip = grid position, bottom-right chip = DOM order / every slot must be covered in all 3 rows";
+  position: absolute;
+  top: -1.9rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  z-index: 20;
+  font-family: ui-monospace, monospace;
+  font-size: .5625rem;
+  line-height: 1.4;
+  letter-spacing: .01em;
+  color: rgba(11,89,67,.5);
+  pointer-events: none;
+}
+
+/* loud mode: add the class u-inspect-grid to .home-logo_base */
+html.wf-design-mode .u-inspect-grid .logo-card > *:not(.clickable_wrap){
+  opacity: .2;
+}
+html.wf-design-mode .u-inspect-grid .logo-card::before{
+  background: #0B5943;
+  color: #F1EFEA;
+}
+html.wf-design-mode .u-inspect-grid .logo-card::after{
+  background: #0E1A16;
+  color: #D9F035;
+}
+
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    box-sizing: border-box;
+  }
+
+  body:has(.w-nav-button.w--open) {
+    overflow: hidden;
+    max-height: 100dvh;
+  }
+
+  /* Add text decoration for links without a class */
+  a:not([class]) {
+    text-decoration: underline;
+  }
+
+  /* Apply to all text globally */
+  body {
+    font-feature-settings:
+      'ss03' 1,
+      /* y */ 'ss10' 1,
+      /* question mark */ 'ss11' 1,
+      /* t */ 'ss12' 1; /* dollar */
+  }
+
+  /* Single-story 'a' only for headers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h0,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    font-feature-settings:
+      'ss01' 1,
+      /* a */ 'ss03' 1,
+      /* y */ 'ss10' 1,
+      /* question mark */ 'ss11' 1,
+      /* t */ 'ss12' 1; /* dollar */
+  }
+
+  /* Button default hover animation */
+  .btn:has(.btn_icon-track):hover .btn-icon,
+  .press-item:hover .btn-icon {
+    transform: translateY(0%);
+  }
+
+  /* Button up-down hover */
+  .btn[animation-style='up-down']:has(.btn_icon-track) .btn-icon {
+    transform: translateY(-100%);
+  }
+
+  .btn[animation-style='up-down']:has(.btn_icon-track):hover .btn-icon {
+    transform: translateY(0%);
+  }
+
+  /* Footer modes */
+  footer[data-mode='light'] {
+    background-color: var(--color--white) !important;
+    color: var(--color--black) !important;
+  }
+
+  /* Snippet gets rid of top margin on first element in any rich text*/
+  .w-richtext > :first-child {
+    margin-top: 0;
+  }
+
+  /* Snippet gets rid of bottom margin on last element in any rich text*/
+  .w-richtext > :last-child,
+  .w-richtext ol li:last-child,
+  .w-richtext ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  /*Reset selects, buttons, and links styles*/
+  .w-input,
+  .w-select,
+  a {
+    color: inherit;
+  }
+
+  /*Apply "..." after 4 lines of text */
+  .text-style-4lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  /*Apply "..." after 3 lines of text */
+  .text-style-3lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  /*Apply "..." after 2 lines of text */
+  .text-style-2lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  /*Apply "..." after 2 lines of text */
+  .text-style-1lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .skeleton-box,
+  .skeleton-video-wrapper {
+    background: linear-gradient(120deg, #e5e5e5 30%, #f2f2f2 38%, #f2f2f2 40%, #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load 2s infinite;
+  }
+
+  @keyframes load {
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  .blog-rich-text h2 {
+    margin-bottom: 0rem;
+    font-size: 1.75rem;
+  }
+
+  .changelog-rich-text h3 {
+    font-size: 1.75rem !important;
+  }
+
+  input[type='checkbox']:checked {
+    color: white;
+  }
+
+  video {
+    object-fit: contain !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .row.row-gap-sm {
+    --layout--row-col-gap: 1rem;
+  }
+
+  .nav_hamburger-icon {
+    transform: unset !important;
+  }
+
+  .subnav-category_dropdown_btn.w--open .subnav-category_dropdown_btn-arrow,
+  .w-dropdown-toggle.w--open .w-icon-dropdown-toggle {
+    transform: rotate(180deg);
+  }
+
+  figure.w-richtext-figure-type-image.w-richtext-align-fullwidth div:has(> img) {
+    padding-bottom: 0;
+  }
+
+  /* Hide section with "data-cms-section" attribute that has an empty collection list within it*/
+  [data-cms-section]:not(:has(.w-dyn-item)) {
+    display: none;
+  }
+
+  /* HL empty links designer only */
+  html.wf-design-mode [href='#'] {
+    outline: 3px solid orange !important;
+  }
+
+  /* Pointer events none on designer mode */
+  html.wf-design-mode .accordion_checkbox {
+    pointer-events: none;
+  }
+
+  /* Mask transition set up */
+  .accordion_mask {
+    transition: grid-template-rows ease-out 250ms;
+  }
+
+  /* Open accordion when checked */
+  .accordion_container:has(.accordion_checkbox:checked) .accordion_mask {
+    grid-template-rows: 1fr;
+    padding-top: 1rem;
+  }
+
+  /* Rotate icon when checked */
+  .accordion_container:has(.accordion_checkbox:checked) .icon {
+    transform: rotate(-45deg);
+  }
+
+  /* Remove border from last accordion */
+  .accordion_container:last-child {
+    border-bottom: none;
+  }
+
+  .u-product_container .u-aspect-square {
+    border-radius: inherit;
+  }
+
+  div:has(.u-section-half-bg) {
+    isolation: isolate;
+  }
+
+  .sidenav_item a:not(.btn):hover {
+    color: #000;
+  }
+
+  /* HL http links - If Highlighted please update URL */
+  :is(html.wf-design-mode, html.w-editor-preview) a[href^='http://'] {
+    outline: 4px solid red !important;
+    outline-offset: -4px;
+    position: relative;
+  }
+
+  /* FAQ */
+
+  .faq-answer {
+    transition: grid-template-rows ease-out 250ms;
+  }
+
+  .faq-item:has(.faq-checkbox:checked) .faq-answer {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-item:has(.faq-checkbox:checked) .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Authors tooltips */
+
+  .cs_author-item:hover .cs_author-tooltip {
+    opacity: 1;
+    transform: translateY(110%);
+  }
+
+  /*Marquee animation */
+
+  [data-animation-marquee] {
+    min-width: fit-content;
+    animation-name: marquee;
+    animation-iteration-count: infinite;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Dialog mods */
+
+  /* Modal mods */
+  body:has(dialog[open]) {
+    overflow: hidden !important;
+  }
+  dialog.modal[open] {
+    animation: fadein 400ms ease-out forwards;
+  }
+  dialog.modal::backdrop {
+    background: color-mix(in srgb, var(--_swatches---color--black) 80%, transparent);
+  }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  dialog::-webkit-scrollbar {
+    width: 10px;
+  }
+  dialog::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+  dialog::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 2px solid var(--colors--background);
+    background: var(--colors--text);
+  }
+  dialog::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--colors--text);
+  }
+
+  /* Marquee animations settings */
+
+  @keyframes marquee-up {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-400%);
+    }
+  }
+
+  @keyframes marquee-down {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(400%);
+    }
+  }
+
+  .cs-cta_marquee > * {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 40s;
+  }
+  .cc-marquee-up > * {
+    animation-name: marquee-up;
+  }
+
+  .cc-marquee-down > * {
+    animation-name: marquee-down;
+  }
+
+  /* Input validation */
+
+  .input-group.cc-error .input-validation {
+    display: flex;
+  }
+
+  .form:has(.input-group.cc-error) [data-btn-submit] {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .form-cb-group:has(input:checked) {
+    --_states---off: 1;
+    --_states---on: 0;
+  }
+
+  .form-cb-group:has(input:checked) .form-cb-icon {
+    position: relative;
+  }
+
+  /* Clamp sentences */
+  .u-clamp-1-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .u-clamp-2-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .u-clamp-3-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .u-clamp-4-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  [hanging-quote] {
+    position: relative;
+    padding-left: 0.8ch;
+  }
+
+  [hanging-quote]::before {
+    content: '“';
+    position: absolute;
+    left: 0;
+  }
+
+  select[disabled] {
+    cursor: default;
+    pointer-events: none;
+  }
+  :root {
+    --i: 0;
+  }
+
+  [data-stagger-list] > *:nth-child(1) {
+    --i: 0;
+  }
+  [data-stagger-list] > *:nth-child(2) {
+    --i: 1;
+  }
+  [data-stagger-list] > *:nth-child(3) {
+    --i: 2;
+  }
+  [data-stagger-list] > *:nth-child(4) {
+    --i: 3;
+  }
+  [data-stagger-list] > *:nth-child(5) {
+    --i: 4;
+  }
+  [data-stagger-list] > *:nth-child(6) {
+    --i: 5;
+  }
+  [data-stagger-list] > *:nth-child(7) {
+    --i: 6;
+  }
+  [data-stagger-list] > *:nth-child(8) {
+    --i: 7;
+  }
+  [data-stagger-list] > *:nth-child(9) {
+    --i: 8;
+  }
+  [data-stagger-list] > *:nth-child(10) {
+    --i: 9;
+  }
+
+  .gradient-border {
+    border: 1.5px solid transparent;
+    border-radius: 12px;
+    background:
+      linear-gradient(transparent, transparent) padding-box,
+      linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 20%) border-box,
+      linear-gradient(180deg, rgba(255, 255, 255, 0) 80%, #7b7974 100%) border-box;
+    background-clip: padding-box, border-box, border-box;
+  }
+
+  /*
+  .u-dashed-box {
+    border: 0.5px solid transparent;
+    background-image: repeating-linear-gradient(to right, currentColor 0, currentColor 3px, transparent 3px, transparent 5px), repeating-linear-gradient(to right, currentColor 0, currentColor 3px, transparent 3px, transparent 5px), repeating-linear-gradient(to bottom, currentColor 0, currentColor 2px, transparent 2px, transparent 4px), repeating-linear-gradient(to bottom, currentColor 0, currentColor 2px, transparent 2px, transparent 4px);
+    background-size:
+      4px 0.5px,
+      4px 0.5px,
+      0.5px 4px,
+      0.5px 4px;
+    background-position:
+      0 0,
+      0 100%,
+      0 0,
+      100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-origin: border-box;
+    background-clip: border-box;
+  }
+  */
+
+  .font-two {
+    text-edge: cap;
+    font-variant-numeric: slashed-zero;
+    font-feature-settings:
+      'ss10' on,
+      'ss12' on;
+  }
+
+
+
+textarea.home-action_input::placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+textarea.home-action_input::-webkit-input-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+textarea.home-action_input::-moz-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+textarea.home-action_input:-ms-input-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+textarea.home-action_input:-moz-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+  
+
+  [data-video="progress"] { position: relative; }
+[data-video="progress"]::before {
+  content: ""; position: absolute;
+  left: 0; right: 0; top: -10px; bottom: -10px;
+}
+
+
+  @keyframes bouncy {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    50% {
+      transform: rotateZ(-4deg);
+    }
+    100% {
+      transform: rotateZ(0deg)
+    }
+  }
+
+  [data-jobs]:hover:after {
+    animation-name: bouncy;
+    animation-duration: 150ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 2;
+  }
+
+  [data-jobs]:after, [data-new-feat]:after {
+    content: 'We are hiring!';
+    padding: 4px 4px;
+    margin-left: 0.25rem;
+    border-radius: 0.25rem;
+    color: black;
+    background-color: var(--_swatches---color--lemon-600);
+    font-size: .6rem;
+    transition: transform ease-out 120ms;
+    display: inline-block;
+  }
+
+  [data-jobs].third-hover:after {
+    content: 'Stop hovering, come join us!';
+  }
+  
+  [data-new-feat]:after {
+  	content: 'New';
+    background-color: var(--_swatches---color--blueberry-600);
+    color: white;
+  }
+
+  .footer-list li {
+    margin-bottom: 0px;
+  }

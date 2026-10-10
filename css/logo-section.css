@@ -1,0 +1,435 @@
+/* ==========================================================================
+   Clay-Style Customer Logos Bento Grid Section
+   ========================================================================== */
+
+/* Hero CLI Install row */
+.hero-cli {
+  display: flex;
+  align-items: center;
+  margin-top: 1.25rem;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.hero-cli_top {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.825rem;
+  font-family: var(--font-sans);
+  font-weight: 450;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-cli_icon-list {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-cli_icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.hero-cli_icon:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.hero-cli_img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ==========================================================================
+   SECTION HOME LOGO
+   ========================================================================== */
+.section_home-logo {
+  position: relative;
+  z-index: 20;
+  background: linear-gradient(180deg, #093f2c 0%, #063122 25%, #f7f9f8 65%, #ffffff 100%);
+  padding: 0 1.5rem 5rem 1.5rem;
+  margin-top: -3.5rem;
+  overflow: hidden;
+}
+
+.container-regular {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.home-logo_content {
+  background-color: #f4f3f0;
+  border-radius: 3rem;
+  padding: 3.75rem 0 3.75rem 0;
+  box-shadow: 0 24px 48px -12px rgba(9, 63, 44, 0.25), 0 4px 16px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.home-logo_intro {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto 2.75rem auto;
+  padding: 0 1.5rem;
+}
+
+.home-logo_intro .text-size-medium {
+  font-family: var(--font-sans);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  line-height: 1.45;
+  color: #0e1a16;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.home-logo_intro .span-link {
+  color: #0e1a16;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s ease;
+}
+
+.home-logo_intro .span-link:hover {
+  opacity: 0.7;
+}
+
+.home-logo_intro .text-weight-bold {
+  font-weight: 700;
+}
+
+/* Scroll wrap & shades */
+.home-logo_wrap {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.home-logo_wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.home-logo_wrap:active {
+  cursor: grabbing;
+}
+
+.home-logo_shade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14%;
+  z-index: 5;
+  pointer-events: none;
+  background-image: linear-gradient(90deg, #f4f3f0 0%, rgba(244, 243, 240, 0) 100%);
+}
+
+.home-logo_shade.cc-right {
+  left: auto;
+  right: 0;
+  background-image: linear-gradient(270deg, #f4f3f0 0%, rgba(244, 243, 240, 0) 100%);
+}
+
+/* ==========================================================================
+   GRID BASE
+   ========================================================================== */
+.home-logo_base {
+  --unit-h: 5rem;
+  --unit-w: 10.05rem;
+  --unit-gap: 0.75rem;
+
+  display: grid;
+  grid-template-rows: repeat(3, var(--unit-h));
+  grid-auto-columns: var(--unit-w);
+  gap: var(--unit-gap);
+  grid-auto-flow: column dense;
+  align-items: stretch;
+  align-content: stretch;
+  padding: 0 4rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Lookups */
+.logo-card {
+  grid-column: var(--col, auto) / span var(--span, 1);
+  grid-row: var(--row, auto) / span var(--tall, 1);
+  background-color: #fefdfb;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid rgba(123, 121, 116, 0.18);
+  border-radius: 1.125rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.logo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.logo-card[data-row="1"] { --row: 1; }
+.logo-card[data-row="2"] { --row: 2; }
+.logo-card[data-row="3"] { --row: 3; }
+.logo-card[data-row="23"] { --row: 3; }
+
+.logo-card[data-tall="2"] { --tall: 2; }
+.logo-card[data-tall="3"] { --tall: 3; }
+
+.logo-card[data-span="1"] { --span: 1; }
+.logo-card[data-span="2"] { --span: 2; }
+.logo-card[data-span="3"] { --span: 3; }
+.logo-card[data-span="4"] { --span: 4; }
+.logo-card[data-span="5"] { --span: 5; }
+.logo-card[data-span="6"] { --span: 6; }
+.logo-card[data-span="7"] { --span: 7; }
+.logo-card[data-span="8"] { --span: 8; }
+
+.logo-card[data-col="1"] { --col: 1; }
+.logo-card[data-col="2"] { --col: 2; }
+.logo-card[data-col="3"] { --col: 3; }
+.logo-card[data-col="4"] { --col: 4; }
+.logo-card[data-col="5"] { --col: 5; }
+.logo-card[data-col="6"] { --col: 6; }
+.logo-card[data-col="7"] { --col: 7; }
+.logo-card[data-col="8"] { --col: 8; }
+.logo-card[data-col="9"] { --col: 9; }
+.logo-card[data-col="10"] { --col: 10; }
+.logo-card[data-col="11"] { --col: 11; }
+.logo-card[data-col="12"] { --col: 12; }
+.logo-card[data-col="13"] { --col: 13; }
+.logo-card[data-col="14"] { --col: 14; }
+.logo-card[data-col="15"] { --col: 15; }
+.logo-card[data-col="16"] { --col: 16; }
+
+/* Variants */
+/* Only Logo */
+.logo-card.w-variant-cb86a75a-517f-f109-e166-20cea0174dc2,
+.logo-card[data-wf--logo-card--variant="only-logo"] {
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  padding: 0.8rem 1.25rem;
+}
+
+.logo-card[data-wf--logo-card--variant="only-logo"] .home-logo_quote,
+.logo-card.w-variant-cb86a75a-517f-f109-e166-20cea0174dc2 .home-logo_quote,
+.logo-card[data-wf--logo-card--variant="only-logo"] .home-logo_stat,
+.logo-card.w-variant-cb86a75a-517f-f109-e166-20cea0174dc2 .home-logo_stat,
+.logo-card[data-wf--logo-card--variant="only-logo"] .home-logo_user,
+.logo-card.w-variant-cb86a75a-517f-f109-e166-20cea0174dc2 .home-logo_user {
+  display: none;
+}
+
+/* Horizontal Quote */
+.logo-card.w-variant-648b1c58-13f7-ea58-60f2-1794d7243564,
+.logo-card[data-wf--logo-card--variant="horizontal-quote"] {
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  padding: 0.8rem 1.35rem;
+  gap: 1.5rem;
+}
+
+.logo-card[data-wf--logo-card--variant="horizontal-quote"] .home-logo_stat,
+.logo-card[data-wf--logo-card--variant="horizontal-quote"] .home-logo_user {
+  display: none;
+}
+
+/* Horizontal Stat */
+.logo-card.w-variant-26e0998e-e16f-4fb9-2188-5f803a7adc6d,
+.logo-card[data-wf--logo-card--variant="horizontal-stat"] {
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  padding: 0.8rem 1.25rem;
+  gap: 1rem;
+}
+
+.logo-card[data-wf--logo-card--variant="horizontal-stat"] .home-logo_quote,
+.logo-card[data-wf--logo-card--variant="horizontal-stat"] .home-logo_user {
+  display: none;
+}
+
+.logo-card[data-wf--logo-card--variant="horizontal-stat"] .home-logo_stat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: normal;
+}
+
+/* Vertical Stat */
+.logo-card.w-variant-02c1b250-b6ca-76c7-76e1-4d569ffbb7da,
+.logo-card[data-wf--logo-card--variant="vertical-stat"] {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-width: 8.5rem;
+}
+
+.logo-card[data-wf--logo-card--variant="vertical-stat"] .home-logo_quote,
+.logo-card[data-wf--logo-card--variant="vertical-stat"] .home-logo_user {
+  display: none;
+}
+
+.logo-card[data-wf--logo-card--variant="vertical-stat"] .home-logo_stat {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+/* Base tall card (Anthropic, Ramp, OpenAI) */
+.logo-card[data-wf--logo-card--variant="base"],
+.logo-card[data-tall="2"] {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem 1.35rem;
+}
+
+.logo-card[data-wf--logo-card--variant="base"] .home-logo_stat,
+.logo-card[data-tall="2"] .home-logo_stat {
+  display: none;
+}
+
+.logo-card[data-wf--logo-card--variant="base"] .home-logo_user,
+.logo-card[data-tall="2"] .home-logo_user {
+  display: none;
+}
+
+/* Card internals */
+.home-logo_height {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 1.875rem;
+}
+
+.home-logo_img {
+  height: 1.75rem;
+  max-width: 7.5rem;
+  object-fit: contain;
+  display: block;
+}
+
+.home-logo_quote {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.home-logo_quote p.cc-logo {
+  font-family: var(--font-sans);
+  font-size: 0.825rem;
+  line-height: 1.45;
+  color: #555755;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.home-logo_title .text-size-medium {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #121c17;
+  line-height: 1.25;
+  margin-bottom: 0.2rem;
+}
+
+.home-logo_title .text-size-tiny {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #7b7974;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.cc-logo-stat {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0e1a16;
+  letter-spacing: -0.02em;
+}
+
+.text-all-caps .font-two {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #7b7974;
+  letter-spacing: 0.04em;
+}
+
+/* Top-right arrow in cards with quotes / links */
+.home-logo_arrow {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  color: #a8a7a3;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+
+.logo-card:hover .home-logo_arrow {
+  opacity: 1;
+  color: #121c17;
+  transform: translate(2px, -2px);
+}
+
+.clickable_wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.clickable_button,
+.clickable_link {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.u-sr-only-2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

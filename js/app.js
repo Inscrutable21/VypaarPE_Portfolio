@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeroVideo();
+  initLogoMarquee();
   initNavFeatures();
   initAudioSynthesizer();
   initHeroSimulator();
@@ -985,4 +986,62 @@ function triggerConfetti() {
   }
 
   updateConfetti();
+}
+
+function initLogoMarquee() {
+  const wrap = document.querySelector('.home-logo_wrap');
+  const base = document.querySelector('.home-logo_base');
+  if (!wrap || !base) return;
+
+  // Find column 7 (e.g. Anthropic/Perplexity) to set initial view matching user screenshot
+  const cardCol7 = base.querySelector('[data-col="7"]');
+  if (cardCol7) {
+    const offset = cardCol7.offsetLeft - 60;
+    if (offset > 0) {
+      wrap.scrollLeft = offset;
+    }
+  }
+
+  let isHovered = false;
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  wrap.addEventListener('mouseenter', () => { isHovered = true; });
+  wrap.addEventListener('mouseleave', () => { isHovered = false; isDown = false; });
+  wrap.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
+  wrap.addEventListener('touchend', () => { isHovered = false; }, { passive: true });
+
+  // Mouse Drag to scroll
+  wrap.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - wrap.offsetLeft;
+    scrollLeft = wrap.scrollLeft;
+  });
+
+  wrap.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  wrap.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrap.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    wrap.scrollLeft = scrollLeft - walk;
+  });
+
+  // Smooth slow continuous auto-scroll
+  let speed = 0.55;
+  function step() {
+    if (!isHovered && !isDown) {
+      wrap.scrollLeft += speed;
+      // Loop if reached end
+      if (wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 10) {
+        wrap.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 }
