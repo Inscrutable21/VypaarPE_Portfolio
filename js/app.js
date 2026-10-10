@@ -312,10 +312,10 @@ function initGtmSection() {
 
   // Workflows data repository with unique color schemes per button
   const workflowDatasets = {
-    'automated-inbound': {
-      title: 'Demo form submissions',
+    'ai-storefront': {
+      title: 'Live Storefront & Delivery Stream',
       theme: {
-        color: '#eaf872',           // Clay Electric Lime
+        color: '#eaf872',           // Electric Lime
         text: '#141f08',
         glow: 'rgba(234, 248, 114, 0.55)',
         highlight: '#fef47a',
@@ -325,27 +325,23 @@ function initGtmSection() {
         badgeColor: '#1e6324'
       },
       preview: {
-        subject: 'Justin, saw your demo request',
-        greeting: 'Hi Justin,',
-        company: 'Acme Corp',
-        token: 'relevant priority from 10-K',
-        textLine: 'Is that the project that made you reach out?'
+        subject: 'Kavya Organics · Quick Commerce Order #VP-9042',
+        greeting: 'Order Confirmed: #VP-9042',
+        company: 'Kavya Organics',
+        token: '2x Glow Serum + 1x Rose Mist',
+        textLine: 'AI Action: Stock reserved at Dark Store Hub-2. Dunzo rider dispatched with 9-minute delivery guarantee. ₹1,490 received via UPI 1-Click.'
       },
       rows: [
-        { check: 1, name: 'Justin', employees: '12,400', rev: 'High expans...', qual: 'Yes', phone: '(415) 555-21...', k10: 'Yes', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Hey John, I n...', isHighlighted: true },
-        { check: 2, name: 'Marcus', employees: '87,300', rev: 'Plan upgrad...', qual: 'Yes', phone: '(212) 555-03...', k10: 'Yes', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Hi Marcus, saw...', isHighlighted: false },
-        { check: 3, name: 'Sarah', employees: 'Spend decr...', rev: 'No', qual: '(503) 555-7...', phone: 'Yes', k10: 'Mid-Market', territory: 'Alex Rivera', rep: 'Great chatting...', draft: '...', isHighlighted: false },
-        { check: 4, name: 'David', employees: 'Plan upgrad...', rev: 'Yes', qual: '(617) 555-41...', phone: 'Yes', k10: 'Enterprise', territory: 'Elena Rostova', rep: 'Following up...', draft: '...', isHighlighted: false },
-        { check: 5, name: 'Rachel', employees: 'Expansion d...', rev: 'Yes', qual: '(312) 555-90...', phone: 'Yes', k10: 'SMB', territory: 'Liam Smith', rep: 'Quick question...', draft: '...', isHighlighted: false },
-        { check: 6, name: 'Christopher', employees: 'Spend decr...', rev: 'Yes', qual: '(208) 555-3...', phone: 'Yes', k10: 'Mid-Market', territory: 'Sarah Jenkins', rep: 'Checking in...', draft: '...', isHighlighted: false },
-        { check: 7, name: 'Amanda', employees: 'Spend decr...', rev: 'No', qual: '(646) 555-12...', phone: 'Yes', k10: 'SMB', territory: 'Marcus DeL...', rep: 'Resource for you...', draft: '...', isHighlighted: false },
-        { check: 8, name: 'Brandon', employees: 'Leadership...', rev: 'Yes', qual: '(720) 555-6...', phone: 'Yes', k10: 'Strategic', territory: 'Alex Rivera', rep: 'Congratulations on...', draft: '...', isHighlighted: false },
-        { check: 9, name: 'Chloe', employees: 'Team chang...', rev: 'Yes', qual: '(404) 555-2...', phone: 'Yes', k10: 'Enterprise', territory: 'Elena Rostova', rep: 'Intro note...', draft: '...', isHighlighted: false },
-        { check: 10, name: 'Devon', employees: 'No recent r...', rev: 'Yes', qual: '(818) 555-45...', phone: 'Yes', k10: 'Mid-Market', territory: 'Liam Smith', rep: 'Reconnecting...', draft: '...', isHighlighted: false }
+        { check: 1, name: 'Kavya Organics', employees: 'Beauty & Care', rev: '1,240 / day', qual: '10 Mins', phone: '+91 98201 54...', k10: 'Auto-Dispatched', territory: 'Indiranagar', rep: 'Quick Comm', draft: 'Rider En Route', isHighlighted: true },
+        { check: 2, name: 'BeanCrafters', employees: 'Artisan Coffee', rev: '860 / day', qual: 'Same Day', phone: '+91 99302 11...', k10: 'Order Packed', territory: 'Bandra West', rep: 'D2C Web', draft: 'Ready for Pickup', isHighlighted: false },
+        { check: 3, name: 'DailyMunch Groceries', employees: 'Instant Mart', rev: '3,450 / day', qual: '12 Mins', phone: '+91 97110 88...', k10: 'Inventory Synced', territory: 'Koramangala', rep: 'Quick Comm', draft: 'Delivered (9m)', isHighlighted: false },
+        { check: 4, name: 'Silk & Thread', employees: 'Apparel / D2C', rev: '540 / day', qual: 'Express 2-Day', phone: '+91 98450 33...', k10: 'WhatsApp Upsell', territory: 'Gurgaon Sec 29', rep: 'D2C Store', draft: 'Shipped', isHighlighted: false },
+        { check: 5, name: 'The NutriBowl', employees: 'Healthy Foods', rev: '1,820 / day', qual: '15 Mins', phone: '+91 90041 22...', k10: 'Stock Reserved', territory: 'HSR Layout', rep: 'Quick Comm', draft: 'Rider Assigned', isHighlighted: false },
+        { check: 6, name: 'Volt Gadgets', employees: 'Electronics', rev: '720 / day', qual: 'Next Day', phone: '+91 98190 77...', k10: 'Cart Recovered', territory: 'Andheri East', rep: 'D2C Web', draft: 'UPI Paid', isHighlighted: false }
       ]
     },
-    'launch-ads': {
-      title: 'LinkedIn Matched Audience Engine',
+    'quick-commerce': {
+      title: '10-Minute Dark Store Fulfillment Stream',
       theme: {
         color: '#7dd3fc',           // Sky Cyan Blue
         text: '#0c4a6e',
@@ -357,23 +353,22 @@ function initGtmSection() {
         badgeColor: '#0369a1'
       },
       preview: {
-        subject: 'OpenAI Audience Match · 94% coverage',
-        greeting: 'Campaign Synced:',
-        company: 'OpenAI',
-        token: 'AI Engineers Segment (Matched)',
-        textLine: '14 custom buyer intent signals triggered audience push to LinkedIn Ads API.'
+        subject: 'BlinkIt / Zepto Dark Store Picker Sync',
+        greeting: 'Dispatch Hub #04:',
+        company: 'DailyMunch Groceries',
+        token: '12 Items Packed in 68 Seconds',
+        textLine: 'Automated barcode scanner verified 12 SKUs. Autonomous handoff to Shadowfax express rider.'
       },
       rows: [
-        { check: 1, name: 'OpenAI', employees: '2,000', rev: 'Matched: 94%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: GTM Automation...', isHighlighted: true },
-        { check: 2, name: 'Anthropic', employees: '1,100', rev: 'Matched: 91%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Claude API users...', isHighlighted: false },
-        { check: 3, name: 'Perplexity', employees: '450', rev: 'Matched: 88%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'Search Engine', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Product Growth...', isHighlighted: false },
-        { check: 4, name: 'Mistral AI', employees: '320', rev: 'Matched: 95%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'Enterprise LLM', territory: 'EMEA Pod', rep: 'Growth Pod', draft: 'Ad set: Developer API...', isHighlighted: false }
+        { check: 1, name: 'DailyMunch', employees: 'Grocery', rev: '3,450 / day', qual: '8 Mins Avg', phone: 'Picker App', k10: 'Batch #419', territory: 'Koramangala Hub', rep: 'Quick Comm', draft: 'Handed to Rider', isHighlighted: true },
+        { check: 2, name: 'FreshGreens', employees: 'Produce', rev: '2,100 / day', qual: '10 Mins Avg', phone: 'Picker App', k10: 'Batch #420', territory: 'Whitefield Hub', rep: 'Quick Comm', draft: 'Packing (45s)', isHighlighted: false },
+        { check: 3, name: 'BakeCraft', employees: 'Bakery', rev: '680 / day', qual: '14 Mins Avg', phone: 'Picker App', k10: 'Hot Dispatch', territory: 'Saket Hub', rep: 'Quick Comm', draft: 'En Route', isHighlighted: false }
       ]
     },
-    'rep-productivity': {
-      title: 'Daily Rep Routing & Slack Alerts',
+    'dark-store-sync': {
+      title: 'Dark Store Multi-Warehouse Inventory Sync',
       theme: {
-        color: '#fdba74',           // Warm Sunset Coral / Orange
+        color: '#fdba74',           // Warm Sunset Orange
         text: '#7c2d12',
         glow: 'rgba(251, 146, 60, 0.55)',
         highlight: '#ffedd5',
@@ -383,46 +378,20 @@ function initGtmSection() {
         badgeColor: '#c2410c'
       },
       preview: {
-        subject: 'Justin Turner · Meeting Scheduled Alert',
-        greeting: 'Lead Alerted:',
-        company: 'Acme Corp',
-        token: 'Meeting Brief Generated',
-        textLine: 'Slack channel #gtm-inbound notified. Calendar invite sent to Marcus DeLorenzo.'
+        subject: 'Real-Time Stock Threshold Auto-Replenish',
+        greeting: 'Inventory Alert:',
+        company: 'Silk & Thread D2C',
+        token: 'Low Stock Auto-PO Generated',
+        textLine: 'Dark Store South inventory dipped below 15 units. PO #892 auto-routed to central factory.'
       },
       rows: [
-        { check: 1, name: 'Justin', employees: '12,400', rev: 'Slack Alerted', qual: 'Booked', phone: 'Calendar sync', k10: 'Meeting Scheduled', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Meeting prep brief sent...', isHighlighted: true },
-        { check: 2, name: 'Chloe', employees: '3,200', rev: 'Slack Alerted', qual: 'Follow-up', phone: 'Task queued', k10: 'Deck downloaded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Follow-up sequence active...', isHighlighted: false },
-        { check: 3, name: 'Sarah', employees: '8,500', rev: 'Slack Alerted', qual: 'Qualified', phone: 'Routing rule', k10: 'Security 10-K', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Prep packet delivered...', isHighlighted: false }
+        { check: 1, name: 'Silk & Thread', employees: 'Apparel', rev: '450 SKUs', qual: '99.4% Sync', phone: 'RFID / Barcode', k10: 'Auto-Replenish', territory: 'Delhi NCR Hub', rep: 'Inventory AI', draft: 'PO Generated', isHighlighted: true },
+        { check: 2, name: 'Volt Gadgets', employees: 'Tech', rev: '120 SKUs', qual: '100% Sync', phone: 'API Sync', k10: 'Surge Protected', territory: 'Mumbai Hub', rep: 'Inventory AI', draft: 'Synced', isHighlighted: false },
+        { check: 3, name: 'NutriBowl', employees: 'FMCG', rev: '340 SKUs', qual: '99.8% Sync', phone: 'Weigh Scale API', k10: 'Batch Tracked', territory: 'Bengaluru Hub', rep: 'Inventory AI', draft: 'Ready', isHighlighted: false }
       ]
     },
-    'tam-sourcing': {
-      title: 'Target Account Universe (TAM)',
-      theme: {
-        color: '#c4b5fd',           // Soft Lilac Lavender
-        text: '#4c1d95',
-        glow: 'rgba(167, 139, 250, 0.55)',
-        highlight: '#f3e8ff',
-        highlightBorder: '#ddd6fe',
-        btnColor: '#7c3aed',
-        badgeBg: '#ede9fe',
-        badgeColor: '#6d28d9'
-      },
-      preview: {
-        subject: 'Stripe · Enriched Firmographics Profile',
-        greeting: 'Account Intel:',
-        company: 'Stripe',
-        token: 'Fintech Tier-1 ICP',
-        textLine: '8,200 verified employees, $14.2B ARR, 45 engineering headcount openings tracked.'
-      },
-      rows: [
-        { check: 1, name: 'Stripe', employees: '8,200', rev: '$14.2B ARR', qual: 'Tier 1 ICP', phone: '+1 415 555-010', k10: 'Fintech Hub', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Customized API playbook...', isHighlighted: true },
-        { check: 2, name: 'Ramp', employees: '1,500', rev: '$500M ARR', qual: 'Tier 1 ICP', phone: '+1 212 555-019', k10: 'Series D', territory: 'Commercial', rep: 'Sarah Jenkins', draft: 'Corporate card alignment...', isHighlighted: false },
-        { check: 3, name: 'Brex', employees: '2,100', rev: '$620M ARR', qual: 'Tier 1 ICP', phone: '+1 415 555-014', k10: 'Fintech', territory: 'Strategic', rep: 'Alex Rivera', draft: 'Scaling GTM engines...', isHighlighted: false },
-        { check: 4, name: 'Vanta', employees: '650', rev: '$120M ARR', qual: 'Fast Growth', phone: '+1 415 555-022', k10: 'Security', territory: 'SMB', rep: 'Liam Smith', draft: 'Compliance integration...', isHighlighted: false }
-      ]
-    },
-    'lead-scoring': {
-      title: 'Product Qualified Leads (PQLs)',
+    'whatsapp-agent': {
+      title: 'WhatsApp Conversational Commerce Bot',
       theme: {
         color: '#6ee7b7',           // Mint Emerald Green
         text: '#064e3b',
@@ -434,20 +403,45 @@ function initGtmSection() {
         badgeColor: '#047857'
       },
       preview: {
-        subject: 'Elena · PQL Intent Score: 99/100',
-        greeting: 'Propensity Signal:',
-        company: 'Enterprise AI Corp',
-        token: 'High Propensity PQL',
-        textLine: 'Exceeded workspace monthly credit limit 3x this week and checked enterprise pricing.'
+        subject: 'Aarav, your cart items are selling fast!',
+        greeting: 'WhatsApp Bot Session:',
+        company: 'Kavya Organics',
+        token: 'Abandoned Cart Recovered (₹1,890)',
+        textLine: 'Customer tapped 1-Click UPI button on WhatsApp. Order placed and receipt sent in 12 seconds.'
       },
       rows: [
-        { check: 1, name: 'Elena', employees: '4,500', rev: 'Fit: 99/100', qual: 'High Intent', phone: '+1 617 555-018', k10: 'Trigger: Pricing view', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Ready for enterprise plan...', isHighlighted: true },
-        { check: 2, name: 'Marcus', employees: '12,000', rev: 'Fit: 95/100', qual: 'High Intent', phone: '+1 212 555-031', k10: 'Trigger: 10 seats add', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Seat expansion demo...', isHighlighted: false },
-        { check: 3, name: 'Devon', employees: '800', rev: 'Fit: 88/100', qual: 'Medium', phone: '+1 818 555-045', k10: 'Trigger: API limits', territory: 'Mid-Market', rep: 'Liam Smith', draft: 'Upgraded rate limits...', isHighlighted: false }
+        { check: 1, name: 'Aarav Mehta', employees: 'Indiranagar', rev: '₹1,890 Cart', qual: 'Recovered', phone: '+91 98450 12...', k10: '1-Tap UPI Link', territory: 'WhatsApp Bot', rep: 'AI Sales Agent', draft: 'Order Placed', isHighlighted: true },
+        { check: 2, name: 'Simran Kaur', employees: 'Bandra', rev: '₹2,450 Cart', qual: 'Upsold +1 SKU', phone: '+91 98200 88...', k10: 'AI Recommendation', territory: 'WhatsApp Bot', rep: 'AI Sales Agent', draft: 'UPI Paid', isHighlighted: false },
+        { check: 3, name: 'Rohan Gupta', employees: 'Gurgaon', rev: '₹990 Order', qual: 'Live Tracking', phone: '+91 97110 55...', k10: 'Rider GPS Shared', territory: 'WhatsApp Bot', rep: 'Support AI', draft: 'Delivered', isHighlighted: false }
       ]
     },
-    'automated-outbound': {
-      title: 'Outbound Personalization Matrix',
+    'instant-checkout': {
+      title: '1-Click UPI & Frictionless Checkout Engine',
+      theme: {
+        color: '#c4b5fd',           // Soft Lilac Lavender
+        text: '#4c1d95',
+        glow: 'rgba(167, 139, 250, 0.55)',
+        highlight: '#f3e8ff',
+        highlightBorder: '#ddd6fe',
+        btnColor: '#7c3aed',
+        badgeBg: '#ede9fe',
+        badgeColor: '#6d28d9'
+      },
+      preview: {
+        subject: '1-Tap Checkout · 74% Higher Conversion',
+        greeting: 'Payment Session:',
+        company: 'BeanCrafters D2C',
+        token: 'PhonePe / GPay Instant Intent',
+        textLine: 'No OTP, no address re-typing. Pre-filled Indian customer addresses via VyaparPe Network ID.'
+      },
+      rows: [
+        { check: 1, name: 'BeanCrafters', employees: 'Coffee', rev: '₹840 / order', qual: '1-Tap UPI', phone: 'PhonePe Intent', k10: 'Auto Address', territory: 'Pan India', rep: 'Checkout OS', draft: '0% MDR Settled', isHighlighted: true },
+        { check: 2, name: 'Kavya Organics', employees: 'Beauty', rev: '₹1,490 / order', qual: '1-Tap GPay', phone: 'GPay Intent', k10: 'Pre-filled KYC', territory: 'Metro Cities', rep: 'Checkout OS', draft: 'Instant Bank Sync', isHighlighted: false },
+        { check: 3, name: 'Silk & Thread', employees: 'Fashion', rev: '₹3,200 / order', qual: 'Cards + EMI', phone: 'Razorpay PG', k10: '3D Secure Auto', territory: 'Tier 1 & 2', rep: 'Checkout OS', draft: 'Captured', isHighlighted: false }
+      ]
+    },
+    'ai-catalogue': {
+      title: 'AI Product Photography & Catalog Studio',
       theme: {
         color: '#f9a8d4',           // Vibrant Rose Pink
         text: '#831843',
@@ -459,20 +453,20 @@ function initGtmSection() {
         badgeColor: '#be185d'
       },
       preview: {
-        subject: 'Michael, congratulations on hiring 40 SDRs',
-        greeting: 'Hi Michael,',
-        company: 'CloudScale Inc',
-        token: '10-K Cloud AI Expansion',
-        textLine: 'Noticed your team is scaling outbound plays across North America.'
+        subject: '40 Raw Smartphone Photos Converted to Studio 4K',
+        greeting: 'Studio Generation:',
+        company: 'The NutriBowl',
+        token: '4K Studio Model Lighting & Shadows',
+        textLine: 'AI generated 40 lifestyle studio angles, nutrition labels, and Google Merchant SEO descriptions in 90 seconds.'
       },
       rows: [
-        { check: 1, name: 'Michael', employees: '6,200', rev: 'Hiring 40 reps', qual: 'Priority A', phone: '+1 206 555-012', k10: 'AI SDR adoption', territory: 'Strategic', rep: 'Alex Rivera', draft: 'Scaling outbound pipeline...', isHighlighted: true },
-        { check: 2, name: 'Sophie', employees: '1,400', rev: 'Series C raised', qual: 'Priority A', phone: '+1 415 555-018', k10: 'New CRO onboarded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Congrats on new funding...', isHighlighted: false },
-        { check: 3, name: 'Brandon', employees: '3,800', rev: 'New CRM rollout', qual: 'Priority A', phone: '+1 720 555-061', k10: 'Salesforce migration', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'CRM enrichment playbook...', isHighlighted: false }
+        { check: 1, name: 'The NutriBowl', employees: 'Health Food', rev: '40 New SKUs', qual: '4K Rendered', phone: 'AI Studio', k10: 'SEO Generated', territory: 'E-Comm Web', rep: 'Catalog AI', draft: 'Published Live', isHighlighted: true },
+        { check: 2, name: 'Aura Decor', employees: 'Handicrafts', rev: '65 New SKUs', qual: '3D Augmented', phone: 'AI Studio', k10: 'AR Preview Ready', territory: 'D2C Store', rep: 'Catalog AI', draft: 'Published Live', isHighlighted: false },
+        { check: 3, name: 'Pawfect Care', employees: 'Pets', rev: '28 New SKUs', qual: 'Clean White Bg', phone: 'AI Studio', k10: 'Barcode Mapped', territory: 'Quick Comm', rep: 'Catalog AI', draft: 'Published Live', isHighlighted: false }
       ]
     },
-    'crm-enrichment': {
-      title: 'Salesforce & HubSpot Auto-Sync',
+    'fleet-routing': {
+      title: 'Hyperlocal Rider Fleet Dispatch Engine',
       theme: {
         color: '#fde047',           // Warm Golden Amber
         text: '#713f12',
@@ -484,16 +478,16 @@ function initGtmSection() {
         badgeColor: '#a16207'
       },
       preview: {
-        subject: 'Linear · 18 CRM Fields Auto-Updated',
-        greeting: 'CRM Integration:',
-        company: 'Linear',
-        token: 'Salesforce Bi-directional Sync',
-        textLine: 'All account executives, phone numbers, and revenue projections refreshed automatically.'
+        subject: 'Autonomous Rider Matching · Sub-3 Min Pickup',
+        greeting: 'Fleet Allocation:',
+        company: 'DailyMunch Quick Mart',
+        token: 'Dunzo + Shadowfax Smart Router',
+        textLine: 'AI route optimizer combined 3 neighbouring orders in Koramangala into a single 14-minute multi-drop run.'
       },
       rows: [
-        { check: 1, name: 'Linear', employees: '120', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Tech stack verified', territory: 'Tech Pod', rep: 'Marcus DeL...', draft: 'Synced 18 fields...', isHighlighted: true },
-        { check: 2, name: 'Notion', employees: '850', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Domain verified', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Synced 24 fields...', isHighlighted: false },
-        { check: 3, name: 'Figma', employees: '1,300', rev: 'Enriched 100%', qual: 'Updated', phone: 'HubSpot synced', k10: 'Product data live', territory: 'Design Systems', rep: 'Alex Rivera', draft: 'Synced 32 fields...', isHighlighted: false }
+        { check: 1, name: 'Koramangala Hub #02', employees: '18 Active Riders', rev: '11 Min Avg ETA', qual: '3-Order Batch', phone: 'Dunzo Fleet API', k10: 'Optimal Route', territory: 'Zone A', rep: 'Fleet AI', draft: 'Dispatched', isHighlighted: true },
+        { check: 2, name: 'Indiranagar Hub #01', employees: '24 Active Riders', rev: '9 Min Avg ETA', qual: 'Single Drop', phone: 'Shadowfax API', k10: 'Express Priority', territory: 'Zone B', rep: 'Fleet AI', draft: 'En Route', isHighlighted: false },
+        { check: 3, name: 'HSR Layout Hub #05', employees: '15 Active Riders', rev: '12 Min Avg ETA', qual: '2-Order Batch', phone: 'Porter Hyperlocal', k10: 'Traffic Avoided', territory: 'Zone C', rep: 'Fleet AI', draft: 'Dispatched', isHighlighted: false }
       ]
     }
   };
@@ -504,7 +498,7 @@ function initGtmSection() {
     if (!pill) return;
 
     const tabId = pill.dataset.tab;
-    const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
+    const dataset = workflowDatasets[tabId] || workflowDatasets['ai-storefront'];
 
     // Update active pill state
     tabsList.querySelectorAll('.gtm-tab-pill').forEach(p => p.classList.remove('is-active'));
@@ -544,9 +538,9 @@ function initGtmSection() {
         r.addEventListener('click', () => {
           tableBody.querySelectorAll('tr').forEach(row => row.classList.remove('is-highlighted'));
           r.classList.add('is-highlighted');
-          const rowName = r.querySelector('.cell-name')?.textContent || 'Lead';
-          if (subjectText) subjectText.textContent = `${rowName}, saw your demo request`;
-          if (greetingName) greetingName.textContent = `Hi ${rowName},`;
+          const rowName = r.querySelector('.cell-name')?.textContent || 'Store';
+          if (subjectText) subjectText.textContent = `${rowName} · Live Order Processed`;
+          if (greetingName) greetingName.textContent = `Order Confirmed: ${rowName}`;
         });
       });
     }
@@ -559,18 +553,18 @@ function initGtmSection() {
       if (emailBodyContent) {
         emailBodyContent.innerHTML = `
           <p><span>${dataset.preview.greeting}</span></p>
-          <p>I know <span>${dataset.preview.company}</span> is focused on <span class="gtm-token-pill"><span class="gtm-token-icon">T</span> ${dataset.preview.token} <span class="gtm-token-close">&times;</span></span>.</p>
+          <p>Store: <span>${dataset.preview.company}</span></p>
+          <p>Items: <span class="gtm-token-pill"><span class="gtm-token-icon">★</span> ${dataset.preview.token} <span class="gtm-token-close">&times;</span></span></p>
           <p>${dataset.preview.textLine}</p>
-          <p>Let me know if there's any additional context I should have before we meet.</p>
         `;
       }
     }
   });
 
   // Center initial active button on load
-  const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill[data-tab="automated-inbound"]');
+  const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill[data-tab="ai-storefront"]');
   if (initialActive) {
-    const initialDataset = workflowDatasets[initialActive.dataset.tab] || workflowDatasets['automated-inbound'];
+    const initialDataset = workflowDatasets[initialActive.dataset.tab] || workflowDatasets['ai-storefront'];
     if (initialDataset.theme) {
       applyTheme(initialDataset.theme);
     }
@@ -600,9 +594,9 @@ function initGtmSection() {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const first = inputFirstName?.value.trim() || 'Justin';
-      const last = inputLastName?.value.trim() || 'Turner';
-      const comp = inputCompany?.value.trim() || 'Acme Corp';
+      const first = inputFirstName?.value.trim() || 'Kavya Organics';
+      const last = inputLastName?.value.trim() || 'Beauty & Wellness';
+      const comp = inputCompany?.value.trim() || '10-Min Quick Commerce';
 
       // Update Highlighted row in table
       const firstRow = document.getElementById('row-justin') || tableBody?.querySelector('tr');
@@ -612,15 +606,15 @@ function initGtmSection() {
         firstRow.classList.add('is-highlighted');
       }
 
-      // Update Email Preview Card
-      if (subjectText) subjectText.textContent = `${first}, saw your demo request`;
-      if (greetingName) greetingName.textContent = `Hi ${first},`;
-      if (companyName) companyName.textContent = comp;
+      // Update Preview Card
+      if (subjectText) subjectText.textContent = `${first} · AI Storefront Ready`;
+      if (greetingName) greetingName.textContent = `Store Launched: ${first}`;
+      if (companyName) companyName.textContent = first;
 
       // Button feedback
       if (submitBtn) {
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Updated!';
+        submitBtn.textContent = 'Store Created!';
         submitBtn.style.filter = 'brightness(1.2)';
         setTimeout(() => {
           submitBtn.textContent = originalText;
@@ -631,9 +625,9 @@ function initGtmSection() {
 
     // Real-time typing sync
     inputFirstName?.addEventListener('input', () => {
-      const val = inputFirstName.value.trim() || 'Justin';
-      if (greetingName) greetingName.textContent = `Hi ${val},`;
-      if (subjectText) subjectText.textContent = `${val}, saw your demo request`;
+      const val = inputFirstName.value.trim() || 'Kavya Organics';
+      if (greetingName) greetingName.textContent = `Store Launched: ${val}`;
+      if (subjectText) subjectText.textContent = `${val} · Quick Commerce Order`;
       const firstRow = document.getElementById('row-justin') || tableBody?.querySelector('tr');
       if (firstRow) {
         const nameCell = firstRow.querySelector('.cell-name');
@@ -642,7 +636,7 @@ function initGtmSection() {
     });
 
     inputCompany?.addEventListener('input', () => {
-      const val = inputCompany.value.trim() || 'Acme Corp';
+      const val = inputCompany.value.trim() || '10-Min Quick Commerce';
       if (companyName) companyName.textContent = val;
     });
   }
@@ -666,20 +660,20 @@ function initGtmSection() {
 
   // 4. Pagination Buttons
   let currentLeadIdx = 1;
-  const totalLeads = 554;
+  const totalLeads = 1240;
   const sampleLeads = [
-    { first: 'Justin', last: 'Turner', company: 'Acme Corp', rep: 'Marcus DeLorenzo' },
-    { first: 'Marcus', last: 'Vance', company: 'Enterprise AI Corp', rep: 'Sarah Jenkins' },
-    { first: 'Sarah', last: 'Connor', company: 'Cyberdyne Systems', rep: 'Alex Rivera' },
-    { first: 'David', last: 'Hassel', company: 'Knight Industries', rep: 'Elena Rostova' }
+    { first: 'Kavya Organics', last: 'Beauty', company: 'Indiranagar Hub #02' },
+    { first: 'BeanCrafters', last: 'Coffee', company: 'Bandra West Hub #01' },
+    { first: 'DailyMunch', last: 'Grocery', company: 'Koramangala Hub #04' },
+    { first: 'Silk & Thread', last: 'Fashion', company: 'Gurgaon Hub #07' }
   ];
 
   function updateLeadDisplay() {
     if (pageIndicator) pageIndicator.textContent = `${currentLeadIdx} of ${totalLeads}`;
     const lead = sampleLeads[(currentLeadIdx - 1) % sampleLeads.length];
     if (lead) {
-      if (subjectText) subjectText.textContent = `${lead.first}, saw your demo request`;
-      if (greetingName) greetingName.textContent = `Hi ${lead.first},`;
+      if (subjectText) subjectText.textContent = `${lead.first} · Quick Commerce Order`;
+      if (greetingName) greetingName.textContent = `Order Confirmed: ${lead.first}`;
       if (companyName) companyName.textContent = lead.company;
       if (inputFirstName) inputFirstName.value = lead.first;
       if (inputLastName) inputLastName.value = lead.last;
