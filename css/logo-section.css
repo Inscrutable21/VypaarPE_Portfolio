@@ -53,15 +53,9 @@
   display: block;
 }
 
-/* Hero Video bottom gradient overlay for seamless merge with grass scene */
+/* Hero Video bottom overlay (transparent to allow direct overlap with hero_session.mp4) */
 .hero-video-gradient-bottom {
-  position: absolute;
-  inset: auto 0 0 0;
-  width: 100%;
-  height: 10rem;
-  background: linear-gradient(180deg, rgba(3, 93, 68, 0) 0%, rgba(3, 93, 68, 0.38) 45%, #035d44 100%);
-  pointer-events: none;
-  z-index: 5;
+  display: none;
 }
 
 /* ==========================================================================
@@ -70,10 +64,10 @@
 .section_home-logo {
   position: relative;
   z-index: 20;
-  background: linear-gradient(180deg, #035d44 0%, #03533e 20%, #064030 38%, #f4f3f0 76%, #ffffff 100%);
+  background: transparent;
   padding: 0 1.5rem 5rem 1.5rem;
-  margin-top: -5rem;
-  overflow: hidden;
+  margin-top: calc(-13rem + 100px);
+  overflow: visible;
 }
 
 .container-regular {
@@ -83,13 +77,13 @@
 }
 
 .home-logo_content {
-  background-color: #f4f3f0;
+  background-color: #ffffff;
   border-radius: 3rem;
   padding: 3.75rem 0 3.75rem 0;
-  box-shadow: 0 28px 64px -16px rgba(2, 45, 32, 0.38), 0 6px 24px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.18), 0 6px 24px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .home-logo_intro {
@@ -160,13 +154,13 @@
   width: 14%;
   z-index: 5;
   pointer-events: none;
-  background-image: linear-gradient(90deg, #f4f3f0 0%, rgba(244, 243, 240, 0) 100%);
+  background-image: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .home-logo_shade.cc-right {
   left: auto;
   right: 0;
-  background-image: linear-gradient(270deg, #f4f3f0 0%, rgba(244, 243, 240, 0) 100%);
+  background-image: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 /* ==========================================================================
@@ -194,13 +188,14 @@
   grid-column: var(--col, auto) / span var(--span, 1);
   grid-row: var(--row, auto) / span var(--tall, 1);
   background-color: #fefdfb;
+  border: 1px solid rgba(123, 121, 116, 0.12);
   border-top: 1px solid #ffffff;
-  border-bottom: 1px solid rgba(123, 121, 116, 0.18);
+  border-bottom: 1px solid rgba(123, 121, 116, 0.22);
   border-radius: 1.125rem;
   padding: 1rem 1.25rem;
   display: flex;
   position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
 
@@ -518,5 +513,11 @@
   font-size: 0.7rem;
   color: #7b7974;
   font-weight: 450;
+}
+
+@media (max-width: 768px) {
+  .section_home-logo {
+    margin-top: -6.5rem;
+  }
 }
 
