@@ -13,24 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Ensures hero contraption background video autoplays and loops seamlessly
+ * Ensures background contraption videos autoplay and loop seamlessly
  */
 function initHeroVideo() {
-  const heroVideo = document.getElementById('heroVideo');
-  if (heroVideo) {
-    heroVideo.muted = true;
-    heroVideo.defaultMuted = true;
-    heroVideo.setAttribute('muted', '');
-    const playPromise = heroVideo.play();
+  const videos = [document.getElementById('heroVideo'), document.getElementById('repsVideo')].filter(Boolean);
+  videos.forEach(video => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         // Fallback retry on first user click if browser policy restricts autoplay
         document.addEventListener('click', () => {
-          heroVideo.play();
+          video.play();
         }, { once: true });
       });
     }
-  }
+  });
 }
 
 /**
