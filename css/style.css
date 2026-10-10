@@ -601,7 +601,9 @@ textarea {
   line-height: 0;
 }
 
-.hero-video-wrapper video {
+.hero-video-wrapper video,
+.hero-video-wrapper img,
+.hero-bg-media {
   width: 100%;
   height: auto;
   min-width: 100%;
