@@ -1,0 +1,433 @@
+/* ==========================================================================
+   Stacking Cards Section ("What We Offer")
+   Scroll-driven sticky stacking cards experience
+   ========================================================================== */
+
+/* Custom properties for the scroll-driven animation */
+:root {
+  --sc-card-height: 520px;
+  --sc-card-top-offset: 18px;
+  --sc-numcards: 4;
+}
+
+/* Section wrapper */
+.sc-section {
+  background-color: white;
+  padding: 80px 32px 0;
+  box-sizing: border-box;
+}
+
+/* Header above the cards */
+.sc-header {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sc-label {
+  font-family: 'DM Sans', var(--font-sans, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1C3A22;
+  background: rgba(28, 58, 34, 0.08);
+  border: 1px solid rgba(28, 58, 34, 0.12);
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin: 0 0 16px;
+  display: inline-block;
+}
+
+.sc-title {
+  font-family: 'DM Sans', var(--font-display, sans-serif);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1C3A22;
+  letter-spacing: -1.2px;
+  margin: 0;
+  text-align: center;
+}
+
+.sc-subtitle {
+  font-family: 'DM Sans', var(--font-sans, sans-serif);
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.65);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 14px auto 0;
+  text-align: center;
+}
+
+/* Cards list */
+#sc-cards {
+  list-style: none;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: calc(var(--sc-numcards) * var(--sc-card-top-offset));
+  view-timeline-name: --sc-cards-scrolls;
+}
+
+/* Each card li — sticky so it stacks at the top as you scroll */
+.sc-card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--sc-card-top-offset));
+  box-sizing: border-box;
+}
+
+/* Per-card index */
+#sc-card-1 {
+  --index: 1;
+}
+
+#sc-card-2 {
+  --index: 2;
+}
+
+#sc-card-3 {
+  --index: 3;
+}
+
+#sc-card-4 {
+  --index: 4;
+}
+
+/* Per-card accent & background colours */
+#sc-card-1 {
+  --card-bg: #f0f8ff;
+  --card-color: #1C3A22;
+  --card-text: #ffffff;
+  --tag-color: #0b5ed7;
+  --tag-bg: rgba(11, 94, 215, 0.08);
+  --tag-border: rgba(11, 94, 215, 0.2);
+}
+
+#sc-card-2 {
+  --card-bg: #fff3ed;
+  --card-color: #1C3A22;
+  --card-text: #ffffff;
+  --tag-color: #d65b00;
+  --tag-bg: rgba(214, 91, 0, 0.08);
+  --tag-border: rgba(214, 91, 0, 0.2);
+}
+
+#sc-card-3 {
+  --card-bg: #fcfee2;
+  --card-color: #1C3A22;
+  --card-text: #ffffff;
+  --tag-color: #6a8200;
+  --tag-bg: rgba(106, 130, 0, 0.08);
+  --tag-border: rgba(106, 130, 0, 0.2);
+}
+
+#sc-card-4 {
+  --card-bg: #fff0fa;
+  --card-color: #1C3A22;
+  --card-text: #ffffff;
+  --tag-color: #b8007a;
+  --tag-bg: rgba(184, 0, 122, 0.08);
+  --tag-border: rgba(184, 0, 122, 0.2);
+}
+
+/* Card content — this is the element that scales down */
+.sc-card__content {
+  transform-origin: 50% 0%;
+  will-change: transform;
+  height: var(--sc-card-height);
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0;
+  background: var(--card-bg, #f0f8ff);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+}
+
+/* ── Scroll-driven scale animation ── */
+@supports (animation-timeline: view()) {
+  .sc-card {
+    --index0: calc(var(--index) - 1);
+    --reverse-index: calc(var(--sc-numcards) - var(--index0));
+    --reverse-index0: calc(var(--reverse-index) - 1);
+  }
+
+  @keyframes sc-scale {
+    to {
+      transform: scale(calc(1.05 - calc(0.05 * var(--reverse-index))));
+    }
+  }
+
+  #sc-cards {
+    view-timeline-name: --sc-cards-scrolls;
+  }
+
+  .sc-card__content {
+    --start-range: calc(var(--index0) / var(--sc-numcards) * 100%);
+    --end-range: calc(var(--index) / var(--sc-numcards) * 100%);
+
+    animation: linear sc-scale forwards;
+    animation-timeline: --sc-cards-scrolls;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+  }
+}
+
+/* Text side of each card matching the exact reference layout */
+.sc-card__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 48px 40px 48px 48px;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sc-card__tag {
+  align-self: flex-start;
+  font-family: 'DM Sans', var(--font-sans, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--tag-color, #2563eb);
+  background: var(--tag-bg, rgba(37, 99, 235, 0.08));
+  border: 1px solid var(--tag-border, rgba(37, 99, 235, 0.2));
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.sc-card__title {
+  font-family: 'DM Sans', var(--font-display, sans-serif);
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  margin: 0 0 18px 0;
+  max-width: 500px;
+  text-align: left;
+}
+
+.sc-card__title-accent {
+  color: var(--tag-color, #2563eb);
+}
+
+.sc-card__desc {
+  font-family: 'DM Sans', var(--font-sans, sans-serif);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #334155;
+  margin: 0 0 32px 0;
+  max-width: 460px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.sc-card__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.sc-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'DM Sans', var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--tag-color, #2563eb);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sc-card__link:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.sc-card__link--secondary {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sc-card__link--secondary:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Image side of each card */
+.sc-card__figure {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.sc-card__figure img,
+.sc-card__figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.sc-card:hover .sc-card__figure img,
+.sc-card:hover .sc-card__figure video {
+  transform: scale(1.04);
+}
+
+/* Boxed image container for cards matching the reference design */
+.sc-card__figure--boxed {
+  padding: 24px 24px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.sc-card-image-box {
+  width: 100%;
+  height: 100%;
+  background: #faf8f5;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sc-card:hover .sc-card-image-box {
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.sc-card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  :root {
+    --sc-card-top-offset: 12px;
+  }
+
+  .sc-section {
+    padding: 56px 16px 40px;
+  }
+
+  #sc-cards {
+    padding: 0;
+    padding-bottom: calc(var(--sc-numcards) * var(--sc-card-top-offset) + 20px);
+  }
+
+  .sc-header {
+    padding: 10px 16px 44px;
+  }
+
+  .sc-title {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+    letter-spacing: -0.8px;
+  }
+
+  .sc-subtitle {
+    font-size: 0.95rem;
+    margin-top: 10px;
+  }
+
+  .sc-card {
+    top: 80px;
+  }
+
+  .sc-card__content {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    border-radius: 22px;
+  }
+
+  .sc-card__text {
+    padding: 28px 22px 24px;
+  }
+
+  .sc-card__tag {
+    margin-bottom: 14px;
+    padding: 5px 14px;
+  }
+
+  .sc-card__title {
+    font-size: clamp(1.4rem, 6vw, 1.85rem);
+    margin-bottom: 14px;
+  }
+
+  .sc-card__desc {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .sc-card__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .sc-card__link {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .sc-card__figure {
+    height: 240px;
+  }
+
+  .sc-card__figure--boxed {
+    height: 260px;
+    padding: 0 20px 24px;
+  }
+
+  .sc-card-image-box {
+    border-radius: 18px;
+  }
+
+  .sc-card-image-box img {
+    border-radius: 18px;
+  }
+}
