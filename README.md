@@ -54,6 +54,11 @@ This project delivers a responsive web application highlighting product workflow
   - **Community Story (Sandra Uche)**: Horizontal split thumbnail card spanning 4 columns.
   - **Careers and Team**: Group portrait card with direct recruitment call-to-action.
 
+### 2.8 Growth Ideas Call to Action (CTA)
+- **Display Heading**: High-impact centered typography ("Turn your growth ideas into reality today").
+- **Subtitle**: Clean reassurance copy ("Start for free today. No credit card required.").
+- **Dual Conversion Triggers**: Primary high-contrast button ("Start free trial →") and secondary outlined button ("Get a demo →") with interactive arrow micro-animations.
+
 ---
 
 ## 3. Directory Structure
@@ -70,7 +75,8 @@ vypaarpe/
 │   ├── gtm-section.css          # Interactive workflow studio and data grid styles
 │   ├── stacking-cards.css       # Sticky scroll-driven stacking card styles
 │   ├── reps-section.css         # Reps productivity showcase styles
-│   └── gtm-engineering.css      # 9-column asymmetric Bento Grid styles (80% width)
+│   ├── gtm-engineering.css      # 9-column asymmetric Bento Grid styles (80% width)
+│   └── cta-section.css          # Growth ideas call-to-action styles
 │
 ├── js/                          # Application Logic
 │   └── app.js                   # Tab switching, carousel physics, and form handlers
