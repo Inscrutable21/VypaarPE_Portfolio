@@ -1,0 +1,454 @@
+/* ==========================================================================
+   "Learn more about GTM engineering" Bento Grid Section
+   Width: 80% of viewport/container as specified
+   ========================================================================== */
+
+.section_gtm-engineering {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 100px 0 130px;
+  box-sizing: border-box;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
+  color: #111827;
+}
+
+/* Centered container with 80% width constraint */
+.gtm-engineering-container {
+  width: 80%;
+  max-width: 1360px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Centered Section Header */
+.gtm-engineering-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  max-width: 760px;
+}
+
+.gtm-engineering-title {
+  font-family: var(--font-display, 'Outfit', 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #0c131f;
+  margin: 0;
+  text-align: center;
+}
+
+/* 9-Column Asymmetric Bento Grid */
+.gtm-engineering-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Base Card Styling */
+.bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #0c131f;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.bento-card:hover .bento-link svg {
+  transform: translateX(4px);
+}
+
+/* Interactive link arrow */
+.bento-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: auto;
+  transition: opacity 0.2s ease;
+}
+
+.bento-link svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tag / Eyebrow */
+.bento-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+/* ── Specific Card Variants ── */
+
+/* Card 1: Sculpt Conference (Cols 1-3, Rows 1-2) */
+.bento-card--sculpt {
+  grid-column: span 3;
+  grid-row: span 2;
+  background-color: #f4f0fa;
+}
+
+.bento-card--sculpt .bento-image-wrap {
+  width: 100%;
+  height: 240px;
+  background-color: #3b0d2d;
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-card--sculpt .bento-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bento-card--sculpt .bento-body {
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.bento-card--sculpt .bento-eyebrow {
+  color: #7c3aed;
+}
+
+.bento-card--sculpt .bento-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0c131f;
+  margin: 0 0 1.25rem;
+}
+
+/* Card 2: Get started with Clay (Cols 4-9, Row 1) */
+.bento-card--university {
+  grid-column: span 6;
+  grid-row: span 1;
+  background-color: #f6f5f1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.25rem 2.25rem;
+  gap: 2rem;
+}
+
+.bento-card--university .bento-content-left {
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+}
+
+.bento-card--university .bento-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0c131f;
+  margin: 0 0 0.85rem;
+}
+
+.bento-card--university .bento-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin: 0 0 1.25rem;
+}
+
+.bento-card--university .bento-image-right {
+  width: 250px;
+  height: 170px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #e5e3db;
+}
+
+.bento-card--university .bento-image-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card 3: Livestream (Cols 4-6, Row 2) */
+.bento-card--livestream {
+  grid-column: span 3;
+  grid-row: span 1;
+  position: relative;
+  min-height: 230px;
+  justify-content: flex-end;
+  background-color: #1e1e1e;
+}
+
+.bento-card--livestream .bento-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.bento-card--livestream .bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 100%);
+  z-index: 2;
+}
+
+.bento-card--livestream .bento-body {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem;
+  color: #ffffff;
+}
+
+.bento-card--livestream .bento-eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.45rem;
+}
+
+.bento-card--livestream .bento-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+}
+
+.bento-card--livestream .bento-link {
+  color: #ffffff;
+}
+
+/* Card 4: Javeria Story (Cols 7-9, Rows 2-3) */
+.bento-card--javeria {
+  grid-column: span 3;
+  grid-row: span 2;
+  background-color: #f1f6fd;
+}
+
+.bento-card--javeria .bento-image-wrap {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #e2eaf5;
+}
+
+.bento-card--javeria .bento-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bento-card--javeria .bento-body {
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.bento-card--javeria .bento-eyebrow {
+  color: #2563eb;
+}
+
+.bento-card--javeria .bento-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #0c131f;
+  margin: 0 0 1.25rem;
+}
+
+/* Card 5: Sandra Lagos (Cols 1-4, Row 3) */
+.bento-card--sandra {
+  grid-column: span 4;
+  grid-row: span 1;
+  background-color: #f6f5f1;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+
+.bento-card--sandra .bento-thumb {
+  width: 130px;
+  height: 130px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #0d381e;
+}
+
+.bento-card--sandra .bento-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bento-card--sandra .bento-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card--sandra .bento-eyebrow {
+  color: #4b5563;
+  margin-bottom: 0.45rem;
+}
+
+.bento-card--sandra .bento-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #0c131f;
+  margin: 0 0 0.85rem;
+}
+
+/* Card 6: Careers Team (Cols 5-6, Row 3) */
+.bento-card--careers {
+  grid-column: span 2;
+  grid-row: span 1;
+  position: relative;
+  min-height: 180px;
+  justify-content: flex-end;
+  background-color: #1e1e1e;
+}
+
+.bento-card--careers .bento-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.bento-card--careers .bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 2;
+}
+
+.bento-card--careers .bento-body {
+  position: relative;
+  z-index: 3;
+  padding: 1.25rem;
+  color: #ffffff;
+}
+
+.bento-card--careers .bento-eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.35rem;
+}
+
+.bento-card--careers .bento-link {
+  color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .gtm-engineering-container {
+    width: 90%;
+  }
+
+  .gtm-engineering-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .bento-card--sculpt,
+  .bento-card--university,
+  .bento-card--livestream,
+  .bento-card--javeria,
+  .bento-card--sandra,
+  .bento-card--careers {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .bento-card--university {
+    grid-column: span 2;
+  }
+
+  .bento-card--sandra {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .section_gtm-engineering {
+    padding: 70px 0 90px;
+  }
+
+  .gtm-engineering-container {
+    width: 92%;
+  }
+
+  .gtm-engineering-title {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+  }
+
+  .bento-card--university {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bento-card--university .bento-image-right {
+    width: 100%;
+    height: 180px;
+  }
+
+  .bento-card--sandra {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bento-card--sandra .bento-thumb {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media (max-width: 580px) {
+  .gtm-engineering-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bento-card--university,
+  .bento-card--sandra {
+    grid-column: auto;
+  }
+}
