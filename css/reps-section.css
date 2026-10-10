@@ -1,6 +1,6 @@
 /* ==========================================================================
    "Build systems that make reps more productive" Showcase Section
-   Inside a box of the same size as stacking-cards with white background
+   Design matches reference screenshot media_1791654457429.png 1:1
    ========================================================================== */
 
 .section_reps-productive {
@@ -13,32 +13,17 @@
   font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
 }
 
-/* Outer box matching stacking-cards box size, radius, border and shadow */
-.reps-box,
 .reps-container {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  background-color: #ffffff;
-  border-radius: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
-  padding: 56px 56px 48px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 2.75rem;
-  overflow: hidden;
-  position: relative;
-  transition: box-shadow 0.3s ease;
+  gap: 3.25rem;
 }
 
-.reps-box:hover,
-.reps-container:hover {
-  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.10);
-}
-
-/* 2-Column Header matching Clay layout */
+/* 2-Column Header matching Clay reference screenshot */
 .reps-header {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -56,15 +41,15 @@
 
 .reps-heading {
   font-family: var(--font-display, 'Outfit', 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+  font-size: clamp(2.4rem, 4.4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
   color: #0c131f;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.35rem;
 }
 
-/* Electric cyan-blue highlight for "reps more productive" */
+/* Electric cyan highlight for "reps more productive" */
 .reps-highlight {
   color: #0090ff;
 }
@@ -96,11 +81,11 @@
   transform: translateX(4px);
 }
 
-/* Right column with subtitle and social proof testimonial */
+/* Right column with description and dual-logo pill callout */
 .reps-header-right {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .reps-subheading {
@@ -114,71 +99,63 @@
 .reps-callout {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  margin-top: 0.35rem;
 }
 
-.reps-callout-logos {
-  display: flex;
+.reps-callout-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.6rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 6px 10px;
   flex-shrink: 0;
 }
 
-.reps-logo-pill {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-  box-sizing: border-box;
-}
-
-.reps-logo-pill img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.reps-pill-logo {
   display: block;
+  object-fit: contain;
 }
 
 .reps-callout-text {
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: #6b7280;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #8c95a6;
   margin: 0;
 }
 
-.reps-callout-text strong {
-  color: #111827;
-  font-weight: 600;
-}
-
-/* Visual Canvas Card for 3D Video with Pure White Background */
+/* 3D Visual Canvas Card matching stacking-cards size and styling */
 .reps-canvas-card {
   width: 100%;
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  max-width: 1240px;
+  margin: 0 auto;
+  background: #ede8df;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reps-canvas-card:hover {
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.11);
 }
 
 .reps-media-wrapper {
   width: 100%;
   height: auto;
   position: relative;
-  background: #ffffff;
+  background: #ede8df;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 0;
+  border-radius: 28px;
+  overflow: hidden;
 }
 
 .reps-media-video {
@@ -188,7 +165,7 @@
   object-fit: cover;
   pointer-events: none;
   user-select: none;
-  border-radius: 20px;
+  border-radius: 28px;
   transform: translateZ(0);
 }
 
@@ -198,11 +175,8 @@
     padding: 60px 20px 80px;
   }
 
-  .reps-box,
   .reps-container {
-    padding: 36px 24px 28px;
-    border-radius: 20px;
-    gap: 2rem;
+    gap: 2.25rem;
   }
 
   .reps-header {
@@ -219,24 +193,22 @@
   }
 
   .reps-canvas-card {
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
+  .reps-media-wrapper,
   .reps-media-video {
-    border-radius: 16px;
+    border-radius: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .section_reps-productive {
-    padding: 40px 16px 60px;
+    padding: 44px 16px 60px;
   }
 
-  .reps-box,
   .reps-container {
-    padding: 24px 16px 20px;
-    border-radius: 18px;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
   .reps-heading {
@@ -247,5 +219,14 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.6rem;
+  }
+
+  .reps-canvas-card {
+    border-radius: 16px;
+  }
+
+  .reps-media-wrapper,
+  .reps-media-video {
+    border-radius: 16px;
   }
 }
