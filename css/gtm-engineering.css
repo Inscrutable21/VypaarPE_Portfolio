@@ -105,17 +105,17 @@
 
 /* ── Specific Card Variants ── */
 
-/* Card 1: AI Storefront Builder (Cols 1-3, Rows 1-2) */
+/* Card 1: Commerce Playbook (Cols 1-3, Rows 1-2) */
 .bento-card--sculpt {
   grid-column: span 3;
   grid-row: span 2;
-  background-color: #faf5ff;
+  background-color: #f4f0fa;
 }
 
 .bento-card--sculpt .bento-image-wrap {
   width: 100%;
-  height: 250px;
-  background-color: #0f172a;
+  height: 240px;
+  background-color: #3b0d2d;
   overflow: hidden;
   position: relative;
 }
@@ -139,19 +139,19 @@
 }
 
 .bento-card--sculpt .bento-title {
-  font-size: 1.32rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: #0c131f;
   margin: 0 0 1.25rem;
 }
 
-/* Card 2: 10-Min Quick Commerce OS (Cols 4-9, Row 1) */
+/* Card 2: VyaparPe Academy (Cols 4-9, Row 1) */
 .bento-card--university {
   grid-column: span 6;
   grid-row: span 1;
-  background-color: #fff7ed;
+  background-color: #f6f5f1;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -182,12 +182,12 @@
 }
 
 .bento-card--university .bento-image-right {
-  width: 260px;
-  height: 180px;
+  width: 250px;
+  height: 170px;
   border-radius: 16px;
   overflow: hidden;
   flex-shrink: 0;
-  background-color: #ffedd5;
+  background-color: #e5e3db;
 }
 
 .bento-card--university .bento-image-right img {
@@ -197,14 +197,14 @@
   display: block;
 }
 
-/* Card 3: Sub-500ms Edge Speed (Cols 4-6, Row 2) */
+/* Card 3: Livestream (Cols 4-6, Row 2) */
 .bento-card--livestream {
   grid-column: span 3;
   grid-row: span 1;
   position: relative;
-  min-height: 240px;
+  min-height: 230px;
   justify-content: flex-end;
-  background-color: #0b0f19;
+  background-color: #1e1e1e;
 }
 
 .bento-card--livestream .bento-bg-img {
@@ -219,7 +219,7 @@
 .bento-card--livestream .bento-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 15, 25, 0.15) 0%, rgba(11, 15, 25, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 100%);
   z-index: 2;
 }
 
@@ -231,12 +231,12 @@
 }
 
 .bento-card--livestream .bento-eyebrow {
-  color: #38bdf8;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 0.45rem;
 }
 
 .bento-card--livestream .bento-title {
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.015em;
@@ -248,25 +248,24 @@
   color: #ffffff;
 }
 
-/* Card 4: WhatsApp Commerce (Cols 7-9, Rows 2-3) */
+/* Card 4: Merchant Story (Cols 7-9, Rows 2-3) */
 .bento-card--javeria {
   grid-column: span 3;
   grid-row: span 2;
-  background-color: #f0fdf4;
+  background-color: #f1f6fd;
 }
 
 .bento-card--javeria .bento-image-wrap {
   width: 100%;
-  height: 260px;
+  height: 250px;
   overflow: hidden;
-  background-color: #052e16;
+  background-color: #e2eaf5;
 }
 
 .bento-card--javeria .bento-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
   display: block;
 }
 
@@ -278,7 +277,7 @@
 }
 
 .bento-card--javeria .bento-eyebrow {
-  color: #16a34a;
+  color: #2563eb;
 }
 
 .bento-card--javeria .bento-title {
@@ -290,11 +289,11 @@
   margin: 0 0 1.25rem;
 }
 
-/* Card 5: Dark Store Picker App (Cols 1-4, Row 3) */
+/* Card 5: Picker Tech (Cols 1-4, Row 3) */
 .bento-card--sandra {
   grid-column: span 4;
   grid-row: span 1;
-  background-color: #f8fafc;
+  background-color: #f6f5f1;
   flex-direction: row;
   align-items: center;
   padding: 1.5rem;
@@ -302,12 +301,12 @@
 }
 
 .bento-card--sandra .bento-thumb {
-  width: 135px;
-  height: 135px;
+  width: 130px;
+  height: 130px;
   border-radius: 14px;
   overflow: hidden;
   flex-shrink: 0;
-  background-color: #0f172a;
+  background-color: #0d381e;
 }
 
 .bento-card--sandra .bento-thumb img {
@@ -323,7 +322,7 @@
 }
 
 .bento-card--sandra .bento-eyebrow {
-  color: #64748b;
+  color: #4b5563;
   margin-bottom: 0.45rem;
 }
 
@@ -336,14 +335,14 @@
   margin: 0 0 0.85rem;
 }
 
-/* Card 6: 1-Click UPI & Checkout (Cols 5-6, Row 3) */
+/* Card 6: Ecosystem Partners (Cols 5-6, Row 3) */
 .bento-card--careers {
   grid-column: span 2;
   grid-row: span 1;
   position: relative;
-  min-height: 200px;
+  min-height: 180px;
   justify-content: flex-end;
-  background-color: #0f172a;
+  background-color: #1e1e1e;
 }
 
 .bento-card--careers .bento-bg-img {
@@ -358,7 +357,7 @@
 .bento-card--careers .bento-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 2;
 }
 
@@ -370,16 +369,8 @@
 }
 
 .bento-card--careers .bento-eyebrow {
-  color: #c084fc;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.35rem;
-}
-
-.bento-card--careers .bento-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #ffffff;
-  margin: 0 0 0.65rem;
 }
 
 .bento-card--careers .bento-link {
