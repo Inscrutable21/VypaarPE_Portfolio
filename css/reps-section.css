@@ -1,5 +1,6 @@
 /* ==========================================================================
    "Build systems that make reps more productive" Showcase Section
+   Inside a box of the same size as stacking-cards with white background
    ========================================================================== */
 
 .section_reps-productive {
@@ -12,22 +13,39 @@
   font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
 }
 
+/* Outer box matching stacking-cards box size, radius, border and shadow */
+.reps-box,
 .reps-container {
+  width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  width: 100%;
+  background-color: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+  padding: 56px 56px 48px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: 2.75rem;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s ease;
 }
 
-/* 2-Column Header matching the Clay screenshot layout */
+.reps-box:hover,
+.reps-container:hover {
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.10);
+}
+
+/* 2-Column Header matching Clay layout */
 .reps-header {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 3.5rem;
   align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .reps-header-left {
@@ -38,7 +56,7 @@
 
 .reps-heading {
   font-family: var(--font-display, 'Outfit', 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
@@ -140,29 +158,23 @@
   font-weight: 600;
 }
 
-/* Main Visual Canvas Card matching stacking-cards box styling */
+/* Visual Canvas Card for 3D Video with Pure White Background */
 .reps-canvas-card {
   width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  background: #ede8df;
-  border-radius: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.reps-canvas-card:hover {
-  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.11);
 }
 
 .reps-media-wrapper {
   width: 100%;
   height: auto;
   position: relative;
-  background: #ede8df;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,19 +188,26 @@
   object-fit: cover;
   pointer-events: none;
   user-select: none;
-  border-radius: 28px;
+  border-radius: 20px;
   transform: translateZ(0);
 }
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .section_reps-productive {
-    padding: 4.5rem 1.25rem 5.5rem;
+    padding: 60px 20px 80px;
+  }
+
+  .reps-box,
+  .reps-container {
+    padding: 36px 24px 28px;
+    border-radius: 20px;
+    gap: 2rem;
   }
 
   .reps-header {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
   .reps-heading {
@@ -200,10 +219,33 @@
   }
 
   .reps-canvas-card {
-    border-radius: 20px;
+    border-radius: 16px;
   }
 
   .reps-media-video {
-    border-radius: 20px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section_reps-productive {
+    padding: 40px 16px 60px;
+  }
+
+  .reps-box,
+  .reps-container {
+    padding: 24px 16px 20px;
+    border-radius: 18px;
+    gap: 1.5rem;
+  }
+
+  .reps-heading {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+  }
+
+  .reps-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
   }
 }
