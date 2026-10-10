@@ -251,8 +251,11 @@ function initLogoCursor() {
  */
 function initGtmSection() {
   const section = document.querySelector('.section_gtm-engineers');
-  const tabsWrapper = document.querySelector('.gtm-tabs-wrapper');
+  const tabsWrapper = document.getElementById('gtmTabsWrapper') || document.querySelector('.gtm-tabs-wrapper');
+  const tabsTrack = document.getElementById('gtmTabsTrack') || tabsWrapper;
   const tabsList = document.querySelector('.gtm-tabs-list');
+  const prevBtn = document.getElementById('gtmTabsPrevBtn');
+  const nextBtn = document.getElementById('gtmTabsNextBtn');
   const tableTitle = document.getElementById('gtmTableTitle');
   const tableBody = document.getElementById('gtmTableBody');
   const limeBackdrop = document.querySelector('.gtm-lime-backdrop');
@@ -275,20 +278,32 @@ function initGtmSection() {
   const prevLeadBtn = document.getElementById('gtmPrevLeadBtn');
   const nextLeadBtn = document.getElementById('gtmNextLeadBtn');
 
+  // Track translation state
+  let currentTrackOffset = 0;
+
   // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center
   function centerPill(pill, smooth = true) {
-    if (!pill || !tabsWrapper || !tabsList) return;
-    const wrapperWidth = tabsWrapper.clientWidth;
-    const pillOffsetLeft = pill.offsetLeft;
-    const pillWidth = pill.offsetWidth;
-    const targetX = (wrapperWidth / 2) - (pillOffsetLeft + pillWidth / 2);
+    if (!pill || !tabsTrack || !tabsList) return;
+    
+    // Viewport-accurate bounding rectangles
+    const trackRect = tabsTrack.getBoundingClientRect();
+    const pillRect = pill.getBoundingClientRect();
+    
+    // Target center is middle of visible track
+    const trackCenter = trackRect.left + (trackRect.width / 2);
+    // Current center of the pill
+    const pillCenter = pillRect.left + (pillRect.width / 2);
+    
+    // Delta needed to align pill center with track center
+    const delta = trackCenter - pillCenter;
+    currentTrackOffset += delta;
 
     if (smooth) {
-      tabsList.style.transition = 'transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1)';
+      tabsList.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
     } else {
       tabsList.style.transition = 'none';
     }
-    tabsList.style.transform = `translateX(${Math.round(targetX)}px)`;
+    tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
   }
 
   // Helper function: Apply dynamic theme colors to the section, box backdrop, and accents
@@ -493,10 +508,24 @@ function initGtmSection() {
   };
 
   // 1. Tab Switching & Centering via Event Delegation
+  let isDraggingTabs = false;
+  let dragStartX = 0;
+  let dragStartOffset = 0;
+  let hasDragged = false;
+
   tabsList.addEventListener('click', (e) => {
+    if (hasDragged) {
+      hasDragged = false;
+      return;
+    }
     const pill = e.target.closest('.gtm-tab-pill');
     if (!pill) return;
 
+    activateTab(pill, true);
+  });
+
+  function activateTab(pill, smooth = true) {
+    if (!pill) return;
     const tabId = pill.dataset.tab;
     const dataset = workflowDatasets[tabId] || workflowDatasets['ai-storefront'];
 
@@ -504,20 +533,20 @@ function initGtmSection() {
     tabsList.querySelectorAll('.gtm-tab-pill').forEach(p => p.classList.remove('is-active'));
     pill.classList.add('is-active');
 
-    // 1a. Move clicked button smoothly to the dead center
-    centerPill(pill, true);
+    // Smoothly animate clicked tab to the exact center of screen/container
+    centerPill(pill, smooth);
 
-    // 1b. Change box color and button active color to this button's theme
+    // Apply color theme dynamically
     if (dataset.theme) {
       applyTheme(dataset.theme);
     }
 
-    // 1c. Update table title
+    // Update table title
     if (tableTitle) {
       tableTitle.textContent = dataset.title;
     }
 
-    // 1d. Update spreadsheet table rows
+    // Update table rows
     if (tableBody && dataset.rows) {
       tableBody.innerHTML = dataset.rows.map(row => `
         <tr class="${row.isHighlighted ? 'is-highlighted' : ''}">
@@ -545,7 +574,7 @@ function initGtmSection() {
       });
     }
 
-    // 1e. Update preview card content
+    // Update preview card content
     if (dataset.preview) {
       if (subjectText) subjectText.textContent = dataset.preview.subject;
       if (greetingName) greetingName.textContent = dataset.preview.greeting;
@@ -559,18 +588,80 @@ function initGtmSection() {
         `;
       }
     }
-  });
+  }
+
+  // Navigation Arrow Controls
+  function switchTab(direction) {
+    const pills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
+    const currentIdx = pills.findIndex(p => p.classList.contains('is-active'));
+    let nextIdx = currentIdx + direction;
+    if (nextIdx < 0) nextIdx = pills.length - 1;
+    if (nextIdx >= pills.length) nextIdx = 0;
+    const targetPill = pills[nextIdx];
+    if (targetPill) {
+      activateTab(targetPill, true);
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => switchTab(-1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => switchTab(1));
+  }
+
+  // Mouse drag & touch pan support
+  if (tabsTrack) {
+    tabsTrack.addEventListener('mousedown', (e) => {
+      isDraggingTabs = true;
+      hasDragged = false;
+      dragStartX = e.clientX;
+      dragStartOffset = currentTrackOffset;
+      tabsList.style.transition = 'none';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingTabs) return;
+      const diff = e.clientX - dragStartX;
+      if (Math.abs(diff) > 4) hasDragged = true;
+      currentTrackOffset = dragStartOffset + diff;
+      tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDraggingTabs) return;
+      isDraggingTabs = false;
+    });
+
+    // Touch support for mobile/touchscreens
+    tabsTrack.addEventListener('touchstart', (e) => {
+      if (!e.touches[0]) return;
+      isDraggingTabs = true;
+      hasDragged = false;
+      dragStartX = e.touches[0].clientX;
+      dragStartOffset = currentTrackOffset;
+      tabsList.style.transition = 'none';
+    }, { passive: true });
+
+    tabsTrack.addEventListener('touchmove', (e) => {
+      if (!isDraggingTabs || !e.touches[0]) return;
+      const diff = e.touches[0].clientX - dragStartX;
+      if (Math.abs(diff) > 4) hasDragged = true;
+      currentTrackOffset = dragStartOffset + diff;
+      tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
+    }, { passive: true });
+
+    tabsTrack.addEventListener('touchend', () => {
+      isDraggingTabs = false;
+    });
+  }
 
   // Center initial active button on load
-  const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill[data-tab="ai-storefront"]');
+  const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill');
   if (initialActive) {
-    const initialDataset = workflowDatasets[initialActive.dataset.tab] || workflowDatasets['ai-storefront'];
-    if (initialDataset.theme) {
-      applyTheme(initialDataset.theme);
-    }
-    centerPill(initialActive, false);
+    activateTab(initialActive, false);
     requestAnimationFrame(() => centerPill(initialActive, false));
-    setTimeout(() => centerPill(initialActive, false), 120);
+    setTimeout(() => centerPill(initialActive, true), 100);
     setTimeout(() => centerPill(initialActive, false), 350);
   }
 

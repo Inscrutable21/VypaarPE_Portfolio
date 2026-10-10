@@ -186,17 +186,52 @@
           <p class="gtm-subheading">Generate storefronts, route 10-minute quick commerce orders, and automate customer sales with AI.</p>
         </div>
 
-        <!-- Horizontal Category Pills Bar -->
-        <div class="gtm-tabs-wrapper">
-          <div class="gtm-tabs-list" role="tablist">
-            <button class="gtm-tab-pill is-active" data-tab="ai-storefront">AI Store Builder</button>
-            <button class="gtm-tab-pill" data-tab="quick-commerce">10-Min Quick Commerce</button>
-            <button class="gtm-tab-pill" data-tab="dark-store-sync">Dark Store Sync</button>
-            <button class="gtm-tab-pill" data-tab="whatsapp-agent">WhatsApp Sales Agent</button>
-            <button class="gtm-tab-pill" data-tab="instant-checkout">1-Click UPI Checkout</button>
-            <button class="gtm-tab-pill" data-tab="ai-catalogue">AI Catalog Studio</button>
-            <button class="gtm-tab-pill" data-tab="fleet-routing">Hyperlocal Routing</button>
+        <!-- Horizontal Category Pills Bar (Centered Carousel) -->
+        <div class="gtm-tabs-wrapper" id="gtmTabsWrapper">
+          <button class="gtm-tabs-nav-btn gtm-tabs-prev" id="gtmTabsPrevBtn" aria-label="Previous tab">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="gtm-tabs-track" id="gtmTabsTrack">
+            <div class="gtm-tabs-list" role="tablist">
+              <button class="gtm-tab-pill is-active" data-tab="ai-storefront">
+                <span class="gtm-tab-dot"></span>
+                <span>AI Store Builder</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="quick-commerce">
+                <span class="gtm-tab-dot"></span>
+                <span>10-Min Quick Commerce</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="dark-store-sync">
+                <span class="gtm-tab-dot"></span>
+                <span>Dark Store Sync</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="whatsapp-agent">
+                <span class="gtm-tab-dot"></span>
+                <span>WhatsApp Sales Agent</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="instant-checkout">
+                <span class="gtm-tab-dot"></span>
+                <span>1-Click UPI Checkout</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="ai-catalogue">
+                <span class="gtm-tab-dot"></span>
+                <span>AI Catalog Studio</span>
+              </button>
+              <button class="gtm-tab-pill" data-tab="fleet-routing">
+                <span class="gtm-tab-dot"></span>
+                <span>Hyperlocal Routing</span>
+              </button>
+            </div>
           </div>
+
+          <button class="gtm-tabs-nav-btn gtm-tabs-next" id="gtmTabsNextBtn" aria-label="Next tab">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
 
         <!-- Visual Canvas Wrapper -->
