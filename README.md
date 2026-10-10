@@ -30,7 +30,7 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. Announcement Bar & Glassmorphic Floating Header          │
 ├─────────────────────────────────────────────────────────────┤
-│ 2. Hero Section (Looping Faststart Video + Ecosystem Chips) │
+│ 2. Hero Section (Animated 3D Contraption GIF + Ecosystem Chips) │
 ├─────────────────────────────────────────────────────────────┤
 │ 3. Social Proof Infinite Marquee (Fast-Growing Brands)      │
 ├─────────────────────────────────────────────────────────────┤
@@ -55,8 +55,11 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 - **Floating Header**: Glassmorphic container with `backdrop-filter: blur(16px)`, keyboard search trigger (`Cmd+K`), branded SVG marks, and navigation links (Storefronts, Quick Commerce, AI Copilot, Integrations, Pricing).
 
 ### 2.2 Hero Showcase
-- **Video Background**: High-definition looping video contraption illustrating automated physical-to-digital commerce infrastructure.
-- **Hero Messaging**: High-impact headlines ("Build AI stores made for instant commerce") and dual conversion buttons ("Start free store", "Get a demo").
+- **Animated Background**: High-definition looping animated GIF contraption (`assets/images/hero-section.gif`) illustrating automated physical-to-digital commerce infrastructure—rendered across 171 frames with two-pass palette quantization for fluid, lightweight looping without video player overhead.
+- **Hero Messaging**:
+  - **Headline (2 Lines)**: `Build AI stores made` / `for instant commerce` formatted with dedicated whitespace-protected line spans.
+  - **Subheading (3 Lines)**: `The modern platform for E-commerce & 10-minute Quick Commerce.` / `Shopify simplicity with autonomous AI, sub-second speed,` / `and instant hyperlocal delivery.`
+  - **Dual CTAs**: "Start free store" and "Get a demo" with hover micro-interactions.
 - **Native Ecosystem Chips**: 1-click integrations for Shopify catalog import, ChatGPT & Claude AI Store Copilot, and WhatsApp Commerce.
 
 ### 2.3 Brand Marquee
@@ -132,8 +135,8 @@ vypaarpe/
 │   └── app.js                   # Tab switching, carousel glide physics, drag snap, forms
 │
 └── assets/                      # Static Media
-    ├── images/                  # 3D renders, SVGs, AVIFs, PNGs, and responsive thumbnails
-    └── videos/                  # Faststart hero and 3D mechanical contraption loops
+    ├── images/                  # Animated 3D contraption GIF, 3D renders, SVGs, AVIFs, PNGs
+    └── videos/                  # 3D mechanical contraption loops and media assets
 ```
 
 ---
