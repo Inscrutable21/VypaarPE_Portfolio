@@ -252,7 +252,7 @@ function initLogoCursor() {
 function initGtmSection() {
   const section = document.querySelector('.section_gtm-engineers');
   const tabsWrapper = document.querySelector('.gtm-tabs-wrapper');
-  const tabPills = document.querySelectorAll('.gtm-tab-pill');
+  const tabsList = document.querySelector('.gtm-tabs-list');
   const tableTitle = document.getElementById('gtmTableTitle');
   const tableBody = document.getElementById('gtmTableBody');
   const limeBackdrop = document.querySelector('.gtm-lime-backdrop');
@@ -275,18 +275,20 @@ function initGtmSection() {
   const prevLeadBtn = document.getElementById('gtmPrevLeadBtn');
   const nextLeadBtn = document.getElementById('gtmNextLeadBtn');
 
-  // Helper function: Smoothly scroll clicked button into the center of the tabs wrapper
-  function centerPill(pill) {
-    if (!pill || !tabsWrapper) return;
-    const pillRect = pill.getBoundingClientRect();
-    const wrapperRect = tabsWrapper.getBoundingClientRect();
-    const currentScroll = tabsWrapper.scrollLeft;
-    const targetScroll = currentScroll + (pillRect.left - wrapperRect.left) - (wrapperRect.width / 2) + (pillRect.width / 2);
+  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center
+  function centerPill(pill, smooth = true) {
+    if (!pill || !tabsWrapper || !tabsList) return;
+    const wrapperWidth = tabsWrapper.clientWidth;
+    const pillOffsetLeft = pill.offsetLeft;
+    const pillWidth = pill.offsetWidth;
+    const targetX = (wrapperWidth / 2) - (pillOffsetLeft + pillWidth / 2);
 
-    tabsWrapper.scrollTo({
-      left: Math.max(0, targetScroll),
-      behavior: 'smooth'
-    });
+    if (smooth) {
+      tabsList.style.transition = 'transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1)';
+    } else {
+      tabsList.style.transition = 'none';
+    }
+    tabsList.style.transform = `translateX(${Math.round(targetX)}px)`;
   }
 
   // Helper function: Apply dynamic theme colors to the section, box backdrop, and accents
@@ -496,84 +498,103 @@ function initGtmSection() {
     }
   };
 
-  // 1. Tab Switching & Centering
-  tabPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const tabId = pill.dataset.tab;
-      const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
+  // 1. Tab Switching & Centering via Event Delegation
+  tabsList.addEventListener('click', (e) => {
+    const pill = e.target.closest('.gtm-tab-pill');
+    if (!pill) return;
 
-      // Update active pill state
-      tabPills.forEach(p => p.classList.remove('is-active'));
-      pill.classList.add('is-active');
+    const tabId = pill.dataset.tab;
+    const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
 
-      // 1a. Scroll clicked button into the center of the viewport
-      centerPill(pill);
+    // Update active pill state
+    tabsList.querySelectorAll('.gtm-tab-pill').forEach(p => p.classList.remove('is-active'));
+    pill.classList.add('is-active');
 
-      // 1b. Change box color and button active color to this button's theme
-      if (dataset.theme) {
-        applyTheme(dataset.theme);
-      }
+    // 1a. Move clicked button smoothly to the dead center
+    centerPill(pill, true);
 
-      // 1c. Update table title
-      if (tableTitle) {
-        tableTitle.textContent = dataset.title;
-      }
+    // 1b. Change box color and button active color to this button's theme
+    if (dataset.theme) {
+      applyTheme(dataset.theme);
+    }
 
-      // 1d. Update spreadsheet table rows
-      if (tableBody && dataset.rows) {
-        tableBody.innerHTML = dataset.rows.map(row => `
-          <tr class="${row.isHighlighted ? 'is-highlighted' : ''}">
-            <td class="col-check"><span class="gtm-checkbox-box"></span> ${row.check}</td>
-            <td class="cell-name">${row.name}</td>
-            <td>${row.employees}</td>
-            <td>${row.rev}</td>
-            <td>${row.qual}</td>
-            <td>${row.phone}</td>
-            <td>${row.k10}</td>
-            <td>${row.territory}</td>
-            <td>${row.rep}</td>
-            <td>${row.draft}</td>
-          </tr>
-        `).join('');
+    // 1c. Update table title
+    if (tableTitle) {
+      tableTitle.textContent = dataset.title;
+    }
 
-        // Attach click listeners to rows to allow highlighting
-        tableBody.querySelectorAll('tr').forEach(r => {
-          r.addEventListener('click', () => {
-            tableBody.querySelectorAll('tr').forEach(row => row.classList.remove('is-highlighted'));
-            r.classList.add('is-highlighted');
-            const rowName = r.querySelector('.cell-name')?.textContent || 'Lead';
-            if (subjectText) subjectText.textContent = `${rowName}, saw your demo request`;
-            if (greetingName) greetingName.textContent = `Hi ${rowName},`;
-          });
+    // 1d. Update spreadsheet table rows
+    if (tableBody && dataset.rows) {
+      tableBody.innerHTML = dataset.rows.map(row => `
+        <tr class="${row.isHighlighted ? 'is-highlighted' : ''}">
+          <td class="col-check"><span class="gtm-checkbox-box"></span> ${row.check}</td>
+          <td class="cell-name">${row.name}</td>
+          <td>${row.employees}</td>
+          <td>${row.rev}</td>
+          <td>${row.qual}</td>
+          <td>${row.phone}</td>
+          <td>${row.k10}</td>
+          <td>${row.territory}</td>
+          <td>${row.rep}</td>
+          <td>${row.draft}</td>
+        </tr>
+      `).join('');
+
+      tableBody.querySelectorAll('tr').forEach(r => {
+        r.addEventListener('click', () => {
+          tableBody.querySelectorAll('tr').forEach(row => row.classList.remove('is-highlighted'));
+          r.classList.add('is-highlighted');
+          const rowName = r.querySelector('.cell-name')?.textContent || 'Lead';
+          if (subjectText) subjectText.textContent = `${rowName}, saw your demo request`;
+          if (greetingName) greetingName.textContent = `Hi ${rowName},`;
         });
-      }
+      });
+    }
 
-      // 1e. Update preview card content
-      if (dataset.preview) {
-        if (subjectText) subjectText.textContent = dataset.preview.subject;
-        if (greetingName) greetingName.textContent = dataset.preview.greeting;
-        if (companyName) companyName.textContent = dataset.preview.company;
-        if (emailBodyContent) {
-          emailBodyContent.innerHTML = `
-            <p><span>${dataset.preview.greeting}</span></p>
-            <p>I know <span>${dataset.preview.company}</span> is focused on <span class="gtm-token-pill"><span class="gtm-token-icon">T</span> ${dataset.preview.token} <span class="gtm-token-close">&times;</span></span>.</p>
-            <p>${dataset.preview.textLine}</p>
-            <p>Let me know if there's any additional context I should have before we meet.</p>
-          `;
-        }
+    // 1e. Update preview card content
+    if (dataset.preview) {
+      if (subjectText) subjectText.textContent = dataset.preview.subject;
+      if (greetingName) greetingName.textContent = dataset.preview.greeting;
+      if (companyName) companyName.textContent = dataset.preview.company;
+      if (emailBodyContent) {
+        emailBodyContent.innerHTML = `
+          <p><span>${dataset.preview.greeting}</span></p>
+          <p>I know <span>${dataset.preview.company}</span> is focused on <span class="gtm-token-pill"><span class="gtm-token-icon">T</span> ${dataset.preview.token} <span class="gtm-token-close">&times;</span></span>.</p>
+          <p>${dataset.preview.textLine}</p>
+          <p>Let me know if there's any additional context I should have before we meet.</p>
+        `;
       }
-    });
+    }
   });
 
-  // On initial load: center the initial active pill and apply its theme
-  const initialActivePill = document.querySelector('.gtm-tab-pill.is-active');
-  if (initialActivePill) {
-    const initialDataset = workflowDatasets[initialActivePill.dataset.tab] || workflowDatasets['automated-inbound'];
+  // Center initial active button on load
+  const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill[data-tab="automated-inbound"]');
+  if (initialActive) {
+    const initialDataset = workflowDatasets[initialActive.dataset.tab] || workflowDatasets['automated-inbound'];
     if (initialDataset.theme) {
       applyTheme(initialDataset.theme);
     }
-    setTimeout(() => centerPill(initialActivePill), 150);
+    centerPill(initialActive, false);
+    requestAnimationFrame(() => centerPill(initialActive, false));
+    setTimeout(() => centerPill(initialActive, false), 120);
+    setTimeout(() => centerPill(initialActive, false), 350);
   }
+
+  // Ensure centering remains exact once web fonts load
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      const currentActive = tabsList.querySelector('.gtm-tab-pill.is-active');
+      if (currentActive) centerPill(currentActive, false);
+    });
+  }
+
+  // Keep active button centered on window resize
+  window.addEventListener('resize', () => {
+    const currentActive = tabsList.querySelector('.gtm-tab-pill.is-active');
+    if (currentActive) {
+      centerPill(currentActive, false);
+    }
+  });
 
   // 2. Interactive Form Submission
   if (form) {

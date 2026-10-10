@@ -56,30 +56,33 @@
   max-width: 540px;
 }
 
-/* Category Pills / Workflow Tabs */
+/* Category Pills / Workflow Tabs (Infinite Centered Carousel) */
 .gtm-tabs-wrapper {
+  position: relative;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto 3.5rem;
   display: flex;
-  overflow-x: auto;
-  padding: 0.75rem 1rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-}
-
-.gtm-tabs-wrapper::-webkit-scrollbar {
-  display: none;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: 0.85rem 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .gtm-tabs-list {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.65rem;
   flex-wrap: nowrap;
-  margin: 0 auto;
-  padding: 0 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
 }
 
 .gtm-tab-pill {
@@ -94,9 +97,10 @@
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
   outline: none;
   flex-shrink: 0;
+  user-select: none;
 }
 
 .gtm-tab-pill:hover {
