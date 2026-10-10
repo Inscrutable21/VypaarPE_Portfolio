@@ -1,0 +1,585 @@
+/* ==========================================================================
+   Clay-Style "GTM Engineers Build on Clay" Showcase Section
+   ========================================================================== */
+
+.section_gtm-engineers {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 6.5rem 1.5rem 8rem;
+  overflow: hidden;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
+  color: #111827;
+}
+
+.gtm-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Area */
+.gtm-header {
+  text-align: center;
+  max-width: 760px;
+  margin-bottom: 2.25rem;
+}
+
+.gtm-heading {
+  font-family: var(--font-display, 'Outfit', 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.6rem, 5.2vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #0c131f;
+  margin: 0 0 1rem;
+}
+
+.gtm-subheading {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: #555c68;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+/* Category Pills / Workflow Tabs */
+.gtm-tabs-wrapper {
+  width: 100%;
+  max-width: 1050px;
+  margin-bottom: 3.5rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.gtm-tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.gtm-tabs-list {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: nowrap;
+}
+
+.gtm-tab-pill {
+  appearance: none;
+  border: none;
+  background: #f1f3f5;
+  color: #4b5563;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.6rem 1.15rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.gtm-tab-pill:hover {
+  background: #e5e7eb;
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+.gtm-tab-pill.is-active {
+  background: #eaf872;
+  color: #141f08;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(234, 248, 114, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Main Visual Canvas Area */
+.gtm-canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto 3rem;
+  padding: 2.25rem 2.25rem 4.5rem;
+}
+
+/* Vibrant Yellow-Green Lime Backdrop */
+.gtm-lime-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #eaf872;
+  border-radius: 32px;
+  z-index: 1;
+  box-shadow: 0 20px 60px -15px rgba(234, 248, 114, 0.45);
+}
+
+/* Main Spreadsheet Card */
+.gtm-table-card {
+  position: relative;
+  z-index: 2;
+  background: #fbfbf7;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  min-height: 460px;
+}
+
+/* Table Card Topbar */
+.gtm-table-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.25rem;
+  background: #fbfbf7;
+  border-bottom: 1px solid #eeeee5;
+}
+
+.gtm-table-clay-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gtm-table-clay-logo svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.gtm-table-clay-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  color: #1c261e;
+}
+
+.gtm-table-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2b362c;
+  margin-left: 0.25rem;
+}
+
+/* Spreadsheet Grid Container */
+.gtm-grid-container {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.gtm-grid-table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+  font-size: 0.775rem;
+  color: #374151;
+  text-align: left;
+}
+
+/* Column Header Row */
+.gtm-grid-table thead tr {
+  background: #f7f7f0;
+  border-bottom: 1px solid #e7e7dc;
+}
+
+.gtm-grid-table th {
+  padding: 0.65rem 0.85rem;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+  border-right: 1px solid #eaeae0;
+  user-select: none;
+}
+
+.gtm-grid-table th:last-child {
+  border-right: none;
+}
+
+.gtm-grid-table th.col-check {
+  width: 38px;
+  text-align: center;
+  padding: 0.65rem 0.4rem;
+}
+
+/* Table Body Rows */
+.gtm-grid-table tbody tr {
+  border-bottom: 1px solid #f0f0e6;
+  background: #fbfbf7;
+  transition: background-color 0.15s ease;
+}
+
+.gtm-grid-table td {
+  padding: 0.6rem 0.85rem;
+  white-space: nowrap;
+  border-right: 1px solid #f1f1e8;
+  color: #374151;
+}
+
+.gtm-grid-table td:last-child {
+  border-right: none;
+}
+
+.gtm-grid-table td.col-check {
+  text-align: center;
+  padding: 0.6rem 0.4rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.gtm-checkbox-box {
+  width: 13px;
+  height: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Active Highlighted Row (Yellow / Chartreuse Row) */
+.gtm-grid-table tbody tr.is-highlighted {
+  background: #fef47a !important;
+  color: #111827;
+  font-weight: 500;
+}
+
+.gtm-grid-table tbody tr.is-highlighted td {
+  border-right-color: #f7eb65;
+  color: #111827;
+}
+
+.gtm-grid-table tbody tr.is-highlighted .gtm-checkbox-box {
+  border-color: #b0a424;
+}
+
+.gtm-grid-table tbody tr:hover:not(.is-highlighted) {
+  background: #f5f5ec;
+}
+
+/* Badge inside table cell */
+.gtm-cell-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: #e2f4db;
+  color: #1e6324;
+}
+
+/* ==========================================================================
+   Floating Overlaid Cards
+   ========================================================================== */
+
+/* Left Floating Card: "Demo request form" */
+.gtm-floating-form {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.5rem;
+  width: 295px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.35rem 1.4rem;
+  z-index: 10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gtm-floating-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px -8px rgba(0, 0, 0, 0.2), 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.gtm-form-header-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 1rem;
+}
+
+.gtm-form-group {
+  margin-bottom: 0.75rem;
+}
+
+.gtm-form-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.28rem;
+}
+
+.gtm-form-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.825rem;
+  color: #0f172a;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.45rem 0.7rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gtm-form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.gtm-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.gtm-form-submit-btn {
+  appearance: none;
+  border: none;
+  background: #647017;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.48rem 1.15rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.gtm-form-submit-btn:hover {
+  background: #535e12;
+  transform: translateY(-1px);
+}
+
+.gtm-form-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Right Floating Card: "Email Preview & Lead Data" */
+.gtm-floating-preview {
+  position: absolute;
+  right: 0.75rem;
+  bottom: -0.5rem;
+  width: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.18), 0 4px 14px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.5rem;
+  z-index: 10;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gtm-floating-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.22), 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Preview Header Controls */
+.gtm-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 0.9rem;
+}
+
+.gtm-preview-segmented {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gtm-preview-tab-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #64748b;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gtm-preview-tab-btn.is-active {
+  color: #2563eb;
+  border-color: #2563eb;
+  background: #eff6ff;
+  font-weight: 600;
+}
+
+.gtm-preview-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.gtm-page-nav-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.15rem 0.25rem;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.gtm-page-nav-btn:hover {
+  color: #1e293b;
+  background: #f1f5f9;
+}
+
+/* Subject Line Row */
+.gtm-preview-subject-row {
+  margin-bottom: 1.1rem;
+}
+
+.gtm-preview-field-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 0.2rem;
+}
+
+.gtm-preview-subject-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.gtm-ai-sparkle-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Email Body Content */
+.gtm-email-body {
+  font-size: 0.825rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.gtm-email-body p {
+  margin: 0 0 0.75rem;
+}
+
+.gtm-email-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Inline Dynamic Variable / Tag Chip */
+.gtm-token-pill {
+  display: inline-inline;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 0.12rem 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #334155;
+  vertical-align: middle;
+  margin: 0 0.15rem;
+}
+
+.gtm-token-icon {
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.7rem;
+}
+
+.gtm-token-close {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  cursor: pointer;
+  line-height: 1;
+  margin-left: 0.15rem;
+}
+
+.gtm-token-close:hover {
+  color: #ef4444;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .gtm-canvas-wrap {
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+
+  .gtm-floating-form {
+    left: 2rem;
+    bottom: -1rem;
+    width: 270px;
+  }
+
+  .gtm-floating-preview {
+    right: 2rem;
+    bottom: -1.5rem;
+    width: 420px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section_gtm-engineers {
+    padding: 4.5rem 1rem 6rem;
+  }
+
+  .gtm-tabs-list {
+    padding: 0 0.5rem;
+  }
+
+  .gtm-canvas-wrap {
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .gtm-lime-backdrop {
+    border-radius: 22px;
+  }
+
+  .gtm-table-card {
+    border-radius: 16px;
+    min-height: auto;
+  }
+
+  /* Stack floating cards for clean responsive reading */
+  .gtm-floating-form {
+    position: static;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .gtm-floating-preview {
+    position: static;
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+}

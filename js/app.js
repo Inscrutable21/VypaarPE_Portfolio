@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLogoMarquee();
   initNavFeatures();
   initScrollHeader();
+  initGtmSection();
 });
 
 /**
@@ -241,4 +242,259 @@ function initLogoCursor() {
       cursor.classList.remove('is-active');
     }
   });
+}
+
+/**
+ * GTM Engineers Build on Clay - Interactive Experience
+ * Handles workflow tab switching, interactive form demo submissions,
+ * real-time email preview updates, and panel toggling.
+ */
+function initGtmSection() {
+  const tabPills = document.querySelectorAll('.gtm-tab-pill');
+  const tableTitle = document.getElementById('gtmTableTitle');
+  const tableBody = document.getElementById('gtmTableBody');
+  const form = document.getElementById('gtmDemoForm');
+  const inputFirstName = document.getElementById('gtmFirstName');
+  const inputLastName = document.getElementById('gtmLastName');
+  const inputCompany = document.getElementById('gtmCompany');
+  const submitBtn = document.getElementById('gtmSubmitBtn');
+
+  // Preview elements
+  const emailTabBtn = document.getElementById('gtmEmailTabBtn');
+  const leadTabBtn = document.getElementById('gtmLeadTabBtn');
+  const emailViewPanel = document.getElementById('gtmEmailViewPanel');
+  const leadViewPanel = document.getElementById('gtmLeadViewPanel');
+  const subjectText = document.getElementById('gtmSubjectText');
+  const greetingName = document.getElementById('gtmGreetingName');
+  const companyName = document.getElementById('gtmCompanyName');
+  const pageIndicator = document.getElementById('gtmPageIndicator');
+  const prevLeadBtn = document.getElementById('gtmPrevLeadBtn');
+  const nextLeadBtn = document.getElementById('gtmNextLeadBtn');
+
+  // Workflows data repository for tabs
+  const workflowDatasets = {
+    'automated-inbound': {
+      title: 'Demo form submissions',
+      rows: [
+        { check: 1, name: 'Justin', employees: '12,400', rev: 'High expans...', qual: 'Yes', phone: '(415) 555-21...', k10: 'Yes', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Hey John, I n...', isHighlighted: true },
+        { check: 2, name: 'Marcus', employees: '87,300', rev: 'Plan upgrad...', qual: 'Yes', phone: '(212) 555-03...', k10: 'Yes', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Hi Marcus, saw...', isHighlighted: false },
+        { check: 3, name: 'Sarah', employees: 'Spend decr...', rev: 'No', qual: '(503) 555-7...', phone: 'Yes', k10: 'Mid-Market', territory: 'Alex Rivera', rep: 'Great chatting...', draft: '...', isHighlighted: false },
+        { check: 4, name: 'David', employees: 'Plan upgrad...', rev: 'Yes', qual: '(617) 555-41...', phone: 'Yes', k10: 'Enterprise', territory: 'Elena Rostova', rep: 'Following up...', draft: '...', isHighlighted: false },
+        { check: 5, name: 'Rachel', employees: 'Expansion d...', rev: 'Yes', qual: '(312) 555-90...', phone: 'Yes', k10: 'SMB', territory: 'Liam Smith', rep: 'Quick question...', draft: '...', isHighlighted: false },
+        { check: 6, name: 'Christopher', employees: 'Spend decr...', rev: 'Yes', qual: '(208) 555-3...', phone: 'Yes', k10: 'Mid-Market', territory: 'Sarah Jenkins', rep: 'Checking in...', draft: '...', isHighlighted: false },
+        { check: 7, name: 'Amanda', employees: 'Spend decr...', rev: 'No', qual: '(646) 555-12...', phone: 'Yes', k10: 'SMB', territory: 'Marcus DeL...', rep: 'Resource for you...', draft: '...', isHighlighted: false },
+        { check: 8, name: 'Brandon', employees: 'Leadership...', rev: 'Yes', qual: '(720) 555-6...', phone: 'Yes', k10: 'Strategic', territory: 'Alex Rivera', rep: 'Congratulations on...', draft: '...', isHighlighted: false },
+        { check: 9, name: 'Chloe', employees: 'Team chang...', rev: 'Yes', qual: '(404) 555-2...', phone: 'Yes', k10: 'Enterprise', territory: 'Elena Rostova', rep: 'Intro note...', draft: '...', isHighlighted: false },
+        { check: 10, name: 'Devon', employees: 'No recent r...', rev: 'Yes', qual: '(818) 555-45...', phone: 'Yes', k10: 'Mid-Market', territory: 'Liam Smith', rep: 'Reconnecting...', draft: '...', isHighlighted: false }
+      ]
+    },
+    'tam-sourcing': {
+      title: 'Target Account Universe (TAM)',
+      rows: [
+        { check: 1, name: 'Stripe', employees: '8,200', rev: '$14.2B ARR', qual: 'Tier 1 ICP', phone: '+1 415 555-010', k10: 'Fintech Hub', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Customized API playbook...', isHighlighted: true },
+        { check: 2, name: 'Ramp', employees: '1,500', rev: '$500M ARR', qual: 'Tier 1 ICP', phone: '+1 212 555-019', k10: 'Series D', territory: 'Commercial', rep: 'Sarah Jenkins', draft: 'Corporate card alignment...', isHighlighted: false },
+        { check: 3, name: 'Brex', employees: '2,100', rev: '$620M ARR', qual: 'Tier 1 ICP', phone: '+1 415 555-014', k10: 'Fintech', territory: 'Strategic', rep: 'Alex Rivera', draft: 'Scaling GTM engines...', isHighlighted: false },
+        { check: 4, name: 'Vanta', employees: '650', rev: '$120M ARR', qual: 'Fast Growth', phone: '+1 415 555-022', k10: 'Security', territory: 'SMB', rep: 'Liam Smith', draft: 'Compliance integration...', isHighlighted: false }
+      ]
+    },
+    'lead-scoring': {
+      title: 'Product Qualified Leads (PQLs)',
+      rows: [
+        { check: 1, name: 'Elena', employees: '4,500', rev: 'Fit: 99/100', qual: 'High Intent', phone: '+1 617 555-018', k10: 'Trigger: Pricing view', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Ready for enterprise plan...', isHighlighted: true },
+        { check: 2, name: 'Marcus', employees: '12,000', rev: 'Fit: 95/100', qual: 'High Intent', phone: '+1 212 555-031', k10: 'Trigger: 10 seats add', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Seat expansion demo...', isHighlighted: false },
+        { check: 3, name: 'Devon', employees: '800', rev: 'Fit: 88/100', qual: 'Medium', phone: '+1 818 555-045', k10: 'Trigger: API limits', territory: 'Mid-Market', rep: 'Liam Smith', draft: 'Upgraded rate limits...', isHighlighted: false }
+      ]
+    },
+    'automated-outbound': {
+      title: 'Outbound Personalization Matrix',
+      rows: [
+        { check: 1, name: 'Michael', employees: '6,200', rev: 'Hiring 40 reps', qual: 'Priority A', phone: '+1 206 555-012', k10: 'AI SDR adoption', territory: 'Strategic', rep: 'Alex Rivera', draft: 'Scaling outbound pipeline...', isHighlighted: true },
+        { check: 2, name: 'Sophie', employees: '1,400', rev: 'Series C raised', qual: 'Priority A', phone: '+1 415 555-018', k10: 'New CRO onboarded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Congrats on new funding...', isHighlighted: false }
+      ]
+    },
+    'crm-enrichment': {
+      title: 'Salesforce & HubSpot Auto-Sync',
+      rows: [
+        { check: 1, name: 'Linear', employees: '120', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Tech stack verified', territory: 'Tech Pod', rep: 'Marcus DeL...', draft: 'Synced 18 fields...', isHighlighted: true },
+        { check: 2, name: 'Notion', employees: '850', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Domain verified', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Synced 24 fields...', isHighlighted: false }
+      ]
+    },
+    'launch-ads': {
+      title: 'LinkedIn Matched Audience Engine',
+      rows: [
+        { check: 1, name: 'OpenAI', employees: '2,000', rev: 'Matched: 94%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: GTM Automation...', isHighlighted: true },
+        { check: 2, name: 'Anthropic', employees: '1,100', rev: 'Matched: 91%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Claude API users...', isHighlighted: false }
+      ]
+    },
+    'rep-productivity': {
+      title: 'Daily Rep Routing & Slack Alerts',
+      rows: [
+        { check: 1, name: 'Justin', employees: '12,400', rev: 'Slack Alerted', qual: 'Booked', phone: 'Calendar sync', k10: 'Meeting Scheduled', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Meeting prep brief sent...', isHighlighted: true },
+        { check: 2, name: 'Chloe', employees: '3,200', rev: 'Slack Alerted', qual: 'Follow-up', phone: 'Task queued', k10: 'Deck downloaded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Follow-up sequence active...', isHighlighted: false }
+      ]
+    }
+  };
+
+  // 1. Tab switching
+  tabPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const tabId = pill.dataset.tab;
+      tabPills.forEach(p => p.classList.remove('is-active'));
+      pill.classList.add('is-active');
+
+      const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
+      if (tableTitle) tableTitle.textContent = dataset.title;
+
+      if (tableBody && dataset.rows) {
+        tableBody.innerHTML = dataset.rows.map(row => `
+          <tr class="${row.isHighlighted ? 'is-highlighted' : ''}">
+            <td class="col-check"><span class="gtm-checkbox-box"></span> ${row.check}</td>
+            <td class="cell-name">${row.name}</td>
+            <td>${row.employees}</td>
+            <td>${row.rev}</td>
+            <td>${row.qual}</td>
+            <td>${row.phone}</td>
+            <td>${row.k10}</td>
+            <td>${row.territory}</td>
+            <td>${row.rep}</td>
+            <td>${row.draft}</td>
+          </tr>
+        `).join('');
+
+        // Attach click listeners to rows to allow highlighting
+        tableBody.querySelectorAll('tr').forEach(r => {
+          r.addEventListener('click', () => {
+            tableBody.querySelectorAll('tr').forEach(row => row.classList.remove('is-highlighted'));
+            r.classList.add('is-highlighted');
+            const rowName = r.querySelector('.cell-name')?.textContent || 'Lead';
+            if (subjectText) subjectText.textContent = `${rowName}, saw your demo request`;
+            if (greetingName) greetingName.textContent = `Hi ${rowName},`;
+          });
+        });
+      }
+    });
+  });
+
+  // 2. Interactive Form Submission
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const first = inputFirstName?.value.trim() || 'Justin';
+      const last = inputLastName?.value.trim() || 'Turner';
+      const comp = inputCompany?.value.trim() || 'Acme Corp';
+
+      // Update Highlighted row in table
+      const firstRow = document.getElementById('row-justin') || tableBody?.querySelector('tr');
+      if (firstRow) {
+        const nameCell = firstRow.querySelector('.cell-name');
+        if (nameCell) nameCell.textContent = first;
+        firstRow.classList.add('is-highlighted');
+        firstRow.style.transition = 'background-color 0.4s ease';
+        firstRow.style.backgroundColor = '#ecfc7a';
+      }
+
+      // Update Email Preview Card
+      if (subjectText) subjectText.textContent = `${first}, saw your demo request`;
+      if (greetingName) greetingName.textContent = `Hi ${first},`;
+      if (companyName) companyName.textContent = comp;
+
+      // Button feedback
+      if (submitBtn) {
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Updated!';
+        submitBtn.style.backgroundColor = '#16a34a';
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.backgroundColor = '';
+        }, 1200);
+      }
+    });
+
+    // Real-time typing sync
+    inputFirstName?.addEventListener('input', () => {
+      const val = inputFirstName.value.trim() || 'Justin';
+      if (greetingName) greetingName.textContent = `Hi ${val},`;
+      if (subjectText) subjectText.textContent = `${val}, saw your demo request`;
+      const firstRow = document.getElementById('row-justin') || tableBody?.querySelector('tr');
+      if (firstRow) {
+        const nameCell = firstRow.querySelector('.cell-name');
+        if (nameCell) nameCell.textContent = val;
+      }
+    });
+
+    inputCompany?.addEventListener('input', () => {
+      const val = inputCompany.value.trim() || 'Acme Corp';
+      if (companyName) companyName.textContent = val;
+    });
+  }
+
+  // 3. Email Preview vs Lead Data Panel Toggle
+  if (emailTabBtn && leadTabBtn && emailViewPanel && leadViewPanel) {
+    emailTabBtn.addEventListener('click', () => {
+      emailTabBtn.classList.add('is-active');
+      leadTabBtn.classList.remove('is-active');
+      emailViewPanel.style.display = 'block';
+      leadViewPanel.style.display = 'none';
+    });
+
+    leadTabBtn.addEventListener('click', () => {
+      leadTabBtn.classList.add('is-active');
+      emailTabBtn.classList.remove('is-active');
+      emailViewPanel.style.display = 'none';
+      leadViewPanel.style.display = 'block';
+    });
+  }
+
+  // 4. Pagination Buttons
+  let currentLeadIdx = 1;
+  const totalLeads = 554;
+  const sampleLeads = [
+    { first: 'Justin', last: 'Turner', company: 'Acme Corp', rep: 'Marcus DeLorenzo' },
+    { first: 'Marcus', last: 'Vance', company: 'Enterprise AI Corp', rep: 'Sarah Jenkins' },
+    { first: 'Sarah', last: 'Connor', company: 'Cyberdyne Systems', rep: 'Alex Rivera' },
+    { first: 'David', last: 'Hassel', company: 'Knight Industries', rep: 'Elena Rostova' }
+  ];
+
+  function updateLeadDisplay() {
+    if (pageIndicator) pageIndicator.textContent = `${currentLeadIdx} of ${totalLeads}`;
+    const lead = sampleLeads[(currentLeadIdx - 1) % sampleLeads.length];
+    if (lead) {
+      if (subjectText) subjectText.textContent = `${lead.first}, saw your demo request`;
+      if (greetingName) greetingName.textContent = `Hi ${lead.first},`;
+      if (companyName) companyName.textContent = lead.company;
+      if (inputFirstName) inputFirstName.value = lead.first;
+      if (inputLastName) inputLastName.value = lead.last;
+      if (inputCompany) inputCompany.value = lead.company;
+
+      // Update row selection
+      if (tableBody) {
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach((r, idx) => {
+          if (idx === (currentLeadIdx - 1) % rows.length) {
+            r.classList.add('is-highlighted');
+          } else {
+            r.classList.remove('is-highlighted');
+          }
+        });
+      }
+    }
+  }
+
+  if (prevLeadBtn) {
+    prevLeadBtn.addEventListener('click', () => {
+      if (currentLeadIdx > 1) {
+        currentLeadIdx--;
+        updateLeadDisplay();
+      }
+    });
+  }
+
+  if (nextLeadBtn) {
+    nextLeadBtn.addEventListener('click', () => {
+      if (currentLeadIdx < totalLeads) {
+        currentLeadIdx++;
+        updateLeadDisplay();
+      }
+    });
+  }
 }
