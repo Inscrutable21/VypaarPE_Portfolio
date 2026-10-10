@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   background-color: #ffffff;
-  padding: 6.5rem 1.5rem 8rem;
+  padding: 6.5rem 0 8rem;
   overflow: hidden;
   font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
   color: #111827;
@@ -24,7 +24,9 @@
 
 .gtm-container {
   max-width: 1260px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,37 +58,34 @@
   max-width: 540px;
 }
 
-/* Category Pills / Workflow Tabs (Centered Carousel) */
+/* Category Pills / Workflow Tabs (Edge-to-Edge Centered Carousel) */
 .gtm-tabs-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto 3.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.25rem;
-}
-
-.gtm-tabs-track {
   position: relative;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 0.75rem 0;
-  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  justify-content: flex-start;
+  padding: 0.85rem 0;
+  margin: 0 0 3.25rem;
+  cursor: grab;
+  mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gtm-tabs-wrapper:active {
+  cursor: grabbing;
 }
 
 .gtm-tabs-list {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: nowrap;
   white-space: nowrap;
-  flex-shrink: 0;
   margin: 0;
   padding: 0;
   will-change: transform;
@@ -95,98 +94,44 @@
 
 .gtm-tab-pill {
   appearance: none;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: #f8fafc;
-  color: #475569;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: #f3f4f6;
+  color: #374151;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  padding: 0.65rem 1.35rem;
+  padding: 0.65rem 1.45rem;
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.22s ease, color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
   outline: none;
   flex-shrink: 0;
   user-select: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.gtm-tab-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  display: inline-block;
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-
-.gtm-tab-pill:hover {
-  background: #ffffff;
-  color: #0f172a;
-  border-color: rgba(0, 0, 0, 0.16);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.gtm-tab-pill:hover .gtm-tab-dot {
-  background-color: #94a3b8;
+.gtm-tab-pill:hover:not(.is-active) {
+  background: #e5e7eb;
+  color: #111827;
+  transform: translateY(-1px);
 }
 
 .gtm-tab-pill.is-active {
   background: var(--gtm-theme-color, #eaf872) !important;
   color: var(--gtm-theme-text, #141f08) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
   font-weight: 600;
-  box-shadow: 0 6px 20px var(--gtm-theme-glow, rgba(234, 248, 114, 0.55)), 0 2px 4px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--gtm-theme-glow, rgba(234, 248, 114, 0.45)), 0 2px 4px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
 }
 
-.gtm-tab-pill.is-active .gtm-tab-dot {
-  background-color: currentColor;
-  transform: scale(1.2);
-}
-
-/* Nav arrows on sides */
+/* Nav arrows on sides (hidden for clean edge-to-edge look) */
 .gtm-tabs-nav-btn {
-  appearance: none;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  background: #ffffff;
-  color: #334155;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  z-index: 5;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.gtm-tabs-nav-btn:hover {
-  background: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  transform: scale(1.08);
-  border-color: rgba(0, 0, 0, 0.16);
-}
-
-.gtm-tabs-nav-btn:active {
-  transform: scale(0.96);
-}
-
-.gtm-tabs-prev {
-  margin-right: 0.65rem;
-}
-
-.gtm-tabs-next {
-  margin-left: 0.65rem;
+  display: none !important;
 }
 
 /* Main Visual Canvas Area */

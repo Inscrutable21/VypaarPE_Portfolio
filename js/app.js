@@ -281,21 +281,17 @@ function initGtmSection() {
   // Track translation state
   let currentTrackOffset = 0;
 
-  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center
+  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center of viewport
   function centerPill(pill, smooth = true) {
-    if (!pill || !tabsTrack || !tabsList) return;
+    if (!pill || !tabsList) return;
     
-    // Viewport-accurate bounding rectangles
-    const trackRect = tabsTrack.getBoundingClientRect();
+    // Viewport-accurate horizontal center
+    const viewportCenter = window.innerWidth / 2;
     const pillRect = pill.getBoundingClientRect();
-    
-    // Target center is middle of visible track
-    const trackCenter = trackRect.left + (trackRect.width / 2);
-    // Current center of the pill
     const pillCenter = pillRect.left + (pillRect.width / 2);
     
-    // Delta needed to align pill center with track center
-    const delta = trackCenter - pillCenter;
+    // Delta needed to align pill center with viewport center
+    const delta = viewportCenter - pillCenter;
     currentTrackOffset += delta;
 
     if (smooth) {
@@ -610,9 +606,31 @@ function initGtmSection() {
     nextBtn.addEventListener('click', () => switchTab(1));
   }
 
+  // Snap to closest pill when drag ends
+  function snapToClosestPill() {
+    const pills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
+    const viewportCenter = window.innerWidth / 2;
+    let closestPill = null;
+    let minDiff = Infinity;
+
+    pills.forEach(p => {
+      const rect = p.getBoundingClientRect();
+      const pCenter = rect.left + rect.width / 2;
+      const diff = Math.abs(viewportCenter - pCenter);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestPill = p;
+      }
+    });
+
+    if (closestPill) {
+      activateTab(closestPill, true);
+    }
+  }
+
   // Mouse drag & touch pan support
-  if (tabsTrack) {
-    tabsTrack.addEventListener('mousedown', (e) => {
+  if (tabsWrapper) {
+    tabsWrapper.addEventListener('mousedown', (e) => {
       isDraggingTabs = true;
       hasDragged = false;
       dragStartX = e.clientX;
@@ -631,10 +649,13 @@ function initGtmSection() {
     window.addEventListener('mouseup', () => {
       if (!isDraggingTabs) return;
       isDraggingTabs = false;
+      if (hasDragged) {
+        snapToClosestPill();
+      }
     });
 
     // Touch support for mobile/touchscreens
-    tabsTrack.addEventListener('touchstart', (e) => {
+    tabsWrapper.addEventListener('touchstart', (e) => {
       if (!e.touches[0]) return;
       isDraggingTabs = true;
       hasDragged = false;
@@ -643,7 +664,7 @@ function initGtmSection() {
       tabsList.style.transition = 'none';
     }, { passive: true });
 
-    tabsTrack.addEventListener('touchmove', (e) => {
+    tabsWrapper.addEventListener('touchmove', (e) => {
       if (!isDraggingTabs || !e.touches[0]) return;
       const diff = e.touches[0].clientX - dragStartX;
       if (Math.abs(diff) > 4) hasDragged = true;
@@ -651,18 +672,56 @@ function initGtmSection() {
       tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
     }, { passive: true });
 
-    tabsTrack.addEventListener('touchend', () => {
+    tabsWrapper.addEventListener('touchend', () => {
+      if (!isDraggingTabs) return;
       isDraggingTabs = false;
+      if (hasDragged) {
+        snapToClosestPill();
+      }
     });
   }
+
+  // Silent re-anchoring to the middle set (Set 3) after smooth scroll finishes
+  tabsList.addEventListener('transitionend', (e) => {
+    if (e.target !== tabsList || e.propertyName !== 'transform') return;
+    const activePill = tabsList.querySelector('.gtm-tab-pill.is-active');
+    if (!activePill) return;
+
+    const allPills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
+    const activeIndex = allPills.indexOf(activePill);
+    
+    // Middle set is indices 14 to 20 (Set 3) out of 35 pills
+    if (activeIndex >= 0 && (activeIndex < 14 || activeIndex > 20)) {
+      const targetTabId = activePill.dataset.tab;
+      const middleSetPills = allPills.slice(14, 21);
+      const counterpartPill = middleSetPills.find(p => p.dataset.tab === targetTabId);
+      
+      if (counterpartPill && counterpartPill !== activePill) {
+        const activeRect = activePill.getBoundingClientRect();
+        const counterpartRect = counterpartPill.getBoundingClientRect();
+        const offsetShift = activeRect.left - counterpartRect.left;
+        
+        currentTrackOffset += offsetShift;
+        tabsList.style.transition = 'none';
+        tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
+        
+        activePill.classList.remove('is-active');
+        counterpartPill.classList.add('is-active');
+        
+        // Force reflow
+        void tabsList.offsetHeight;
+      }
+    }
+  });
 
   // Center initial active button on load
   const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill');
   if (initialActive) {
     activateTab(initialActive, false);
+    centerPill(initialActive, false);
     requestAnimationFrame(() => centerPill(initialActive, false));
-    setTimeout(() => centerPill(initialActive, true), 100);
-    setTimeout(() => centerPill(initialActive, false), 350);
+    setTimeout(() => centerPill(initialActive, false), 50);
+    setTimeout(() => centerPill(initialActive, false), 200);
   }
 
   // Ensure centering remains exact once web fonts load
