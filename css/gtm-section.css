@@ -10,6 +10,16 @@
   overflow: hidden;
   font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
   color: #111827;
+
+  /* Dynamic workflow theme variables */
+  --gtm-theme-color: #eaf872;
+  --gtm-theme-text: #141f08;
+  --gtm-theme-glow: rgba(234, 248, 114, 0.45);
+  --gtm-theme-highlight: #fef47a;
+  --gtm-theme-highlight-border: #f7eb65;
+  --gtm-theme-btn: #647017;
+  --gtm-theme-badge-bg: #e2f4db;
+  --gtm-theme-badge-color: #1e6324;
 }
 
 .gtm-container {
@@ -49,14 +59,14 @@
 /* Category Pills / Workflow Tabs */
 .gtm-tabs-wrapper {
   width: 100%;
-  max-width: 1050px;
-  margin-bottom: 3.5rem;
+  max-width: 1100px;
+  margin: 0 auto 3.5rem;
   display: flex;
-  justify-content: center;
   overflow-x: auto;
-  padding: 0.5rem 0.25rem;
+  padding: 0.75rem 1rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .gtm-tabs-wrapper::-webkit-scrollbar {
@@ -68,22 +78,25 @@
   align-items: center;
   gap: 0.65rem;
   flex-wrap: nowrap;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .gtm-tab-pill {
   appearance: none;
-  border: none;
+  border: 1px solid transparent;
   background: #f1f3f5;
   color: #4b5563;
   font-family: inherit;
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.6rem 1.15rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
+  flex-shrink: 0;
 }
 
 .gtm-tab-pill:hover {
@@ -93,10 +106,10 @@
 }
 
 .gtm-tab-pill.is-active {
-  background: #eaf872;
-  color: #141f08;
+  background: var(--gtm-theme-color, #eaf872) !important;
+  color: var(--gtm-theme-text, #141f08) !important;
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(234, 248, 114, 0.5);
+  box-shadow: 0 4px 14px var(--gtm-theme-glow, rgba(234, 248, 114, 0.5));
   transform: translateY(-1px);
 }
 
@@ -107,16 +120,18 @@
   max-width: 1180px;
   margin: 0 auto 3rem;
   padding: 2.25rem 2.25rem 4.5rem;
+  transition: all 0.4s ease;
 }
 
-/* Vibrant Yellow-Green Lime Backdrop */
+/* Vibrant Box Backdrop that dynamically changes color */
 .gtm-lime-backdrop {
   position: absolute;
   inset: 0;
-  background: #eaf872;
+  background: var(--gtm-theme-color, #eaf872);
   border-radius: 32px;
   z-index: 1;
-  box-shadow: 0 20px 60px -15px rgba(234, 248, 114, 0.45);
+  box-shadow: 0 24px 65px -15px var(--gtm-theme-glow, rgba(234, 248, 114, 0.45));
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Main Spreadsheet Card */
@@ -241,20 +256,21 @@
   vertical-align: middle;
 }
 
-/* Active Highlighted Row (Yellow / Chartreuse Row) */
+/* Active Highlighted Row */
 .gtm-grid-table tbody tr.is-highlighted {
-  background: #fef47a !important;
+  background: var(--gtm-theme-highlight, #fef47a) !important;
   color: #111827;
   font-weight: 500;
+  transition: background-color 0.35s ease;
 }
 
 .gtm-grid-table tbody tr.is-highlighted td {
-  border-right-color: #f7eb65;
+  border-right-color: var(--gtm-theme-highlight-border, #f7eb65);
   color: #111827;
 }
 
 .gtm-grid-table tbody tr.is-highlighted .gtm-checkbox-box {
-  border-color: #b0a424;
+  border-color: var(--gtm-theme-btn, #b0a424);
 }
 
 .gtm-grid-table tbody tr:hover:not(.is-highlighted) {
@@ -269,8 +285,9 @@
   border-radius: 4px;
   font-size: 0.72rem;
   font-weight: 500;
-  background: #e2f4db;
-  color: #1e6324;
+  background: var(--gtm-theme-badge-bg, #e2f4db);
+  color: var(--gtm-theme-badge-color, #1e6324);
+  transition: all 0.35s ease;
 }
 
 /* ==========================================================================
@@ -343,7 +360,7 @@
 .gtm-form-submit-btn {
   appearance: none;
   border: none;
-  background: #647017;
+  background: var(--gtm-theme-btn, #647017);
   color: #ffffff;
   font-family: inherit;
   font-size: 0.8rem;
@@ -351,11 +368,11 @@
   padding: 0.48rem 1.15rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  transition: background-color 0.35s ease, transform 0.15s ease;
 }
 
 .gtm-form-submit-btn:hover {
-  background: #535e12;
+  filter: brightness(0.9);
   transform: translateY(-1px);
 }
 

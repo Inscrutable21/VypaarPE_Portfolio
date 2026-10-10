@@ -250,9 +250,12 @@ function initLogoCursor() {
  * real-time email preview updates, and panel toggling.
  */
 function initGtmSection() {
+  const section = document.querySelector('.section_gtm-engineers');
+  const tabsWrapper = document.querySelector('.gtm-tabs-wrapper');
   const tabPills = document.querySelectorAll('.gtm-tab-pill');
   const tableTitle = document.getElementById('gtmTableTitle');
   const tableBody = document.getElementById('gtmTableBody');
+  const limeBackdrop = document.querySelector('.gtm-lime-backdrop');
   const form = document.getElementById('gtmDemoForm');
   const inputFirstName = document.getElementById('gtmFirstName');
   const inputLastName = document.getElementById('gtmLastName');
@@ -267,14 +270,65 @@ function initGtmSection() {
   const subjectText = document.getElementById('gtmSubjectText');
   const greetingName = document.getElementById('gtmGreetingName');
   const companyName = document.getElementById('gtmCompanyName');
+  const emailBodyContent = document.getElementById('gtmEmailBodyContent');
   const pageIndicator = document.getElementById('gtmPageIndicator');
   const prevLeadBtn = document.getElementById('gtmPrevLeadBtn');
   const nextLeadBtn = document.getElementById('gtmNextLeadBtn');
 
-  // Workflows data repository for tabs
+  // Helper function: Smoothly scroll clicked button into the center of the tabs wrapper
+  function centerPill(pill) {
+    if (!pill || !tabsWrapper) return;
+    const pillRect = pill.getBoundingClientRect();
+    const wrapperRect = tabsWrapper.getBoundingClientRect();
+    const currentScroll = tabsWrapper.scrollLeft;
+    const targetScroll = currentScroll + (pillRect.left - wrapperRect.left) - (wrapperRect.width / 2) + (pillRect.width / 2);
+
+    tabsWrapper.scrollTo({
+      left: Math.max(0, targetScroll),
+      behavior: 'smooth'
+    });
+  }
+
+  // Helper function: Apply dynamic theme colors to the section, box backdrop, and accents
+  function applyTheme(theme) {
+    if (!theme) return;
+    if (section) {
+      section.style.setProperty('--gtm-theme-color', theme.color);
+      section.style.setProperty('--gtm-theme-text', theme.text);
+      section.style.setProperty('--gtm-theme-glow', theme.glow);
+      section.style.setProperty('--gtm-theme-highlight', theme.highlight);
+      section.style.setProperty('--gtm-theme-highlight-border', theme.highlightBorder);
+      section.style.setProperty('--gtm-theme-btn', theme.btnColor);
+      section.style.setProperty('--gtm-theme-badge-bg', theme.badgeBg);
+      section.style.setProperty('--gtm-theme-badge-color', theme.badgeColor);
+    }
+    if (limeBackdrop) {
+      limeBackdrop.style.backgroundColor = theme.color;
+      limeBackdrop.style.boxShadow = `0 24px 65px -15px ${theme.glow}`;
+    }
+  }
+
+  // Workflows data repository with unique color schemes per button
   const workflowDatasets = {
     'automated-inbound': {
       title: 'Demo form submissions',
+      theme: {
+        color: '#eaf872',           // Clay Electric Lime
+        text: '#141f08',
+        glow: 'rgba(234, 248, 114, 0.55)',
+        highlight: '#fef47a',
+        highlightBorder: '#f7eb65',
+        btnColor: '#647017',
+        badgeBg: '#e2f4db',
+        badgeColor: '#1e6324'
+      },
+      preview: {
+        subject: 'Justin, saw your demo request',
+        greeting: 'Hi Justin,',
+        company: 'Acme Corp',
+        token: 'relevant priority from 10-K',
+        textLine: 'Is that the project that made you reach out?'
+      },
       rows: [
         { check: 1, name: 'Justin', employees: '12,400', rev: 'High expans...', qual: 'Yes', phone: '(415) 555-21...', k10: 'Yes', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Hey John, I n...', isHighlighted: true },
         { check: 2, name: 'Marcus', employees: '87,300', rev: 'Plan upgrad...', qual: 'Yes', phone: '(212) 555-03...', k10: 'Yes', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Hi Marcus, saw...', isHighlighted: false },
@@ -288,8 +342,76 @@ function initGtmSection() {
         { check: 10, name: 'Devon', employees: 'No recent r...', rev: 'Yes', qual: '(818) 555-45...', phone: 'Yes', k10: 'Mid-Market', territory: 'Liam Smith', rep: 'Reconnecting...', draft: '...', isHighlighted: false }
       ]
     },
+    'launch-ads': {
+      title: 'LinkedIn Matched Audience Engine',
+      theme: {
+        color: '#7dd3fc',           // Sky Cyan Blue
+        text: '#0c4a6e',
+        glow: 'rgba(56, 189, 248, 0.55)',
+        highlight: '#e0f2fe',
+        highlightBorder: '#7dd3fc',
+        btnColor: '#0284c7',
+        badgeBg: '#bae6fd',
+        badgeColor: '#0369a1'
+      },
+      preview: {
+        subject: 'OpenAI Audience Match · 94% coverage',
+        greeting: 'Campaign Synced:',
+        company: 'OpenAI',
+        token: 'AI Engineers Segment (Matched)',
+        textLine: '14 custom buyer intent signals triggered audience push to LinkedIn Ads API.'
+      },
+      rows: [
+        { check: 1, name: 'OpenAI', employees: '2,000', rev: 'Matched: 94%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: GTM Automation...', isHighlighted: true },
+        { check: 2, name: 'Anthropic', employees: '1,100', rev: 'Matched: 91%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Claude API users...', isHighlighted: false },
+        { check: 3, name: 'Perplexity', employees: '450', rev: 'Matched: 88%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'Search Engine', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Product Growth...', isHighlighted: false },
+        { check: 4, name: 'Mistral AI', employees: '320', rev: 'Matched: 95%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'Enterprise LLM', territory: 'EMEA Pod', rep: 'Growth Pod', draft: 'Ad set: Developer API...', isHighlighted: false }
+      ]
+    },
+    'rep-productivity': {
+      title: 'Daily Rep Routing & Slack Alerts',
+      theme: {
+        color: '#fdba74',           // Warm Sunset Coral / Orange
+        text: '#7c2d12',
+        glow: 'rgba(251, 146, 60, 0.55)',
+        highlight: '#ffedd5',
+        highlightBorder: '#fed7aa',
+        btnColor: '#ea580c',
+        badgeBg: '#fed7aa',
+        badgeColor: '#c2410c'
+      },
+      preview: {
+        subject: 'Justin Turner · Meeting Scheduled Alert',
+        greeting: 'Lead Alerted:',
+        company: 'Acme Corp',
+        token: 'Meeting Brief Generated',
+        textLine: 'Slack channel #gtm-inbound notified. Calendar invite sent to Marcus DeLorenzo.'
+      },
+      rows: [
+        { check: 1, name: 'Justin', employees: '12,400', rev: 'Slack Alerted', qual: 'Booked', phone: 'Calendar sync', k10: 'Meeting Scheduled', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Meeting prep brief sent...', isHighlighted: true },
+        { check: 2, name: 'Chloe', employees: '3,200', rev: 'Slack Alerted', qual: 'Follow-up', phone: 'Task queued', k10: 'Deck downloaded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Follow-up sequence active...', isHighlighted: false },
+        { check: 3, name: 'Sarah', employees: '8,500', rev: 'Slack Alerted', qual: 'Qualified', phone: 'Routing rule', k10: 'Security 10-K', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Prep packet delivered...', isHighlighted: false }
+      ]
+    },
     'tam-sourcing': {
       title: 'Target Account Universe (TAM)',
+      theme: {
+        color: '#c4b5fd',           // Soft Lilac Lavender
+        text: '#4c1d95',
+        glow: 'rgba(167, 139, 250, 0.55)',
+        highlight: '#f3e8ff',
+        highlightBorder: '#ddd6fe',
+        btnColor: '#7c3aed',
+        badgeBg: '#ede9fe',
+        badgeColor: '#6d28d9'
+      },
+      preview: {
+        subject: 'Stripe · Enriched Firmographics Profile',
+        greeting: 'Account Intel:',
+        company: 'Stripe',
+        token: 'Fintech Tier-1 ICP',
+        textLine: '8,200 verified employees, $14.2B ARR, 45 engineering headcount openings tracked.'
+      },
       rows: [
         { check: 1, name: 'Stripe', employees: '8,200', rev: '$14.2B ARR', qual: 'Tier 1 ICP', phone: '+1 415 555-010', k10: 'Fintech Hub', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Customized API playbook...', isHighlighted: true },
         { check: 2, name: 'Ramp', employees: '1,500', rev: '$500M ARR', qual: 'Tier 1 ICP', phone: '+1 212 555-019', k10: 'Series D', territory: 'Commercial', rep: 'Sarah Jenkins', draft: 'Corporate card alignment...', isHighlighted: false },
@@ -299,6 +421,23 @@ function initGtmSection() {
     },
     'lead-scoring': {
       title: 'Product Qualified Leads (PQLs)',
+      theme: {
+        color: '#6ee7b7',           // Mint Emerald Green
+        text: '#064e3b',
+        glow: 'rgba(52, 211, 153, 0.55)',
+        highlight: '#d1fae5',
+        highlightBorder: '#a7f3d0',
+        btnColor: '#059669',
+        badgeBg: '#a7f3d0',
+        badgeColor: '#047857'
+      },
+      preview: {
+        subject: 'Elena · PQL Intent Score: 99/100',
+        greeting: 'Propensity Signal:',
+        company: 'Enterprise AI Corp',
+        token: 'High Propensity PQL',
+        textLine: 'Exceeded workspace monthly credit limit 3x this week and checked enterprise pricing.'
+      },
       rows: [
         { check: 1, name: 'Elena', employees: '4,500', rev: 'Fit: 99/100', qual: 'High Intent', phone: '+1 617 555-018', k10: 'Trigger: Pricing view', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Ready for enterprise plan...', isHighlighted: true },
         { check: 2, name: 'Marcus', employees: '12,000', rev: 'Fit: 95/100', qual: 'High Intent', phone: '+1 212 555-031', k10: 'Trigger: 10 seats add', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'Seat expansion demo...', isHighlighted: false },
@@ -307,44 +446,80 @@ function initGtmSection() {
     },
     'automated-outbound': {
       title: 'Outbound Personalization Matrix',
+      theme: {
+        color: '#f9a8d4',           // Vibrant Rose Pink
+        text: '#831843',
+        glow: 'rgba(244, 114, 182, 0.55)',
+        highlight: '#ffe4e6',
+        highlightBorder: '#fbcfe8',
+        btnColor: '#db2777',
+        badgeBg: '#fce7f3',
+        badgeColor: '#be185d'
+      },
+      preview: {
+        subject: 'Michael, congratulations on hiring 40 SDRs',
+        greeting: 'Hi Michael,',
+        company: 'CloudScale Inc',
+        token: '10-K Cloud AI Expansion',
+        textLine: 'Noticed your team is scaling outbound plays across North America.'
+      },
       rows: [
         { check: 1, name: 'Michael', employees: '6,200', rev: 'Hiring 40 reps', qual: 'Priority A', phone: '+1 206 555-012', k10: 'AI SDR adoption', territory: 'Strategic', rep: 'Alex Rivera', draft: 'Scaling outbound pipeline...', isHighlighted: true },
-        { check: 2, name: 'Sophie', employees: '1,400', rev: 'Series C raised', qual: 'Priority A', phone: '+1 415 555-018', k10: 'New CRO onboarded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Congrats on new funding...', isHighlighted: false }
+        { check: 2, name: 'Sophie', employees: '1,400', rev: 'Series C raised', qual: 'Priority A', phone: '+1 415 555-018', k10: 'New CRO onboarded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Congrats on new funding...', isHighlighted: false },
+        { check: 3, name: 'Brandon', employees: '3,800', rev: 'New CRM rollout', qual: 'Priority A', phone: '+1 720 555-061', k10: 'Salesforce migration', territory: 'Enterprise', rep: 'Marcus DeL...', draft: 'CRM enrichment playbook...', isHighlighted: false }
       ]
     },
     'crm-enrichment': {
       title: 'Salesforce & HubSpot Auto-Sync',
+      theme: {
+        color: '#fde047',           // Warm Golden Amber
+        text: '#713f12',
+        glow: 'rgba(250, 204, 21, 0.55)',
+        highlight: '#fef08a',
+        highlightBorder: '#fde047',
+        btnColor: '#ca8a04',
+        badgeBg: '#fef9c3',
+        badgeColor: '#a16207'
+      },
+      preview: {
+        subject: 'Linear · 18 CRM Fields Auto-Updated',
+        greeting: 'CRM Integration:',
+        company: 'Linear',
+        token: 'Salesforce Bi-directional Sync',
+        textLine: 'All account executives, phone numbers, and revenue projections refreshed automatically.'
+      },
       rows: [
         { check: 1, name: 'Linear', employees: '120', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Tech stack verified', territory: 'Tech Pod', rep: 'Marcus DeL...', draft: 'Synced 18 fields...', isHighlighted: true },
-        { check: 2, name: 'Notion', employees: '850', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Domain verified', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Synced 24 fields...', isHighlighted: false }
-      ]
-    },
-    'launch-ads': {
-      title: 'LinkedIn Matched Audience Engine',
-      rows: [
-        { check: 1, name: 'OpenAI', employees: '2,000', rev: 'Matched: 94%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: GTM Automation...', isHighlighted: true },
-        { check: 2, name: 'Anthropic', employees: '1,100', rev: 'Matched: 91%', qual: 'Active Campaign', phone: 'LI Ads API', k10: 'B2B Targeted', territory: 'AI Segment', rep: 'Growth Pod', draft: 'Ad set: Claude API users...', isHighlighted: false }
-      ]
-    },
-    'rep-productivity': {
-      title: 'Daily Rep Routing & Slack Alerts',
-      rows: [
-        { check: 1, name: 'Justin', employees: '12,400', rev: 'Slack Alerted', qual: 'Booked', phone: 'Calendar sync', k10: 'Meeting Scheduled', territory: 'SMB', rep: 'Marcus DeL...', draft: 'Meeting prep brief sent...', isHighlighted: true },
-        { check: 2, name: 'Chloe', employees: '3,200', rev: 'Slack Alerted', qual: 'Follow-up', phone: 'Task queued', k10: 'Deck downloaded', territory: 'Mid-Market', rep: 'Elena Rostova', draft: 'Follow-up sequence active...', isHighlighted: false }
+        { check: 2, name: 'Notion', employees: '850', rev: 'Enriched 100%', qual: 'Updated', phone: 'SFDC synced', k10: 'Domain verified', territory: 'Enterprise', rep: 'Sarah Jenkins', draft: 'Synced 24 fields...', isHighlighted: false },
+        { check: 3, name: 'Figma', employees: '1,300', rev: 'Enriched 100%', qual: 'Updated', phone: 'HubSpot synced', k10: 'Product data live', territory: 'Design Systems', rep: 'Alex Rivera', draft: 'Synced 32 fields...', isHighlighted: false }
       ]
     }
   };
 
-  // 1. Tab switching
+  // 1. Tab Switching & Centering
   tabPills.forEach(pill => {
     pill.addEventListener('click', () => {
       const tabId = pill.dataset.tab;
+      const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
+
+      // Update active pill state
       tabPills.forEach(p => p.classList.remove('is-active'));
       pill.classList.add('is-active');
 
-      const dataset = workflowDatasets[tabId] || workflowDatasets['automated-inbound'];
-      if (tableTitle) tableTitle.textContent = dataset.title;
+      // 1a. Scroll clicked button into the center of the viewport
+      centerPill(pill);
 
+      // 1b. Change box color and button active color to this button's theme
+      if (dataset.theme) {
+        applyTheme(dataset.theme);
+      }
+
+      // 1c. Update table title
+      if (tableTitle) {
+        tableTitle.textContent = dataset.title;
+      }
+
+      // 1d. Update spreadsheet table rows
       if (tableBody && dataset.rows) {
         tableBody.innerHTML = dataset.rows.map(row => `
           <tr class="${row.isHighlighted ? 'is-highlighted' : ''}">
@@ -372,8 +547,33 @@ function initGtmSection() {
           });
         });
       }
+
+      // 1e. Update preview card content
+      if (dataset.preview) {
+        if (subjectText) subjectText.textContent = dataset.preview.subject;
+        if (greetingName) greetingName.textContent = dataset.preview.greeting;
+        if (companyName) companyName.textContent = dataset.preview.company;
+        if (emailBodyContent) {
+          emailBodyContent.innerHTML = `
+            <p><span>${dataset.preview.greeting}</span></p>
+            <p>I know <span>${dataset.preview.company}</span> is focused on <span class="gtm-token-pill"><span class="gtm-token-icon">T</span> ${dataset.preview.token} <span class="gtm-token-close">&times;</span></span>.</p>
+            <p>${dataset.preview.textLine}</p>
+            <p>Let me know if there's any additional context I should have before we meet.</p>
+          `;
+        }
+      }
     });
   });
+
+  // On initial load: center the initial active pill and apply its theme
+  const initialActivePill = document.querySelector('.gtm-tab-pill.is-active');
+  if (initialActivePill) {
+    const initialDataset = workflowDatasets[initialActivePill.dataset.tab] || workflowDatasets['automated-inbound'];
+    if (initialDataset.theme) {
+      applyTheme(initialDataset.theme);
+    }
+    setTimeout(() => centerPill(initialActivePill), 150);
+  }
 
   // 2. Interactive Form Submission
   if (form) {
@@ -389,8 +589,6 @@ function initGtmSection() {
         const nameCell = firstRow.querySelector('.cell-name');
         if (nameCell) nameCell.textContent = first;
         firstRow.classList.add('is-highlighted');
-        firstRow.style.transition = 'background-color 0.4s ease';
-        firstRow.style.backgroundColor = '#ecfc7a';
       }
 
       // Update Email Preview Card
@@ -402,10 +600,10 @@ function initGtmSection() {
       if (submitBtn) {
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Updated!';
-        submitBtn.style.backgroundColor = '#16a34a';
+        submitBtn.style.filter = 'brightness(1.2)';
         setTimeout(() => {
           submitBtn.textContent = originalText;
-          submitBtn.style.backgroundColor = '';
+          submitBtn.style.filter = '';
         }, 1200);
       }
     });
