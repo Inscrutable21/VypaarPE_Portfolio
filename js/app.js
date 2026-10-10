@@ -281,17 +281,18 @@ function initGtmSection() {
   // Track translation state
   let currentTrackOffset = 0;
 
-  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center of viewport
+  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center of tabs wrapper
   function centerPill(pill, smooth = true) {
     if (!pill || !tabsList) return;
     
-    // Viewport-accurate horizontal center
-    const viewportCenter = window.innerWidth / 2;
+    // Accurate center of the tabs container
+    const wrapperRect = (tabsWrapper || document.querySelector('.gtm-tabs-wrapper'))?.getBoundingClientRect();
+    const targetCenter = wrapperRect ? (wrapperRect.left + (wrapperRect.width / 2)) : (window.innerWidth / 2);
     const pillRect = pill.getBoundingClientRect();
     const pillCenter = pillRect.left + (pillRect.width / 2);
     
-    // Delta needed to align pill center with viewport center
-    const delta = viewportCenter - pillCenter;
+    // Delta needed to align pill center with wrapper center
+    const delta = targetCenter - pillCenter;
     currentTrackOffset += delta;
 
     if (smooth) {
@@ -609,14 +610,15 @@ function initGtmSection() {
   // Snap to closest pill when drag ends
   function snapToClosestPill() {
     const pills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
-    const viewportCenter = window.innerWidth / 2;
+    const wrapperRect = (tabsWrapper || document.querySelector('.gtm-tabs-wrapper'))?.getBoundingClientRect();
+    const targetCenter = wrapperRect ? (wrapperRect.left + (wrapperRect.width / 2)) : (window.innerWidth / 2);
     let closestPill = null;
     let minDiff = Infinity;
 
     pills.forEach(p => {
       const rect = p.getBoundingClientRect();
       const pCenter = rect.left + rect.width / 2;
-      const diff = Math.abs(viewportCenter - pCenter);
+      const diff = Math.abs(targetCenter - pCenter);
       if (diff < minDiff) {
         minDiff = diff;
         closestPill = p;
