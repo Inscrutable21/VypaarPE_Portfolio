@@ -602,6 +602,10 @@ textarea {
   border-radius: 0;
   pointer-events: none;
   user-select: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 .hero-video-wrapper video::-webkit-media-controls {
