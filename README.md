@@ -59,6 +59,12 @@ This project delivers a responsive web application highlighting product workflow
 - **Subtitle**: Clean reassurance copy ("Start for free today. No credit card required.").
 - **Dual Conversion Triggers**: Primary high-contrast button ("Start free trial →") and secondary outlined button ("Get a demo →") with interactive arrow micro-animations.
 
+### 2.9 Ball Pit Multi-Column Footer
+- **Background Simulation**: Full-width looping video backdrop displaying colorful 3D plastic ball pit physics.
+- **Floating Elevated Card**: High-contrast white card (`border-top-left-radius: 36px; border-top-right-radius: 36px`) sitting inside the ball pit container.
+- **Multi-Column Navigation**: Five category columns (Use Cases, Product, Blog, Resources, Company) with hiring badge easter egg.
+- **Customer and Legal Footnotes**: Bottom tier categorized list covering marquee customers and compliance/privacy links.
+
 ---
 
 ## 3. Directory Structure
@@ -76,14 +82,15 @@ vypaarpe/
 │   ├── stacking-cards.css       # Sticky scroll-driven stacking card styles
 │   ├── reps-section.css         # Reps productivity showcase styles
 │   ├── gtm-engineering.css      # 9-column asymmetric Bento Grid styles (80% width)
-│   └── cta-section.css          # Growth ideas call-to-action styles
+│   ├── cta-section.css          # Growth ideas call-to-action styles
+│   └── footer-section.css       # Ball pit multi-column footer styles
 │
 ├── js/                          # Application Logic
 │   └── app.js                   # Tab switching, carousel physics, and form handlers
 │
 └── assets/                      # Static Media
     ├── images/                  # SVGs, AVIFs, PNGs, and responsive thumbnails
-    └── videos/                  # Faststart hero and 3D demonstration video files
+    └── videos/                  # Faststart hero, 3D contraptions, and ball pit video files
 ```
 
 ---
