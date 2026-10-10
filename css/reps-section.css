@@ -5,8 +5,8 @@
 .section_reps-productive {
   position: relative;
   width: 100%;
-  background-color: #faf9f5;
-  padding: 6.5rem 1.5rem 7.5rem;
+  background-color: #ffffff;
+  padding: 80px 32px 100px;
   box-sizing: border-box;
   overflow: hidden;
   font-family: var(--font-sans, 'Plus Jakarta Sans', system-ui, sans-serif);
@@ -15,9 +15,11 @@
 .reps-container {
   max-width: 1240px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 /* 2-Column Header matching the Clay screenshot layout */
@@ -138,20 +140,22 @@
   font-weight: 600;
 }
 
-/* Main Visual Canvas Card */
+/* Main Visual Canvas Card matching stacking-cards box styling */
 .reps-canvas-card {
   width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
   background: #ede8df;
   border-radius: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .reps-canvas-card:hover {
-  box-shadow: 0 22px 60px -12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.11);
 }
 
 .reps-media-wrapper {
