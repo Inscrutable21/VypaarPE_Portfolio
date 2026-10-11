@@ -55,7 +55,7 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 - **Floating Header**: Glassmorphic container with `backdrop-filter: blur(16px)`, keyboard search trigger (`Cmd+K`), branded SVG marks, and navigation links (Storefronts, Quick Commerce, AI Copilot, Integrations, Pricing).
 
 ### 2.2 Hero Showcase
-- **Animated Background**: High-definition looping animated GIF contraption (`assets/images/hero-section.gif`) illustrating automated physical-to-digital commerce infrastructure—rendered across 171 frames with two-pass palette quantization for fluid, lightweight looping without video player overhead.
+- **Animated Background**: High-definition looping animated WebP contraption (`assets/images/hero-section.webp`) illustrating automated physical-to-digital commerce infrastructure—rendered across 171 frames with modern WebP compression for fluid, ultra-lightweight looping without video player overhead.
 - **Hero Messaging**:
   - **Headline (2 Lines)**: `Build AI stores made` / `for instant commerce` formatted with dedicated whitespace-protected line spans.
   - **Subheading (3 Lines)**: `The modern platform for E-commerce & 10-minute Quick Commerce.` / `Shopify simplicity with autonomous AI, sub-second speed,` / `and instant hyperlocal delivery.`
