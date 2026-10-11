@@ -15,7 +15,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -34,15 +34,21 @@
   <!-- Sticky Header Container with Top Banner and Floating Nav Card -->
   <div class="site-header-fixed">
     <!-- Top Announcement Bar (VyaparPe AI Store Engine) -->
-    <aside class="top-announcement-bar">
+    <aside class="top-announcement-bar" role="banner" aria-label="Announcement">
       <div class="announcement-inner">
         <div class="announcement-left">
-          <span class="sculpt-logo">AI STORE 2.0</span>
-          <span class="announcement-message">Launch an AI-powered E-Commerce store & 10-Min Quick Commerce engine in 60 seconds</span>
+          <span class="announcement-badge sculpt-logo">
+            <span class="badge-dot"></span>
+            AI STORE 2.0
+          </span>
+          <span class="announcement-message">
+            <span class="announcement-text-desktop">Launch an AI-powered E-Commerce store &amp; 10-Min Quick Commerce engine in 60 seconds</span>
+            <span class="announcement-text-mobile">Launch your AI Store &amp; 10-Min Quick Commerce in 60s</span>
+          </span>
         </div>
-        <a href="#hero" class="announcement-cta">
+        <a href="#hero" class="announcement-cta" title="Try VyaparPe AI Builder">
           <span>TRY AI BUILDER</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
