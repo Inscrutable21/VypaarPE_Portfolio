@@ -194,3 +194,15 @@
     grid-column: auto;
   }
 }
+
+@media (max-width: 420px) {
+  .footer-card-wrapper {
+    width: calc(100% - 16px);
+    padding: 24px 14px 32px;
+  }
+
+  .footer-grid-top {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

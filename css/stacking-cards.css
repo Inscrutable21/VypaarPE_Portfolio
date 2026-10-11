@@ -431,3 +431,76 @@
     border-radius: 18px;
   }
 }
+
+@media (max-width: 480px) {
+  .sc-section {
+    padding: 44px 12px 32px;
+  }
+
+  .sc-header {
+    padding: 8px 12px 32px;
+  }
+
+  .sc-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+    letter-spacing: -0.5px;
+  }
+
+  .sc-subtitle {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .sc-card {
+    top: 65px;
+  }
+
+  .sc-card__content {
+    border-radius: 18px;
+  }
+
+  .sc-card__text {
+    padding: 20px 16px 16px;
+  }
+
+  .sc-card__tag {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+
+  .sc-card__title {
+    font-size: clamp(1.2rem, 5.2vw, 1.45rem);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .sc-card__desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .sc-card__actions {
+    gap: 8px;
+  }
+
+  .sc-card__link {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
+
+  .sc-card__figure--boxed {
+    height: 190px;
+    padding: 0 14px 16px;
+  }
+
+  .sc-card-image-box {
+    border-radius: 14px;
+  }
+
+  .sc-card-image-box img {
+    border-radius: 14px;
+  }
+}

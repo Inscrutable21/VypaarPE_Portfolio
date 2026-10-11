@@ -450,13 +450,87 @@
 }
 
 @media (max-width: 580px) {
+  .section_gtm-engineering {
+    padding: 50px 0 70px;
+  }
+
+  .gtm-engineering-container {
+    width: calc(100% - 24px);
+  }
+
+  .gtm-engineering-header {
+    margin-bottom: 2rem;
+  }
+
+  .gtm-engineering-title {
+    font-size: clamp(1.8rem, 6.8vw, 2.3rem);
+  }
+
   .gtm-engineering-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.15rem;
+  }
+
+  .bento-card {
+    border-radius: 16px;
   }
 
   .bento-card--university,
   .bento-card--sandra {
     grid-column: auto;
+  }
+
+  .bento-card--sculpt .bento-image-wrap {
+    height: 190px;
+  }
+
+  .bento-card--sculpt .bento-body {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .bento-card--university .bento-content-left {
+    padding: 1.25rem;
+  }
+
+  .bento-card--javeria .bento-image-wrap {
+    height: 180px;
+  }
+
+  .bento-card--javeria .bento-body {
+    padding: 1.25rem;
+  }
+
+  .bento-card--livestream,
+  .bento-card--careers {
+    min-height: 240px;
+  }
+
+  .bento-card--livestream .bento-body,
+  .bento-card--careers .bento-body {
+    padding: 1.25rem;
+  }
+
+  .bento-card--sandra .bento-body {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gtm-engineering-container {
+    width: calc(100% - 20px);
+  }
+
+  .gtm-engineering-title {
+    font-size: clamp(1.65rem, 6.4vw, 2rem);
+  }
+
+  .bento-title {
+    font-size: 1.12rem;
+    line-height: 1.32;
+  }
+
+  .bento-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
   }
 }

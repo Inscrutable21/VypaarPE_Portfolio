@@ -590,7 +590,33 @@
 
 @media (max-width: 860px) {
   .section_gtm-engineers {
-    padding: 4.5rem 1rem 6rem;
+    padding: 4.5rem 1rem 5.5rem;
+  }
+
+  .gtm-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .gtm-heading {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+  }
+
+  .gtm-subheading {
+    font-size: 1rem;
+  }
+
+  .gtm-tabs-wrapper {
+    margin-bottom: 2rem;
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .gtm-tabs-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   .gtm-tabs-list {
@@ -621,5 +647,40 @@
     position: static;
     width: 100%;
     margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section_gtm-engineers {
+    padding: 3.5rem 0.75rem 4.5rem;
+  }
+
+  .gtm-heading {
+    font-size: clamp(1.8rem, 7.5vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .gtm-subheading {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .gtm-canvas-wrap {
+    padding: 0.65rem 0.65rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .gtm-lime-backdrop {
+    border-radius: 16px;
+  }
+
+  .gtm-table-card {
+    border-radius: 12px;
+  }
+
+  .gtm-tab-pill {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+    border-radius: 8px;
   }
 }

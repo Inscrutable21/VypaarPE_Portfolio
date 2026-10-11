@@ -515,9 +515,70 @@
   font-weight: 450;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .section_home-logo {
-    margin-top: -6.5rem;
+    margin-top: -2rem;
+    padding: 0 12px 3.5rem 12px;
+  }
+
+  .home-logo_content {
+    border-radius: 1.75rem;
+    padding: 2.5rem 0 2.25rem 0;
+  }
+
+  .home-logo_intro {
+    margin: 0 auto 1.75rem auto;
+    padding: 0 1.25rem;
+  }
+
+  .home-logo_intro .text-size-medium {
+    font-size: 1.1rem;
+    line-height: 1.45;
+  }
+
+  .home-logo_base {
+    --unit-h: 4.5rem;
+    --unit-w: 8.75rem;
+    --unit-gap: 0.55rem;
+    padding: 0 1.5rem;
+  }
+
+  .logo-card {
+    border-radius: 0.95rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .logo_cursor {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section_home-logo {
+    margin-top: -1.25rem;
+    padding: 0 10px 2.75rem 10px;
+  }
+
+  .home-logo_content {
+    border-radius: 1.25rem;
+    padding: 2rem 0 1.75rem 0;
+  }
+
+  .home-logo_intro {
+    padding: 0 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .home-logo_intro .text-size-medium {
+    font-size: 0.98rem;
+  }
+
+  .home-logo_base {
+    --unit-h: 4.2rem;
+    --unit-w: 8rem;
+    --unit-gap: 0.5rem;
+    padding: 0 1rem;
   }
 }
 
