@@ -52,9 +52,9 @@ function initNavFeatures() {
       mobileNavToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close mobile drawer when a link is tapped
-    mainNavLinksWrap.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
+    // Close mobile drawer when a link or button is tapped
+    mainNavLinksWrap.querySelectorAll('a, button').forEach((item) => {
+      item.addEventListener('click', () => {
         mainNavLinksWrap.classList.remove('mobile-open');
         mobileNavToggle.classList.remove('is-active');
         mobileNavToggle.setAttribute('aria-expanded', 'false');
@@ -77,15 +77,18 @@ function initNavFeatures() {
 }
 
 /**
- * Header background opacity on scroll
+ * Header sticky scroll behavior
  */
 function initScrollHeader() {
   const navbar = document.querySelector('.navbar');
+  const announcement = document.querySelector('.top-announcement-bar');
   if (!navbar) return;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
+      if (announcement) announcement.classList.add('is-hidden');
       navbar.classList.add('scrolled');
     } else {
+      if (announcement) announcement.classList.remove('is-hidden');
       navbar.classList.remove('scrolled');
     }
   }, { passive: true });

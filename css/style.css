@@ -148,7 +148,7 @@ textarea {
    Top Header Container & Announcement Bar
    ========================================================================== */
 .site-header-fixed {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -168,6 +168,7 @@ textarea {
   color: #ffffff;
   padding: 0 1.2rem;
   height: 38px;
+  max-height: 48px;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -177,7 +178,25 @@ textarea {
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   box-shadow: 0 4px 14px rgba(69, 1, 46, 0.2);
-  transition: all var(--transition-fast);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.top-announcement-bar.is-hidden {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom-color: transparent;
+  pointer-events: none;
+}
+
+.navbar.scrolled {
+  margin-top: 8px;
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .announcement-inner {
@@ -290,6 +309,10 @@ textarea {
 .main-nav-links-wrap {
   display: flex;
   align-items: center;
+}
+
+.mobile-drawer-actions {
+  display: none;
 }
 
 .nav-links {
@@ -668,6 +691,7 @@ textarea {
   }
 
   .main-nav-links-wrap,
+  .btn-nav-login,
   .btn-nav-demo,
   .nav-vertical-divider {
     display: none;
@@ -675,8 +699,9 @@ textarea {
 
   .main-nav-links-wrap.mobile-open {
     display: flex;
+    flex-direction: column;
     position: absolute;
-    top: calc(100% + 4px);
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     width: 100%;
@@ -707,7 +732,7 @@ textarea {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    gap: 0.5rem;
+    gap: 0.35rem;
   }
 
   .main-nav-links-wrap.mobile-open .nav-links li {
@@ -719,7 +744,7 @@ textarea {
     width: 100%;
     padding: 10px 14px;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 600;
     color: #111827;
     transition: background-color var(--transition-fast);
@@ -731,8 +756,86 @@ textarea {
     color: #000000;
   }
 
+  .mobile-drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-drawer-btn-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .btn-drawer-login,
+  .btn-drawer-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+  }
+
+  .btn-drawer-login {
+    background: #f1f5f9;
+    color: #111827;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .btn-drawer-login:hover {
+    background: #e2e8f0;
+  }
+
+  .btn-drawer-demo {
+    background: #c8e600;
+    color: #000000;
+    border: none;
+  }
+
+  .btn-drawer-demo:hover {
+    background: #b8d400;
+  }
+
+  .btn-drawer-trial {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.96rem;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: all var(--transition-fast);
+  }
+
+  .btn-drawer-trial:hover {
+    background: #262626;
+  }
+
   .mobile-nav-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 4px;
   }
 
   .mobile-nav-toggle.is-active span:nth-child(1) {
@@ -854,26 +957,45 @@ textarea {
 
   .navbar {
     width: calc(100% - 16px);
-    height: 54px;
+    height: 52px;
     padding: 0 10px;
   }
 
-  .brand-text {
-    font-size: 1.25rem;
+  .brand-logo {
+    gap: 5px;
+    padding: 2px 4px;
+    flex-shrink: 0;
   }
 
-  .nav-search-pill .kbd-cmd,
-  .nav-search-pill .kbd-letter {
-    display: none;
+  .brand-text {
+    font-size: 1.2rem;
+  }
+
+  .clay-rainbow-icon svg {
+    width: 24px;
+    height: 19px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .nav-search-pill {
-    padding: 5px 7px;
+    display: none;
   }
 
   .btn-nav-trial {
-    padding: 7px 12px;
-    font-size: 0.82rem;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 3px;
   }
 
   .hero-content-overlay {
