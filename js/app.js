@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavFeatures();
   initScrollHeader();
   initGtmSection();
+  initStackingCards();
 });
 
 /**
@@ -294,29 +295,17 @@ function initGtmSection() {
   const prevLeadBtn = document.getElementById('gtmPrevLeadBtn');
   const nextLeadBtn = document.getElementById('gtmNextLeadBtn');
 
-  // Track translation state
-  let currentTrackOffset = 0;
-
-  // Helper function: Smoothly glide track so clicked button is positioned in the exact dead center of tabs wrapper
-  function centerPill(pill, smooth = true) {
-    if (!pill || !tabsList) return;
-    
-    // Accurate center of the tabs container
-    const wrapperRect = (tabsWrapper || document.querySelector('.gtm-tabs-wrapper'))?.getBoundingClientRect();
-    const targetCenter = wrapperRect ? (wrapperRect.left + (wrapperRect.width / 2)) : (window.innerWidth / 2);
+  // Helper function: Smoothly center clicked button in tabs wrapper
+  function centerPill(pill) {
+    if (!pill || !tabsWrapper) return;
     const pillRect = pill.getBoundingClientRect();
-    const pillCenter = pillRect.left + (pillRect.width / 2);
+    const wrapperRect = tabsWrapper.getBoundingClientRect();
+    const delta = (pillRect.left + (pillRect.width / 2)) - (wrapperRect.left + (wrapperRect.width / 2));
     
-    // Delta needed to align pill center with wrapper center
-    const delta = targetCenter - pillCenter;
-    currentTrackOffset += delta;
-
-    if (smooth) {
-      tabsList.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-    } else {
-      tabsList.style.transition = 'none';
-    }
-    tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
+    tabsWrapper.scrollTo({
+      left: Math.max(0, tabsWrapper.scrollLeft + delta),
+      behavior: 'smooth'
+    });
   }
 
   // Helper function: Apply dynamic theme colors to the section, box backdrop, and accents
@@ -521,19 +510,9 @@ function initGtmSection() {
   };
 
   // 1. Tab Switching & Centering via Event Delegation
-  let isDraggingTabs = false;
-  let dragStartX = 0;
-  let dragStartOffset = 0;
-  let hasDragged = false;
-
   tabsList.addEventListener('click', (e) => {
-    if (hasDragged) {
-      hasDragged = false;
-      return;
-    }
     const pill = e.target.closest('.gtm-tab-pill');
     if (!pill) return;
-
     activateTab(pill, true);
   });
 
@@ -546,8 +525,10 @@ function initGtmSection() {
     tabsList.querySelectorAll('.gtm-tab-pill').forEach(p => p.classList.remove('is-active'));
     pill.classList.add('is-active');
 
-    // Smoothly animate clicked tab to the exact center of screen/container
-    centerPill(pill, smooth);
+    // Smoothly center clicked tab in container
+    if (smooth) {
+      centerPill(pill);
+    }
 
     // Apply color theme dynamically
     if (dataset.theme) {
@@ -623,138 +604,17 @@ function initGtmSection() {
     nextBtn.addEventListener('click', () => switchTab(1));
   }
 
-  // Snap to closest pill when drag ends
-  function snapToClosestPill() {
-    const pills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
-    const wrapperRect = (tabsWrapper || document.querySelector('.gtm-tabs-wrapper'))?.getBoundingClientRect();
-    const targetCenter = wrapperRect ? (wrapperRect.left + (wrapperRect.width / 2)) : (window.innerWidth / 2);
-    let closestPill = null;
-    let minDiff = Infinity;
-
-    pills.forEach(p => {
-      const rect = p.getBoundingClientRect();
-      const pCenter = rect.left + rect.width / 2;
-      const diff = Math.abs(targetCenter - pCenter);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestPill = p;
-      }
-    });
-
-    if (closestPill) {
-      activateTab(closestPill, true);
-    }
-  }
-
-  // Mouse drag & touch pan support
-  if (tabsWrapper) {
-    tabsWrapper.addEventListener('mousedown', (e) => {
-      isDraggingTabs = true;
-      hasDragged = false;
-      dragStartX = e.clientX;
-      dragStartOffset = currentTrackOffset;
-      tabsList.style.transition = 'none';
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDraggingTabs) return;
-      const diff = e.clientX - dragStartX;
-      if (Math.abs(diff) > 4) hasDragged = true;
-      currentTrackOffset = dragStartOffset + diff;
-      tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (!isDraggingTabs) return;
-      isDraggingTabs = false;
-      if (hasDragged) {
-        snapToClosestPill();
-      }
-    });
-
-    // Touch support for mobile/touchscreens
-    tabsWrapper.addEventListener('touchstart', (e) => {
-      if (!e.touches[0]) return;
-      isDraggingTabs = true;
-      hasDragged = false;
-      dragStartX = e.touches[0].clientX;
-      dragStartOffset = currentTrackOffset;
-      tabsList.style.transition = 'none';
-    }, { passive: true });
-
-    tabsWrapper.addEventListener('touchmove', (e) => {
-      if (!isDraggingTabs || !e.touches[0]) return;
-      const diff = e.touches[0].clientX - dragStartX;
-      if (Math.abs(diff) > 4) hasDragged = true;
-      currentTrackOffset = dragStartOffset + diff;
-      tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
-    }, { passive: true });
-
-    tabsWrapper.addEventListener('touchend', () => {
-      if (!isDraggingTabs) return;
-      isDraggingTabs = false;
-      if (hasDragged) {
-        snapToClosestPill();
-      }
-    });
-  }
-
-  // Silent re-anchoring to the middle set (Set 3) after smooth scroll finishes
-  tabsList.addEventListener('transitionend', (e) => {
-    if (e.target !== tabsList || e.propertyName !== 'transform') return;
-    const activePill = tabsList.querySelector('.gtm-tab-pill.is-active');
-    if (!activePill) return;
-
-    const allPills = Array.from(tabsList.querySelectorAll('.gtm-tab-pill'));
-    const activeIndex = allPills.indexOf(activePill);
-    
-    // Middle set is indices 14 to 20 (Set 3) out of 35 pills
-    if (activeIndex >= 0 && (activeIndex < 14 || activeIndex > 20)) {
-      const targetTabId = activePill.dataset.tab;
-      const middleSetPills = allPills.slice(14, 21);
-      const counterpartPill = middleSetPills.find(p => p.dataset.tab === targetTabId);
-      
-      if (counterpartPill && counterpartPill !== activePill) {
-        const activeRect = activePill.getBoundingClientRect();
-        const counterpartRect = counterpartPill.getBoundingClientRect();
-        const offsetShift = activeRect.left - counterpartRect.left;
-        
-        currentTrackOffset += offsetShift;
-        tabsList.style.transition = 'none';
-        tabsList.style.transform = `translateX(${Math.round(currentTrackOffset)}px)`;
-        
-        activePill.classList.remove('is-active');
-        counterpartPill.classList.add('is-active');
-        
-        // Force reflow
-        void tabsList.offsetHeight;
-      }
-    }
-  });
-
   // Center initial active button on load
   const initialActive = tabsList.querySelector('.gtm-tab-pill.is-active') || tabsList.querySelector('.gtm-tab-pill');
   if (initialActive) {
     activateTab(initialActive, false);
-    centerPill(initialActive, false);
-    requestAnimationFrame(() => centerPill(initialActive, false));
-    setTimeout(() => centerPill(initialActive, false), 50);
-    setTimeout(() => centerPill(initialActive, false), 200);
   }
 
-  // Ensure centering remains exact once web fonts load
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {
-      const currentActive = tabsList.querySelector('.gtm-tab-pill.is-active');
-      if (currentActive) centerPill(currentActive, false);
-    });
-  }
-
-  // Keep active button centered on window resize
+  // Keep active button visible on window resize
   window.addEventListener('resize', () => {
     const currentActive = tabsList.querySelector('.gtm-tab-pill.is-active');
     if (currentActive) {
-      centerPill(currentActive, false);
+      centerPill(currentActive);
     }
   });
 
@@ -879,3 +739,65 @@ function initGtmSection() {
     });
   }
 }
+
+/**
+ * Interactive 3D Stacking Cards Scroll Animation
+ * Scales down previous cards and adds depth shading as newer cards stack on top
+ */
+function initStackingCards() {
+  const cardsList = document.getElementById('sc-cards');
+  if (!cardsList) return;
+  const cards = Array.from(cardsList.querySelectorAll('.sc-card'));
+  if (!cards.length) return;
+
+  let ticking = false;
+
+  function updateCards() {
+    const totalCards = cards.length;
+
+    cards.forEach((card, i) => {
+      const content = card.querySelector('.sc-card__content');
+      if (!content) return;
+
+      if (i === totalCards - 1) {
+        content.style.transform = 'scale(1)';
+        content.style.filter = 'brightness(1)';
+        return;
+      }
+
+      // Calculate how much subsequent cards are covering this card
+      const cardRect = card.getBoundingClientRect();
+      const cardHeight = cardRect.height || 520;
+      let totalCoverProgress = 0;
+
+      for (let j = i + 1; j < totalCards; j++) {
+        const nextRect = cards[j].getBoundingClientRect();
+        const diff = nextRect.top - cardRect.top;
+        if (diff < cardHeight) {
+          const progress = Math.max(0, Math.min(1, 1 - (diff / cardHeight)));
+          totalCoverProgress += progress;
+        }
+      }
+
+      const scale = Math.max(0.88, 1 - (totalCoverProgress * 0.04));
+      const brightness = Math.max(0.85, 1 - (totalCoverProgress * 0.06));
+
+      content.style.transform = `scale(${scale.toFixed(4)})`;
+      content.style.filter = `brightness(${brightness.toFixed(4)})`;
+    });
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateCards);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  updateCards();
+}
+

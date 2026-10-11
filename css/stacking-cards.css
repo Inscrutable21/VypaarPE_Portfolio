@@ -140,7 +140,8 @@
 /* Card content — this is the element that scales down */
 .sc-card__content {
   transform-origin: 50% 0%;
-  will-change: transform;
+  will-change: transform, filter;
+  transition: transform 0.12s ease-out, filter 0.12s ease-out;
   height: var(--sc-card-height);
   border-radius: 28px;
   overflow: hidden;
