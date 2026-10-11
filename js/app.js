@@ -22,13 +22,17 @@ function initHeroVideo() {
     video.muted = true;
     video.defaultMuted = true;
     video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback retry on first user click if browser policy restricts autoplay
-        document.addEventListener('click', () => {
+        // Fallback retry on first user click or touch if browser policy restricts mobile autoplay
+        const startPlay = () => {
           video.play();
-        }, { once: true });
+        };
+        document.addEventListener('click', startPlay, { once: true });
+        document.addEventListener('touchstart', startPlay, { once: true });
       });
     }
   });

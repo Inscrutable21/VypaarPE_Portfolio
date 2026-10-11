@@ -163,14 +163,29 @@
         </div>
       </div>
       <div class="hero-video-wrapper">
-        <img 
-          id="heroGif" 
+        <video 
+          id="heroVideo" 
           class="hero-bg-media" 
-          src="assets/images/hero-section.webp" 
-          alt="VyaparPe AI Commerce Engine 3D Mechanism"
-          loading="eager"
-          decoding="async"
-        />
+          src="assets/videos/hero-section.mp4" 
+          poster="assets/images/hero-section.webp" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          webkit-playsinline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="assets/videos/hero-section.mp4" type="video/mp4">
+          <img 
+            id="heroGif" 
+            class="hero-bg-media" 
+            src="assets/images/hero-section.webp" 
+            alt="VyaparPe AI Commerce Engine 3D Mechanism"
+            loading="eager"
+            decoding="async"
+          />
+        </video>
         <div class="hero-video-gradient-bottom"></div>
       </div>
     </section>
