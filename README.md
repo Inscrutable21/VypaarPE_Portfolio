@@ -21,7 +21,9 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 - **Sub-Second Edge Infrastructure**: Global edge delivery yielding sub-500ms page loads and high checkout conversions.
 - **WhatsApp Autonomous Sales Agent**: 24/7 conversational commerce, abandoned cart recovery via 1-tap UPI, and live rider GPS tracking.
 - **1-Click UPI & Frictionless Checkout Engine**: 0% MDR UPI QR payments, pre-filled address auto-fill via VyaparPe Network ID, and instantaneous bank settlements.
-- **Centered Glide Carousel**: Clay-inspired interactive workflow tabs centered dynamically in the viewport with gradient fade masks and inertia drag support.
+- **Clay-Inspired Studio Architecture**: Showcase sections built with centered glide pill navigation, off-white spreadsheet cards (`#fbfbf7`), dynamic theme backdrop glows, and high-density data matrices.
+- **Commercial Pricing & Plans Engine**: 100% theme-aligned pricing component with interactive plan switching, dynamic ambient glows, floating action cards, and a live ROI margin calculator.
+- **Interactive Modals & Onboarding Wizard**: Native dialogs for detailed plan inspection, a 4-step store deployment wizard (`vyaparpe.in/start`), and a Cmd+K command palette.
 - **100% WebP Image Optimization**: All raster graphics converted to WebP format for optimal compression, minimal bundle payload, and instant image decode times.
 - **Responsive Mobile Navigation**: Fixed header container with animated announcement strip, Cmd+K search trigger, and expandable mobile drawer with quick action buttons.
 - **Zero Runtime Dependencies**: Native browser execution without bundlers, compilation steps, or heavy virtual DOM overhead.
@@ -37,7 +39,7 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 
 | Plan Tier | Price | Model | Custom Domain | Product Limit | Platform Fee | Support SLA | AI Analytics & Extras |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Free Tier** | **₹0** /month | Self-Managed | Basic `*.vyaparpe.in` subdomain | 50 Products | 5% commission | Email only (48h response) | Default theme, unlimited order processing |
+| **Free Tier** | **₹0** /month | Self-Managed | Basic `*.vyaparpe.in` subdomain | 50 Products | 5% commission | Email only (48h response) | Default theme, unlimited order processing, Razorpay UPI |
 | **Growth Plan** | **₹999** /month | Self-Managed | Custom `.com` domain | 1,000 Products | 2% commission | Priority Email & Chat (12h) | All premium themes, 3 staff accounts, advanced AI insights |
 | **Ad-Spend Partner** | **₹0** /month *(Min. ₹1,000/day ads)* | **Fully Managed** | Custom `.com` domain | 500 Products *(managed)* | 3% revenue share | Dedicated WhatsApp Group | 100% managed store & Meta/Google ads, creatives provided, ₹0 setup fee |
 | **Lifetime Ownership** | **₹50,000** one-time *(was ₹1L)* | Enterprise License | Custom `.com` domain | Unlimited Products | Lowest 1% fee | Direct Phone & VIP | Headless API & Webhooks, ₹2,000/yr server maintenance, custom UI/UX requests |
@@ -57,7 +59,7 @@ For merchants who prefer full-service assistance over DIY setup:
    - Scaled at **50 Products or 150 SKUs** per block.
 3. **Custom UX Theme (`₹9,999` one-time)**:
    - Bespoke, high-converting storefront design tailored to your specific D2C niche.
-   - Optimized for mobile-first conversion rate benchmarks.
+   - Optimized for mobile-first conversion rate benchmarks with dedicated senior designer support.
 
 ---
 
@@ -121,9 +123,17 @@ The official store creation pipeline operates in an automated 6-step lifecycle:
 ├─────────────────────────────────────────────────────────────────┤
 │ 7. 9-Column Asymmetric Modern Commerce Bento Grid               │
 ├─────────────────────────────────────────────────────────────────┤
-│ 8. Growth Ideas Call to Action (CTA Banner)                     │
+│ 8. Commercial Pricing & Plans Engine (Clay GTM Design Language) │
+│    • Dynamic Theme Backdrop Glow Card (Lime, Cyan, Orange, etc.) │
+│    • Clay Off-White Spreadsheet Matrix (#fbfbf7)                │
+│    • Left Floating Plan Launcher + Right Revenue Calculator     │
+│    • Add-On Services Strip (Setup, Listings, Custom UX)         │
 ├─────────────────────────────────────────────────────────────────┤
-│ 9. Multi-Column Elevated Footer with 3D Geometric Backdrop      │
+│ 9. Growth Ideas Call to Action (CTA Banner)                     │
+├─────────────────────────────────────────────────────────────────┤
+│ 10. Multi-Column Elevated Footer with 3D Geometric Backdrop     │
+├─────────────────────────────────────────────────────────────────┤
+│ 11. Interactive Modals Suite (Plan Specs, Wizard, Cmd+K Search) │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -137,7 +147,7 @@ The official store creation pipeline operates in an automated 6-step lifecycle:
   - **Smooth Scroll Collapse**: Seamlessly transitions to zero height (`.top-announcement-bar.is-hidden`) on scroll.
 - **Floating Island Header**:
   - Branded logo with multi-tiered SVG rainbow arch.
-  - Desktop navigation items: Storefronts, Quick Commerce, AI Copilot, Integrations, and Pricing.
+  - Desktop navigation items: Storefronts, Quick Commerce, AI Copilot, Integrations, and Pricing (`#pricing`).
   - Quick Search shortcut pill (`⌘K` / `Ctrl+K`).
   - Action buttons: "Log in", "Get a demo", and "Start free store".
 - **Mobile Drawer & Touch UX**:
@@ -196,10 +206,38 @@ Inspired by Clay.com's interactive workflow demonstration:
   - **Dark Store Tech**: Blueprint to pick, pack, & dispatch orders in under 90 seconds.
   - **Partner Ecosystem**: Network of 2,500+ design agencies, developers, and creators.
 
-### 3.8 Growth Ideas Call to Action (CTA)
+### 3.8 Commercial Pricing & Plans Engine (Clay GTM Aesthetic)
+Redesigned to mirror the signature design language of **"The AI commerce engine built for instant speed"**:
+- **Centered Header**: Matches `.gtm-heading` and `.gtm-subheading` with `Outfit` 700 display weight and `-0.035em` letter spacing.
+- **Horizontal Plan Pills Bar**:
+  - `Free Tier · ₹0` (Electric Lime `#eaf872`)
+  - `Growth Plan · ₹999/mo` (Sky Cyan `#7dd3fc`)
+  - `Ad-Spend Partner · ₹0 + Ads` (Sunset Orange `#fdba74`)
+  - `Lifetime License · ₹50k` (Lilac Purple `#c4b5fd`)
+  - `Setup Services & Add-ons` (Mint Green `#a7f3d0`)
+  - `Full Matrix Comparison` (Warm Gold `#fef08a`)
+- **Dynamic Backdrop Glow Card**: Rounded `32px` ambient backdrop (`.pricing-lime-backdrop`) that morphs color and box shadow on tab selection.
+- **Clay Spreadsheet Table Card**: Off-white `#fbfbf7` surface with 3-arch brand SVG logo, title, and interactive matrix with checkboxes, badges, and instant action buttons.
+- **Floating Overlaid Cards**:
+  - **Left Floating Plan Launcher**: Active plan highlights, price display, and 1-click CTA opening the Store Deployment Wizard.
+  - **Right Floating Card**: Segmented switch between **Plan Specs** (DNS, limits, payment gateways) and an interactive **Live Revenue / Margin Calculator**.
+- **Add-On Services Cards**: Three clean Clay cards for **One-Time Setup** (`₹2,499`), **Extra Listings** (`₹499`), and **Custom UX Theme** (`₹9,999`).
+
+### 3.9 Interactive Modals & Onboarding Engine
+- **Plan Details Modal (`#plan-details-modal`)**: Deep-dive feature breakdown for each plan with direct handoff to the store builder.
+- **Store Builder Onboarding Wizard (`#store-builder-modal`)**:
+  - **Step 1: Business Profile**: Brand name, category, and WhatsApp number.
+  - **Step 2: Subdomain Allocation**: Real-time URL preview (`yourbrand.vyaparpe.in`) with automated slugification.
+  - **Step 3: Plan Selection**: Radio selection between Free Tier, Growth, Partner, and Lifetime.
+  - **Step 4: Provisioning Simulation**: Animated progress bar for database setup, SSL generation, and Razorpay UPI configuration, ending in live store launch credentials.
+- **Quick Command Palette (`#search-modal`)**:
+  - Keyboard trigger via `⌘K` or `Ctrl+K`.
+  - Instant live filtering across store builder, pricing, quick commerce, and DNS features.
+
+### 3.10 Growth Ideas Call to Action (CTA)
 - High-contrast conversion banner with primary "Start free store" and secondary "Book a demo" action points.
 
-### 3.9 Multi-Column Elevated Footer
+### 3.11 Multi-Column Elevated Footer
 - **Vibrant 3D Geometric Backdrop**: Full-width dense ocean of glossy candy-coated 3D shapes with soft ambient lighting (`assets/images/footer-colorful-bg.webp`).
 - **Floating Elevated Card**: High-contrast white card (`border-top-left-radius: 28px; border-top-right-radius: 28px`) with structured columns covering E-Commerce, Quick Commerce, Integrations, Resources, Company, Popular Categories, and RBI Compliance/Legal links.
 
@@ -220,11 +258,13 @@ vypaarpe/
 │   ├── stacking-cards.css       # Sticky scroll-driven stacking card styles
 │   ├── reps-section.css         # Reps productivity showcase & profitability contraption styles
 │   ├── gtm-engineering.css      # 9-column asymmetric Bento Grid styles (80% width container)
+│   ├── pricing-section.css      # Commercial pricing engine (Clay GTM style, backdrop glow, table)
+│   ├── modals.css               # Store builder wizard, plan specs modal, and Cmd+K search palette
 │   ├── cta-section.css          # Growth ideas call-to-action banner styles
 │   └── footer-section.css       # Multi-column footer styles with vibrant 3D backdrop
 │
 ├── js/                          # Application Logic (Vanilla ES6+)
-│   └── app.js                   # Header scroll, mobile drawer, glide carousel, stacking cards
+│   └── app.js                   # Navigation, glide tabs, stacking cards, pricing engine, modals
 │
 └── assets/                      # Static Media
     ├── images/                  # 100% WebP optimized graphics, cards, bento previews, SVG marks
@@ -235,23 +275,26 @@ vypaarpe/
 
 ---
 
-## 5. Design System Tokens
+## 5. Design System Tokens & Color Schemes
 
 The user interface follows a strict design token system defined via CSS Custom Properties:
 
 | Token Category | Value | Application |
 | :--- | :--- | :--- |
 | **Primary Background** | `#ffffff` | Page body, primary cards, and bento section base |
+| **Clay Canvas Surface** | `#fbfbf7` | GTM spreadsheet card, pricing table card, addon cards |
 | **Surface Elevated** | `#f8fafc` / `#f1f5f9` | Pill buttons, drawer background, card hover fills |
 | **Brand Plum** | `#45012e` | Top announcement bar, high-contrast banner strip |
-| **Emerald Accent** | `#00f59b` / `#10b981` | Live status dots, active highlight rings, success badges |
-| **Electric Cyan** | `#38bdf8` / `#0090ff` | Rainbow logo middle arch, interactive link accents |
-| **Vibrant Yellow** | `#fde047` / `#facc15` | Announcement CTA, rainbow logo inner arch |
-| **Lavender Tint** | `#c4b5fd` / `#e9d5ff` | Announcement bar copy, subtitle highlights |
-| **Dark Heading Text** | `#0f172a` | Display titles, hero headlines, card titles |
-| **Muted Body Text** | `#475569` | Subtitles, descriptions, secondary copy |
+| **Electric Lime Theme** | `#eaf872` / `#647017` | Free Tier & AI Store Builder glow and active pills |
+| **Sky Cyan Theme** | `#7dd3fc` / `#0284c7` | Growth Plan & Quick Commerce glow and active pills |
+| **Sunset Orange Theme** | `#fdba74` / `#ea580c` | Ad-Spend Partner & Dark Store Sync glow and active pills |
+| **Lilac Purple Theme** | `#c4b5fd` / `#7c3aed` | Lifetime License & UPI Checkout glow and active pills |
+| **Mint Green Theme** | `#a7f3d0` / `#059669` | Setup Services & WhatsApp Agent glow and active pills |
+| **Warm Gold Theme** | `#fef08a` / `#ca8a04` | Full Matrix Comparison & Hyperlocal Routing theme |
+| **Dark Heading Text** | `#0c131f` / `#0f172a` | Display titles, hero headlines, card titles |
+| **Muted Body Text** | `#475569` / `#555c68` | Subtitles, descriptions, secondary copy |
 | **Subtle Metadata** | `#94a3b8` | Captions, small indicators, search pill borders |
-| **Border Radii** | `9999px` / `20px` / `14px` | Standard rounded radii for pills, cards, and buttons |
+| **Border Radii** | `9999px` / `32px` / `20px` / `16px` / `10px` | Pills, backdrops, canvas cards, and modal dialogs |
 
 ---
 
