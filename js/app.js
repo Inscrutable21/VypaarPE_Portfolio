@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollHeader();
   initGtmSection();
   initStackingCards();
+  initPricingAndModals();
 });
 
 /**
@@ -807,4 +808,410 @@ function initStackingCards() {
   window.addEventListener('resize', onScroll, { passive: true });
   updateCards();
 }
+
+/**
+ * ==========================================================================
+ * VyaparPe Commercial Data, Modals & Onboarding Engine (Extracted from vyaparpe.in)
+ * ==========================================================================
+ */
+
+const planData = {
+  'Starter': {
+    title: 'Free Tier',
+    desc: 'A great way to begin your online commerce journey completely free.',
+    badge: 'Free Forever',
+    features: [
+      { name: 'Storefront URL', val: 'Free vyaparpe subdomain (*.vyaparpe.in)' },
+      { name: 'Product Catalog Limit', val: '50 Products' },
+      { name: 'Order Processing', val: 'Unlimited orders' },
+      { name: 'Platform Commission', val: '5% per successful transaction' },
+      { name: 'Customer Support', val: 'Email only (48h response)' },
+      { name: 'Custom .com Domain', val: '❌ Not available on Free Tier' },
+      { name: 'Theme Engine', val: '❌ Default theme only' },
+      { name: 'Edge CDN Hosting', val: '✅ Global CDN & SSL Included' }
+    ]
+  },
+  'Growth': {
+    title: 'Growth Plan',
+    desc: 'For serious D2C sellers who want their own brand identity and lower fees.',
+    badge: 'Most Popular',
+    features: [
+      { name: 'Storefront URL', val: 'Custom .com domain connection' },
+      { name: 'Product Catalog Limit', val: '1,000 Products' },
+      { name: 'Order Processing', val: 'Unlimited orders' },
+      { name: 'Platform Commission', val: 'Reduced to 2% per transaction' },
+      { name: 'Customer Support', val: 'Priority Email & Chat (12h response)' },
+      { name: 'Theme Engine', val: '✅ Access to all premium themes' },
+      { name: 'Staff Accounts', val: 'Up to 3 staff members' },
+      { name: 'AI Insights & Analytics', val: '✅ Vyapar AI natural language reports' }
+    ]
+  },
+  'Partner': {
+    title: 'Ad-Spend Partner',
+    desc: 'You handle the inventory, we handle the entire tech, website, and marketing.',
+    badge: 'Fully Managed',
+    features: [
+      { name: 'Management Scope', val: '100% Fully Managed Store & Ads' },
+      { name: 'Ad Spend Required', val: 'Minimum ₹1,000/day on Meta/Google Ads' },
+      { name: 'Product Catalog Limit', val: '500 Products (Managed)' },
+      { name: 'Platform Commission', val: '3% Revenue Share' },
+      { name: 'Account Manager', val: '✅ Dedicated WhatsApp Group' },
+      { name: 'Creatives & Ad Copy', val: '✅ We provide ad copy & creatives' },
+      { name: 'Setup Fee', val: '₹0 (Waived off)' },
+      { name: 'Logistics Integration', val: '✅ Dunzo, Porter & Shadowfax auto-dispatch' }
+    ]
+  },
+  'Lifetime': {
+    title: 'Lifetime Ownership',
+    desc: 'One time payment. Total control over your data with the lowest possible fees.',
+    badge: 'Enterprise',
+    features: [
+      { name: 'Licensing Model', val: 'Lifetime core engine access' },
+      { name: 'Product Catalog Limit', val: 'Unlimited Products' },
+      { name: 'Platform Commission', val: 'Lowest 1% payment gateway markup' },
+      { name: 'Maintenance Fee', val: '₹2,000/year for server & DB costs' },
+      { name: 'Customization', val: '✅ Request custom UI/UX features' },
+      { name: 'API Access', val: '✅ Full Headless API & Webhooks' },
+      { name: 'Priority Support', val: '✅ Direct Phone & VIP Support' }
+    ]
+  }
+};
+
+let currentModalPlanKey = 'Starter';
+let currentBuilderStep = 1;
+
+/**
+ * Opens Plan Details modal with populated specs
+ */
+function openPlanModal(planKey) {
+  const data = planData[planKey] || planData['Starter'];
+  currentModalPlanKey = planKey;
+
+  const titleEl = document.getElementById('modalPlanTitle');
+  const descEl = document.getElementById('modalPlanDesc');
+  const badgeEl = document.getElementById('modalPlanBadge');
+  const container = document.getElementById('modalFeaturesContainer');
+  const modal = document.getElementById('plan-details-modal');
+
+  if (titleEl) titleEl.textContent = data.title;
+  if (descEl) descEl.textContent = data.desc;
+  if (badgeEl) badgeEl.textContent = data.badge;
+
+  if (container) {
+    container.innerHTML = data.features.map(f => `
+      <div class="plan-feature-row">
+        <span>${f.name}</span>
+        <span>${f.val}</span>
+      </div>
+    `).join('');
+  }
+
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+/**
+ * Closes Plan Details modal
+ */
+function closePlanModal() {
+  const modal = document.getElementById('plan-details-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+/**
+ * Switches from Plan Details modal into Onboarding Store Builder Wizard
+ */
+function chooseCurrentPlanFromModal() {
+  closePlanModal();
+  openStoreBuilderModal(currentModalPlanKey);
+}
+
+/**
+ * Opens Store Builder Onboarding Wizard (Data from vyaparpe.in/start)
+ */
+function openStoreBuilderModal(initialPlan = 'Starter') {
+  const modal = document.getElementById('store-builder-modal');
+  if (!modal) return;
+
+  goToBuilderStep(1);
+
+  // Set selected plan
+  const planOptions = modal.querySelectorAll('.builder-plan-option');
+  planOptions.forEach(opt => {
+    const radio = opt.querySelector('input[type="radio"]');
+    if (radio && radio.value === initialPlan) {
+      selectPlanOption(initialPlan, opt);
+    }
+  });
+
+  modal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes Store Builder modal
+ */
+function closeStoreBuilderModal() {
+  const modal = document.getElementById('store-builder-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+/**
+ * Navigate between Store Builder Wizard steps
+ */
+function goToBuilderStep(stepNum) {
+  currentBuilderStep = stepNum;
+
+  // Toggle step panels
+  for (let i = 1; i <= 4; i++) {
+    const stepEl = document.getElementById(`builderStep${i}`);
+    const dotEl = document.getElementById(`dotStep${i}`);
+    if (stepEl) {
+      if (i === stepNum) {
+        stepEl.classList.add('is-active');
+      } else {
+        stepEl.classList.remove('is-active');
+      }
+    }
+    if (dotEl) {
+      if (i === stepNum) {
+        dotEl.classList.add('is-active');
+        dotEl.classList.remove('is-completed');
+      } else if (i < stepNum) {
+        dotEl.classList.remove('is-active');
+        dotEl.classList.add('is-completed');
+      } else {
+        dotEl.classList.remove('is-active');
+        dotEl.classList.remove('is-completed');
+      }
+    }
+  }
+
+  // Update subdomain when entering step 2
+  if (stepNum === 2) {
+    const brandName = document.getElementById('wizardBrandName')?.value.trim() || 'mybrand';
+    const slug = brandName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const subdomainInput = document.getElementById('wizardSubdomain');
+    if (subdomainInput && !subdomainInput.dataset.manualEdit) {
+      subdomainInput.value = slug || 'mybrand';
+    }
+  }
+}
+
+/**
+ * Plan option selection inside Builder Wizard
+ */
+function selectPlanOption(planKey, element) {
+  const container = document.getElementById('builderStep3');
+  if (container) {
+    container.querySelectorAll('.builder-plan-option').forEach(el => el.classList.remove('is-selected'));
+  }
+  if (element) {
+    element.classList.add('is-selected');
+    const radio = element.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+  }
+}
+
+/**
+ * Simulates Instant Store Deployment with progress feedback
+ */
+function startStoreDeployment() {
+  goToBuilderStep(4);
+
+  const deployingState = document.getElementById('builderDeployingState');
+  const successState = document.getElementById('builderSuccessState');
+  const progressText = document.getElementById('deployProgressText');
+  const progressBar = document.getElementById('deployProgressBar');
+  const successUrl = document.getElementById('successStoreUrl');
+  const successPlanName = document.getElementById('successPlanName');
+
+  if (deployingState) deployingState.style.display = 'block';
+  if (successState) successState.style.display = 'none';
+  if (progressBar) progressBar.style.width = '0%';
+
+  const brandName = document.getElementById('wizardBrandName')?.value.trim() || 'Kavya Organics';
+  const sub = document.getElementById('wizardSubdomain')?.value.trim() || 'kavyaorganics';
+  const selectedRadio = document.querySelector('input[name="builderPlan"]:checked');
+  const planVal = selectedRadio ? selectedRadio.value : 'Starter';
+
+  const steps = [
+    { pct: '25%', text: 'Provisioning multi-tenant database & edge cache...' },
+    { pct: '55%', text: 'Generating SSL certificates & DNS routing for ' + sub + '.vyaparpe.in...' },
+    { pct: '85%', text: 'Pre-configuring Razorpay UPI checkout & catalog schemas...' },
+    { pct: '100%', text: 'Store engine activated successfully!' }
+  ];
+
+  let stepIdx = 0;
+  const interval = setInterval(() => {
+    if (stepIdx < steps.length) {
+      if (progressBar) progressBar.style.width = steps[stepIdx].pct;
+      if (progressText) progressText.textContent = steps[stepIdx].text;
+      stepIdx++;
+    } else {
+      clearInterval(interval);
+      setTimeout(() => {
+        if (deployingState) deployingState.style.display = 'none';
+        if (successState) successState.style.display = 'block';
+        if (successUrl) successUrl.textContent = `https://${sub}.vyaparpe.in`;
+        if (successPlanName) {
+          const names = { Starter: 'Free Tier (₹0/mo)', Growth: 'Growth Plan (₹999/mo)', Partner: 'Ad-Spend Partner (Fully Managed)', Lifetime: 'Lifetime Ownership' };
+          successPlanName.textContent = names[planVal] || 'Free Tier';
+        }
+      }, 350);
+    }
+  }, 450);
+}
+
+/**
+ * Command Palette / Search Modal (Cmd+K)
+ */
+function openSearchModal() {
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('searchCommandInput');
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      if (input) {
+        input.value = '';
+        input.focus();
+        filterSearchResults('');
+      }
+    }, 50);
+  }
+}
+
+function closeSearchModal() {
+  const modal = document.getElementById('search-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+function filterSearchResults(query) {
+  const list = document.getElementById('searchResultsList');
+  if (!list) return;
+  const items = list.querySelectorAll('li');
+  const q = query.toLowerCase().trim();
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    if (!q || text.includes(q)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+/**
+ * Wire up all buttons and keyboard interactions
+ */
+function initPricingAndModals() {
+  // Wire all "Start free store" and "Get a demo" buttons to Store Builder modal
+  document.querySelectorAll('.open-order-modal-btn, .btn-hero-trial, .btn-hero-demo').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openStoreBuilderModal('Starter');
+    });
+  });
+
+  // Wire all "Log in" buttons
+  document.querySelectorAll('.open-login-modal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openStoreBuilderModal('Starter');
+    });
+  });
+
+  // Wire Top Announcement CTA button
+  const announcementCta = document.querySelector('.announcement-cta');
+  if (announcementCta) {
+    announcementCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      openStoreBuilderModal('Starter');
+    });
+  }
+
+  // Wire Search Shortcut Pill
+  const searchPill = document.getElementById('navSearchPill');
+  if (searchPill) {
+    searchPill.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSearchModal();
+    });
+  }
+
+  // Real-time search filter input
+  const searchInput = document.getElementById('searchCommandInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      filterSearchResults(e.target.value);
+    });
+  }
+
+  // Brand Name auto-slug generator
+  const brandInput = document.getElementById('wizardBrandName');
+  const subInput = document.getElementById('wizardSubdomain');
+  if (brandInput && subInput) {
+    brandInput.addEventListener('input', () => {
+      if (!subInput.dataset.manualEdit) {
+        subInput.value = brandInput.value.toLowerCase().replace(/[^a-z0-9]/g, '') || 'mybrand';
+      }
+    });
+    subInput.addEventListener('input', () => {
+      subInput.dataset.manualEdit = 'true';
+    });
+  }
+
+  // Keyboard shortcut: Cmd+K / Ctrl+K and ESC key
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      const searchModal = document.getElementById('search-modal');
+      if (searchModal && searchModal.classList.contains('is-open')) {
+        closeSearchModal();
+      } else {
+        openSearchModal();
+      }
+    } else if (e.key === 'Escape') {
+      closePlanModal();
+      closeStoreBuilderModal();
+      closeSearchModal();
+    }
+  });
+
+  // Close modals on clicking outside the dialog card
+  document.querySelectorAll('.vp-modal-backdrop').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closePlanModal();
+        closeStoreBuilderModal();
+        closeSearchModal();
+      }
+    });
+  });
+}
+
+// Expose modal handlers to window for inline onclick handlers
+window.openPlanModal = openPlanModal;
+window.closePlanModal = closePlanModal;
+window.chooseCurrentPlanFromModal = chooseCurrentPlanFromModal;
+window.openStoreBuilderModal = openStoreBuilderModal;
+window.closeStoreBuilderModal = closeStoreBuilderModal;
+window.goToBuilderStep = goToBuilderStep;
+window.selectPlanOption = selectPlanOption;
+window.startStoreDeployment = startStoreDeployment;
+window.openSearchModal = openSearchModal;
+window.closeSearchModal = closeSearchModal;
+
 

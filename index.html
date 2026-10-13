@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="css/gtm-engineering.css">
   <link rel="stylesheet" href="css/cta-section.css">
   <link rel="stylesheet" href="css/footer-section.css">
+  <link rel="stylesheet" href="css/pricing-section.css">
+  <link rel="stylesheet" href="css/modals.css">
 </head>
 <body>
 
@@ -80,7 +82,7 @@
               <li><a href="#what-we-offer" class="active-nav-link">Quick Commerce</a></li>
               <li><a href="#repsProductive">AI Copilot</a></li>
               <li><a href="#gtmEngineering">Integrations</a></li>
-              <li><a href="#growthCta">Pricing</a></li>
+              <li><a href="#pricing">Pricing</a></li>
             </ul>
             <div class="mobile-drawer-actions">
               <div class="mobile-drawer-btn-row">
@@ -738,6 +740,217 @@
       </div>
     </section>
 
+    <!-- ── VyaparPe Commercial Pricing & Add-ons Section ── -->
+    <section class="section_pricing" id="pricing">
+      <div class="pricing-glow-emerald"></div>
+      <div class="pricing-glow-cyan"></div>
+
+      <div class="pricing-container">
+        <!-- Header -->
+        <div class="pricing-header">
+          <div class="pricing-badge">
+            <span class="badge-dot"></span>
+            TRANSPARENT COMMERCE PRICING
+          </div>
+          <h2 class="pricing-title">
+            Simple, transparent <span>pricing</span>
+          </h2>
+          <p class="pricing-subtitle">
+            Start for free, upgrade when you grow. No hidden surprises or complex contracts.
+          </p>
+        </div>
+
+        <!-- 4-Column Plans Grid (Data from vyaparpe.in) -->
+        <div class="pricing-grid">
+          <!-- Card 1: Free Tier -->
+          <div class="pricing-card">
+            <div class="pricing-tag-corner">Self-Managed</div>
+            <h3 class="pricing-plan-name">Free Tier</h3>
+            <p class="pricing-plan-desc">You manage your own listing & website. Perfect for testing the waters.</p>
+            <div class="pricing-price-wrap">
+              <span class="pricing-price">₹0</span>
+              <span class="pricing-period">/mo</span>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Free <code>.vyaparpe.in</code> subdomain</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>50 Products Limit</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>5% Platform Commission</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Unlimited Orders</span>
+              </li>
+            </ul>
+            <button type="button" class="pricing-btn pricing-btn-secondary" onclick="openStoreBuilderModal('Starter')">Start Free</button>
+            <button type="button" class="pricing-details-btn" onclick="openPlanModal('Starter')">View Details &rarr;</button>
+          </div>
+
+          <!-- Card 2: Growth Plan -->
+          <div class="pricing-card">
+            <div class="pricing-tag-corner">Self-Managed</div>
+            <h3 class="pricing-plan-name">Growth</h3>
+            <p class="pricing-plan-desc">Standard plan for serious brands looking to expand and reduce transaction fees.</p>
+            <div class="pricing-price-wrap">
+              <span class="pricing-price">₹999</span>
+              <span class="pricing-period">/mo</span>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Custom Domain (<code>.com</code>)</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>1,000 Products Limit</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Reduced 2% Commission</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>AI Insights & Analytics</span>
+              </li>
+            </ul>
+            <button type="button" class="pricing-btn pricing-btn-primary" onclick="openStoreBuilderModal('Growth')">Choose Growth</button>
+            <button type="button" class="pricing-details-btn" onclick="openPlanModal('Growth')">View Details &rarr;</button>
+          </div>
+
+          <!-- Card 3: Ad-Spend Partner (Elevated Featured Card) -->
+          <div class="pricing-card pricing-featured">
+            <div class="pricing-tag-corner tag-managed">Fully Managed</div>
+            <div class="pricing-popular-banner">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Popular For Brands
+            </div>
+            <h3 class="pricing-plan-name">Ad-Spend Partner</h3>
+            <p class="pricing-plan-desc">We manage your Meta/Google ads, storefront, and product listings entirely.</p>
+            <div class="pricing-price-wrap">
+              <span class="pricing-price">₹0</span>
+              <span class="pricing-period">/mo + Ad Spend</span>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Min. ₹1,000/day Ad Spend</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>500 Products Limit (Managed)</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>3% Revenue Share</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Dedicated WhatsApp Group</span>
+              </li>
+            </ul>
+            <button type="button" class="pricing-btn pricing-btn-featured" onclick="openStoreBuilderModal('Partner')">Partner With Us</button>
+            <button type="button" class="pricing-details-btn" onclick="openPlanModal('Partner')">View Details &rarr;</button>
+          </div>
+
+          <!-- Card 4: Lifetime Ownership -->
+          <div class="pricing-card">
+            <div class="pricing-tag-corner tag-soon">Coming Soon</div>
+            <h3 class="pricing-plan-name">Lifetime Ownership</h3>
+            <p class="pricing-plan-desc">Total control. One-time license fee with unlimited product catalog.</p>
+            <div class="pricing-price-wrap">
+              <span class="pricing-price-struck">₹1L</span>
+              <span class="pricing-price">₹50k</span>
+              <span class="pricing-period">/lifetime</span>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Custom Domain (<code>.com</code>)</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Unlimited Products</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Lowest 1% Commission</span>
+              </li>
+              <li class="pricing-feature-item">
+                <svg class="pricing-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>₹2,000/yr Server Maintenance</span>
+              </li>
+            </ul>
+            <button type="button" class="pricing-btn pricing-btn-disabled" disabled>Coming Soon</button>
+            <button type="button" class="pricing-details-btn" onclick="openPlanModal('Lifetime')">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Add-ons Section ("Need Help Setting Up?") -->
+        <div class="pricing-addons-box">
+          <div class="pricing-addons-header">
+            <h3 class="pricing-addons-title">Need Help Setting Up?</h3>
+            <p class="pricing-addons-desc">
+              Don't want to build it yourself? Let our specialist commerce engineers set up your storefront perfectly so you can focus on shipping products.
+            </p>
+          </div>
+
+          <div class="pricing-addons-grid">
+            <!-- Addon 1 -->
+            <div class="addon-card">
+              <div class="addon-icon-wrap icon-setup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h4 class="addon-name">One-Time Setup</h4>
+              <p class="addon-desc">Complete website setup, About Us, Logo branding, and Theme tailored to your business.</p>
+              <div class="addon-badge">Includes 50 Products or 150 SKUs</div>
+              <div class="addon-price">₹2,499 <span>one time</span></div>
+              <button type="button" class="addon-cta-btn" onclick="openStoreBuilderModal('Setup')">
+                <span>Select Service</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+
+            <!-- Addon 2 -->
+            <div class="addon-card">
+              <div class="addon-icon-wrap icon-listings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+              <h4 class="addon-name">Extra Listings</h4>
+              <p class="addon-desc">Need more products uploaded? We'll handle the heavy lifting for your catalog and variants.</p>
+              <div class="addon-badge">Per 50 Products or 150 SKUs</div>
+              <div class="addon-price">₹499 <span>per block</span></div>
+              <button type="button" class="addon-cta-btn" onclick="openStoreBuilderModal('Listings')">
+                <span>Select Service</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+
+            <!-- Addon 3 -->
+            <div class="addon-card">
+              <div class="addon-icon-wrap icon-ux">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h4 class="addon-name">Custom UX Theme</h4>
+              <p class="addon-desc">Stand out from the crowd with a completely bespoke, high-converting premium storefront design.</p>
+              <div class="addon-badge" style="color: var(--accent-purple, #7c3aed);">Handcrafted For You</div>
+              <div class="addon-price">₹9,999 <span>one time</span></div>
+              <button type="button" class="addon-cta-btn" onclick="openStoreBuilderModal('Theme')">
+                <span>Select Service</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Turn Your Commerce Ideas Into Reality CTA ─────── -->
     <section class="section_growth-cta" id="growthCta">
       <div class="cta-container">
@@ -895,6 +1108,246 @@
       </div>
     </div>
   </footer>
+
+  <!-- ── 1. Plan Details Modal (Data from vyaparpe.in) ── -->
+  <div class="vp-modal-backdrop" id="plan-details-modal" role="dialog" aria-modal="true" aria-labelledby="modalPlanTitle">
+    <div class="vp-modal-dialog" onclick="event.stopPropagation()">
+      <button type="button" class="vp-modal-close-btn" onclick="closePlanModal()" aria-label="Close modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="plan-modal-badge" id="modalPlanBadge">Plan Details</div>
+      <h3 class="plan-modal-title" id="modalPlanTitle">Starter Plan</h3>
+      <p class="plan-modal-desc" id="modalPlanDesc">Perfect for testing the waters and setting up your initial catalog.</p>
+      <div class="plan-modal-features" id="modalFeaturesContainer">
+        <!-- Injected via JS -->
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <button type="button" class="builder-btn-back" onclick="closePlanModal()">Close</button>
+        <button type="button" class="builder-btn-next" id="modalPlanChooseBtn" onclick="chooseCurrentPlanFromModal()">Get Started With This Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. Create Your Store Builder Wizard (Data from vyaparpe.in/start) ── -->
+  <div class="vp-modal-backdrop" id="store-builder-modal" role="dialog" aria-modal="true" aria-labelledby="builderWizardTitle">
+    <div class="vp-modal-dialog" onclick="event.stopPropagation()">
+      <button type="button" class="vp-modal-close-btn" onclick="closeStoreBuilderModal()" aria-label="Close modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Steps Indicator -->
+      <div class="builder-steps-indicator">
+        <div class="builder-step-line"></div>
+        <div class="builder-step-dot is-active" id="dotStep1">1</div>
+        <div class="builder-step-dot" id="dotStep2">2</div>
+        <div class="builder-step-dot" id="dotStep3">3</div>
+        <div class="builder-step-dot" id="dotStep4">4</div>
+      </div>
+
+      <!-- Step 1: Business Profile -->
+      <div class="builder-content-step is-active" id="builderStep1">
+        <h3 class="builder-step-title" id="builderWizardTitle">Let's get started</h3>
+        <p class="builder-step-desc">Tell us a bit about your business to provision your VyaparPe 2.0 store.</p>
+        <div class="builder-form-group">
+          <label class="builder-label" for="wizardBrandName">Brand / Business Name</label>
+          <input type="text" id="wizardBrandName" class="builder-input" placeholder="e.g. Kavya Organics, BeanCrafters" value="Kavya Organics">
+        </div>
+        <div class="builder-form-group">
+          <label class="builder-label" for="wizardCategory">Store Category</label>
+          <select id="wizardCategory" class="builder-input" style="appearance: none;">
+            <option value="beauty">Beauty & Personal Care</option>
+            <option value="grocery">Quick Grocery & Dark Store</option>
+            <option value="fashion">D2C Fashion & Apparel</option>
+            <option value="fmcg">Food & Artisan Beverages</option>
+            <option value="electronics">Electronics & Accessories</option>
+            <option value="other">General E-Commerce</option>
+          </select>
+        </div>
+        <div class="builder-form-group">
+          <label class="builder-label" for="wizardPhone">WhatsApp / Mobile Number</label>
+          <input type="tel" id="wizardPhone" class="builder-input" placeholder="+91 98765 43210" value="+91 98201 54321">
+        </div>
+        <div class="builder-actions-footer">
+          <span></span>
+          <button type="button" class="builder-btn-next" onclick="goToBuilderStep(2)">Continue to URL &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Choose URL -->
+      <div class="builder-content-step" id="builderStep2">
+        <h3 class="builder-step-title">Choose your URL</h3>
+        <p class="builder-step-desc">Your customers will visit this link to buy from you. You can connect a custom <code>.com</code> domain anytime.</p>
+        <div class="builder-form-group">
+          <label class="builder-label">Your Free Store Subdomain</label>
+          <div class="builder-url-preview-box">
+            <span class="builder-url-prefix">https://</span>
+            <input type="text" id="wizardSubdomain" class="builder-url-input" value="kavyaorganics">
+            <span class="builder-url-suffix">.vyaparpe.in</span>
+          </div>
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; font-size: 0.85rem; color: #475569;">
+          <div style="color: #008a57; font-weight: 750; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Subdomain Available
+          </div>
+          Global SSL certificate and sub-second edge routing auto-configured.
+        </div>
+        <div class="builder-actions-footer">
+          <button type="button" class="builder-btn-back" onclick="goToBuilderStep(1)">&larr; Back</button>
+          <button type="button" class="builder-btn-next" onclick="goToBuilderStep(3)">Select Plan &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Choose Plan -->
+      <div class="builder-content-step" id="builderStep3">
+        <h3 class="builder-step-title">Choose your Plan</h3>
+        <p class="builder-step-desc">Select the pricing model that fits your business model best.</p>
+        <div class="builder-plan-selection">
+          <div class="builder-plan-option is-selected" onclick="selectPlanOption('Starter', this)">
+            <input type="radio" name="builderPlan" value="Starter" checked class="builder-plan-radio">
+            <div class="builder-plan-name">Free Tier</div>
+            <div class="builder-plan-cost">₹0 <span style="font-size: 11px; color: #64748b;">/mo</span></div>
+            <div class="builder-plan-detail">50 Products • 5% Commission • Unlimited Orders</div>
+          </div>
+
+          <div class="builder-plan-option" onclick="selectPlanOption('Growth', this)">
+            <input type="radio" name="builderPlan" value="Growth" class="builder-plan-radio">
+            <div class="builder-plan-name">Growth</div>
+            <div class="builder-plan-cost">₹999 <span style="font-size: 11px; color: #64748b;">/mo</span></div>
+            <div class="builder-plan-detail">Custom .com • 1,000 Products • 2% Commission</div>
+          </div>
+
+          <div class="builder-plan-option" onclick="selectPlanOption('Partner', this)">
+            <input type="radio" name="builderPlan" value="Partner" class="builder-plan-radio">
+            <div class="builder-plan-name">Ad-Spend Partner</div>
+            <div class="builder-plan-cost">₹0 <span style="font-size: 11px; color: #64748b;">+ Ad Spend</span></div>
+            <div class="builder-plan-detail">Fully Managed • Meta Ads • WhatsApp Group</div>
+          </div>
+
+          <div class="builder-plan-option" onclick="selectPlanOption('Lifetime', this)">
+            <input type="radio" name="builderPlan" value="Lifetime" class="builder-plan-radio">
+            <div class="builder-plan-name">Lifetime License</div>
+            <div class="builder-plan-cost">₹50,000 <span style="font-size: 11px; color: #64748b;">one-time</span></div>
+            <div class="builder-plan-detail">Unlimited Products • Lowest 1% fee • Headless API</div>
+          </div>
+        </div>
+        <div class="builder-actions-footer">
+          <button type="button" class="builder-btn-back" onclick="goToBuilderStep(2)">&larr; Back</button>
+          <button type="button" class="builder-btn-next" onclick="startStoreDeployment()">Deploy Store Now &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Provisioning Simulation & Success -->
+      <div class="builder-content-step" id="builderStep4">
+        <!-- Progress State -->
+        <div class="builder-deploying-box" id="builderDeployingState">
+          <div class="builder-spinner"></div>
+          <h3 class="builder-step-title" style="font-size: 1.5rem;">Creating your store...</h3>
+          <p class="builder-deploy-step" id="deployProgressText">Setting up database, analytics, and edge CDN...</p>
+          <div class="builder-progress-bar-wrap">
+            <div class="builder-progress-bar-fill" id="deployProgressBar"></div>
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div class="builder-success-box" id="builderSuccessState" style="display: none;">
+          <div class="builder-success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="builder-live-badge">STORE DEPLOYED ONLINE</div>
+          <h3 class="builder-step-title">Welcome to VyaparPe 2.0!</h3>
+          <p class="builder-step-desc" id="successStoreMsg">
+            Your store is live at <strong style="color: var(--primary-dark, #008a57);" id="successStoreUrl">https://kavyaorganics.vyaparpe.in</strong>
+          </p>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; margin: 20px 0; text-align: left;">
+            <div style="font-size: 0.85rem; color: #334155; margin-bottom: 6px;">
+              <strong>Admin Panel:</strong> <code>https://vyaparpe.com/admin</code>
+            </div>
+            <div style="font-size: 0.85rem; color: #334155; margin-bottom: 6px;">
+              <strong>Selected Plan:</strong> <span id="successPlanName" style="color: #008a57; font-weight: 750;">Free Tier</span>
+            </div>
+            <div style="font-size: 0.82rem; color: #64748b;">
+              Our onboarding team will contact you within 24 hours to help you connect Razorpay UPI and fast-track product catalogue import.
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="builder-btn-next" onclick="closeStoreBuilderModal()">Open Storefront</button>
+            <button type="button" class="builder-btn-back" onclick="closeStoreBuilderModal()">Go to Admin Panel</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── 3. Quick Command Palette / Search Modal (Cmd+K) ── -->
+  <div class="vp-modal-backdrop" id="search-modal" role="dialog" aria-modal="true" aria-labelledby="searchCommandInput">
+    <div class="vp-modal-dialog search-palette-dialog" onclick="event.stopPropagation()">
+      <div class="search-input-header">
+        <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchCommandInput" class="search-command-input" placeholder="Search VyaparPe features, plans, integrations...">
+        <button type="button" class="vp-modal-close-btn" style="position: static; width: 28px; height: 28px;" onclick="closeSearchModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <ul class="search-results-list" id="searchResultsList">
+        <li>
+          <a href="#hero" class="search-result-item" onclick="closeSearchModal()">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              <span class="search-item-title">Hero & Store Builder 2.0</span>
+            </div>
+            <span class="search-item-badge">#hero</span>
+          </a>
+        </li>
+        <li>
+          <a href="#pricing" class="search-result-item" onclick="closeSearchModal()">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              <span class="search-item-title">Commercial Pricing (Free, Growth, Partner, Lifetime)</span>
+            </div>
+            <span class="search-item-badge">#pricing</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="search-result-item" onclick="closeSearchModal(); openStoreBuilderModal('Starter');">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="search-item-title">Launch Free Store in 60s (Wizard)</span>
+            </div>
+            <span class="search-item-badge">WIZARD</span>
+          </a>
+        </li>
+        <li>
+          <a href="#what-we-offer" class="search-result-item" onclick="closeSearchModal()">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span class="search-item-title">10-Minute Hyperlocal Quick Commerce</span>
+            </div>
+            <span class="search-item-badge">FEATURES</span>
+          </a>
+        </li>
+        <li>
+          <a href="#gtmEngineers" class="search-result-item" onclick="closeSearchModal()">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span class="search-item-title">Autonomous Commerce Engine Studio</span>
+            </div>
+            <span class="search-item-badge">STUDIO</span>
+          </a>
+        </li>
+        <li>
+          <a href="#gtmEngineering" class="search-result-item" onclick="closeSearchModal()">
+            <div class="search-item-left">
+              <svg class="search-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span class="search-item-title">Integrations & DNS Settings</span>
+            </div>
+            <span class="search-item-badge">BENTO</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Application Logic -->
   <script src="js/app.js"></script>
