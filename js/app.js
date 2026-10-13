@@ -1200,9 +1200,364 @@ function initPricingAndModals() {
       }
     });
   });
+
+  // Initialize GTM-style Pricing Engine interactions
+  initPricingEngineSection();
 }
 
-// Expose modal handlers to window for inline onclick handlers
+/**
+ * ==========================================================================
+ * GTM-Style Commercial Pricing Engine Interaction & Theme Controller
+ * ==========================================================================
+ */
+
+const pricingThemes = {
+  free: {
+    color: '#eaf872',           // Electric Lime
+    text: '#141f08',
+    glow: 'rgba(234, 248, 114, 0.55)',
+    highlight: '#fef47a',
+    highlightBorder: '#f7eb65',
+    btnColor: '#647017',
+    badgeBg: '#e2f4db',
+    badgeColor: '#1e6324',
+    title: 'Free Tier',
+    badge: 'Free Forever',
+    priceVal: '₹0',
+    priceCycle: '/month',
+    desc: 'Self-managed online store with zero upfront subscription. Free <code>*.vyaparpe.in</code> subdomain and unlimited orders.',
+    features: [
+      '50 Products & Unlimited Orders',
+      '5% Platform Commission',
+      'Razorpay UPI & Sub-Second Edge CDN'
+    ],
+    actionText: 'Deploy Free Store in 60s &rarr;',
+    modalPlanKey: 'Starter',
+    specs: {
+      domain: 'Free *.vyaparpe.in',
+      catalog: '50 Products',
+      commission: '5% Commission',
+      support: 'Email (48h SLA)'
+    }
+  },
+  growth: {
+    color: '#7dd3fc',           // Sky Cyan
+    text: '#082f49',
+    glow: 'rgba(125, 211, 252, 0.55)',
+    highlight: '#e0f2fe',
+    highlightBorder: '#bae6fd',
+    btnColor: '#0284c7',
+    badgeBg: '#e0f2fe',
+    badgeColor: '#0369a1',
+    title: 'Growth Plan',
+    badge: 'Most Popular',
+    priceVal: '₹999',
+    priceCycle: '/month',
+    desc: 'For scaling D2C brands. Connect custom <code>.com</code> domain, reduce fees to 2%, and unlock Vyapar AI insights.',
+    features: [
+      '1,000 Products & Custom .com Domain',
+      'Reduced 2% Platform Fee',
+      'Vyapar AI Insights & Priority 12h Chat'
+    ],
+    actionText: 'Choose Growth Plan &rarr;',
+    modalPlanKey: 'Growth',
+    specs: {
+      domain: 'Custom .com Domain',
+      catalog: '1,000 Products',
+      commission: '2% Commission',
+      support: 'Priority 12h Chat'
+    }
+  },
+  partner: {
+    color: '#fdba74',           // Sunset Orange
+    text: '#431407',
+    glow: 'rgba(253, 186, 116, 0.55)',
+    highlight: '#ffedd5',
+    highlightBorder: '#fed7aa',
+    btnColor: '#ea580c',
+    badgeBg: '#ffedd5',
+    badgeColor: '#c2410c',
+    title: 'Ad-Spend Partner',
+    badge: 'Fully Managed',
+    priceVal: '₹0',
+    priceCycle: '/mo + ₹1k/day Ads',
+    desc: 'You stock inventory, we manage everything else: Meta/Google ads, product listings, store optimization, and dedicated WhatsApp group.',
+    features: [
+      '100% Fully Managed Store & Ads',
+      '500 Products & 3% Revenue Share',
+      'Dedicated WhatsApp Group & Creatives'
+    ],
+    actionText: 'Partner With Us &rarr;',
+    modalPlanKey: 'Partner',
+    specs: {
+      domain: 'Custom .com Included',
+      catalog: '500 Products (Managed)',
+      commission: '3% Revenue Share',
+      support: 'Dedicated WhatsApp Group'
+    }
+  },
+  lifetime: {
+    color: '#c4b5fd',           // Lilac Purple
+    text: '#2e1065',
+    glow: 'rgba(196, 181, 253, 0.55)',
+    highlight: '#ede9fe',
+    highlightBorder: '#ddd6fe',
+    btnColor: '#7c3aed',
+    badgeBg: '#ede9fe',
+    badgeColor: '#6d28d9',
+    title: 'Lifetime Ownership',
+    badge: 'Enterprise License',
+    priceVal: '₹50k',
+    priceCycle: 'one-time (was ₹1L)',
+    desc: 'Total control and ownership over your commerce stack. Lowest 1% fee, unlimited products, and full Headless API webhooks.',
+    features: [
+      'Unlimited Products & Lifetime Access',
+      'Lowest 1% Platform Fee Markup',
+      'Headless API & VIP Direct Phone'
+    ],
+    actionText: 'Reserve License &rarr;',
+    modalPlanKey: 'Lifetime',
+    specs: {
+      domain: 'Custom .com + API',
+      catalog: 'Unlimited Products',
+      commission: 'Lowest 1% Fee',
+      support: 'VIP Direct Phone'
+    }
+  },
+  addons: {
+    color: '#a7f3d0',           // Mint Green
+    text: '#064e3b',
+    glow: 'rgba(167, 243, 208, 0.55)',
+    highlight: '#d1fae5',
+    highlightBorder: '#a7f3d0',
+    btnColor: '#059669',
+    badgeBg: '#d1fae5',
+    badgeColor: '#047857',
+    title: 'Setup & Custom Services',
+    badge: 'Done-For-You',
+    priceVal: 'From ₹499',
+    priceCycle: 'per block / one-time',
+    desc: 'Hands-off onboarding. Certified commerce engineers set up your storefront, bulk ingest catalogs, or design bespoke themes.',
+    features: [
+      'One-Time Setup: ₹2,499 (50 prods/150 SKUs)',
+      'Extra Listings: ₹499 per 50 products block',
+      'Custom UX Theme: ₹9,999 bespoke storefront'
+    ],
+    actionText: 'Explore Add-ons &rarr;',
+    modalPlanKey: 'Starter',
+    specs: {
+      domain: 'Included in setup',
+      catalog: 'Custom volume',
+      commission: 'No added fees',
+      support: 'Senior Specialist'
+    }
+  },
+  all: {
+    color: '#fef08a',           // Warm Gold
+    text: '#422006',
+    glow: 'rgba(254, 240, 138, 0.55)',
+    highlight: '#fef9c3',
+    highlightBorder: '#fef08a',
+    btnColor: '#ca8a04',
+    badgeBg: '#fef9c3',
+    badgeColor: '#854d0e',
+    title: 'All Plans Comparison',
+    badge: 'Full Matrix',
+    priceVal: '₹0 to ₹50k',
+    priceCycle: 'flexible scale',
+    desc: 'Compare every tier side-by-side. Upgrade, downgrade, or switch management models anytime as your volume grows.',
+    features: [
+      'Self-Managed or 100% Fully Managed',
+      'Free Subdomain or Custom Domain',
+      'Zero Hidden Costs or Surprise Contracts'
+    ],
+    actionText: 'Launch Free Store &rarr;',
+    modalPlanKey: 'Starter',
+    specs: {
+      domain: 'Free or Custom',
+      catalog: '50 to Unlimited',
+      commission: '1% to 5%',
+      support: 'Email to VIP Phone'
+    }
+  }
+};
+
+function initPricingEngineSection() {
+  const section = document.querySelector('.section_pricing-engine');
+  const tabsWrapper = document.getElementById('pricingTabsWrapper');
+  const backdrop = document.querySelector('.pricing-lime-backdrop');
+  const tableRows = document.querySelectorAll('#pricingTableBody tr');
+  const pills = document.querySelectorAll('#pricingTabsWrapper .gtm-tab-pill');
+
+  if (!section) return;
+
+  function setPricingPlan(planKey, options = {}) {
+    const data = pricingThemes[planKey] || pricingThemes.free;
+
+    // Apply colors to dynamic CSS custom properties
+    section.style.setProperty('--pricing-theme-color', data.color);
+    section.style.setProperty('--pricing-theme-text', data.text);
+    section.style.setProperty('--pricing-theme-glow', data.glow);
+    section.style.setProperty('--pricing-theme-highlight', data.highlight);
+    section.style.setProperty('--pricing-theme-highlight-border', data.highlightBorder);
+    section.style.setProperty('--pricing-theme-btn', data.btnColor);
+    section.style.setProperty('--pricing-theme-badge-bg', data.badgeBg);
+    section.style.setProperty('--pricing-theme-badge-color', data.badgeColor);
+
+    if (backdrop) {
+      backdrop.style.backgroundColor = data.color;
+      backdrop.style.boxShadow = `0 24px 65px -15px ${data.glow}`;
+    }
+
+    // Update active pill
+    pills.forEach(p => {
+      const isMatch = p.getAttribute('data-plan') === planKey;
+      p.classList.toggle('is-active', isMatch);
+      if (isMatch && options.centerPill && tabsWrapper) {
+        const pillRect = p.getBoundingClientRect();
+        const wrapperRect = tabsWrapper.getBoundingClientRect();
+        const delta = (pillRect.left + (pillRect.width / 2)) - (wrapperRect.left + (wrapperRect.width / 2));
+        tabsWrapper.scrollTo({
+          left: Math.max(0, tabsWrapper.scrollLeft + delta),
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    // Update highlighted table row
+    tableRows.forEach(row => {
+      const rowPlan = row.getAttribute('data-plan-row');
+      if (planKey === 'all') {
+        row.classList.remove('is-highlighted');
+      } else {
+        row.classList.toggle('is-highlighted', rowPlan === planKey || (planKey === 'addons' && rowPlan === 'addons'));
+      }
+    });
+
+    // Update floating plan card (Left)
+    const floatingBadge = document.getElementById('floatingPlanBadge');
+    const floatingTitle = document.getElementById('floatingPlanTitle');
+    const floatingPriceVal = document.getElementById('floatingPlanPriceVal');
+    const floatingPriceCycle = document.getElementById('floatingPlanPriceCycle');
+    const floatingDesc = document.getElementById('floatingPlanDesc');
+    const floatingFeatures = document.getElementById('floatingPlanFeatures');
+    const floatingActionBtn = document.getElementById('floatingPlanActionBtn');
+    const floatingDetailsBtn = document.getElementById('floatingPlanDetailsBtn');
+    const activeBadge = document.getElementById('pricingActiveBadge');
+
+    if (floatingBadge) floatingBadge.textContent = data.badge;
+    if (floatingTitle) floatingTitle.textContent = data.title;
+    if (floatingPriceVal) floatingPriceVal.textContent = data.priceVal;
+    if (floatingPriceCycle) floatingPriceCycle.textContent = data.priceCycle;
+    if (floatingDesc) floatingDesc.innerHTML = data.desc;
+    if (activeBadge) activeBadge.textContent = `⚡ ${data.title} Active`;
+
+    if (floatingFeatures && data.features) {
+      floatingFeatures.innerHTML = data.features.map(f => `
+        <div class="quick-feature-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>${f}</span>
+        </div>
+      `).join('');
+    }
+
+    if (floatingActionBtn) {
+      floatingActionBtn.innerHTML = `${data.actionText}`;
+      floatingActionBtn.onclick = () => openStoreBuilderModal(data.modalPlanKey);
+    }
+    if (floatingDetailsBtn) {
+      floatingDetailsBtn.onclick = () => openPlanModal(data.modalPlanKey);
+    }
+
+    // Update floating specs preview (Right)
+    const previewTag = document.getElementById('pricingPreviewPlanTag');
+    if (previewTag) previewTag.textContent = `${data.title}`;
+    const specDomain = document.getElementById('specDomain');
+    const specCatalog = document.getElementById('specCatalog');
+    const specCommission = document.getElementById('specCommission');
+    const specSupport = document.getElementById('specSupport');
+
+    if (specDomain) specDomain.textContent = data.specs.domain;
+    if (specCatalog) specCatalog.textContent = data.specs.catalog;
+    if (specCommission) specCommission.textContent = data.specs.commission;
+    if (specSupport) specSupport.textContent = data.specs.support;
+  }
+
+  // Pill click handlers
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const plan = pill.getAttribute('data-plan');
+      setPricingPlan(plan, { centerPill: true });
+    });
+  });
+
+  // Table row click handlers
+  tableRows.forEach(row => {
+    row.addEventListener('click', () => {
+      const plan = row.getAttribute('data-plan-row');
+      if (plan) {
+        setPricingPlan(plan, { centerPill: true });
+      }
+    });
+  });
+
+  // Set initial plan
+  setPricingPlan('free');
+  updatePricingCalculator();
+}
+
+function switchPricingPreviewTab(tab) {
+  const specBtn = document.getElementById('pricingSpecTabBtn');
+  const calcBtn = document.getElementById('pricingCalcTabBtn');
+  const specsPanel = document.getElementById('pricingSpecsPanel');
+  const calcPanel = document.getElementById('pricingCalcPanel');
+
+  if (tab === 'specs') {
+    if (specBtn) specBtn.classList.add('is-active');
+    if (calcBtn) calcBtn.classList.remove('is-active');
+    if (specsPanel) { specsPanel.style.display = 'block'; specsPanel.classList.add('is-active'); }
+    if (calcPanel) { calcPanel.style.display = 'none'; calcPanel.classList.remove('is-active'); }
+  } else {
+    if (calcBtn) calcBtn.classList.add('is-active');
+    if (specBtn) specBtn.classList.remove('is-active');
+    if (calcPanel) { calcPanel.style.display = 'block'; calcPanel.classList.add('is-active'); }
+    if (specsPanel) { specsPanel.style.display = 'none'; specsPanel.classList.remove('is-active'); }
+    updatePricingCalculator();
+  }
+}
+
+function updatePricingCalculator() {
+  const input = document.getElementById('monthlySalesInput');
+  const payoutEl = document.getElementById('calcTakeHome');
+  const feeEl = document.getElementById('calcPlatformFee');
+  const recEl = document.getElementById('calcRecommendation');
+
+  if (!input) return;
+  const sales = Math.max(1000, parseFloat(input.value) || 100000);
+
+  // Free Tier has 5% fee, Growth has 2% fee + ₹999/mo subscription
+  const freeFee = Math.round(sales * 0.05);
+  const growthFee = Math.round(sales * 0.02 + 999);
+
+  let bestFee = freeFee;
+  let recText = 'Free Tier is optimal';
+
+  if (growthFee < freeFee) {
+    const savings = freeFee - growthFee;
+    bestFee = growthFee;
+    recText = `Growth (Saves ₹${savings.toLocaleString('en-IN')})`;
+  } else {
+    const diff = growthFee - freeFee;
+    recText = `Free Tier (₹${diff.toLocaleString('en-IN')} cheaper)`;
+  }
+
+  const payout = sales - bestFee;
+  if (payoutEl) payoutEl.textContent = `₹${payout.toLocaleString('en-IN')}`;
+  if (feeEl) feeEl.textContent = `₹${bestFee.toLocaleString('en-IN')}`;
+  if (recEl) recEl.textContent = recText;
+}
+
+// Expose handlers to window for inline onclick handlers
 window.openPlanModal = openPlanModal;
 window.closePlanModal = closePlanModal;
 window.chooseCurrentPlanFromModal = chooseCurrentPlanFromModal;
@@ -1213,5 +1568,8 @@ window.selectPlanOption = selectPlanOption;
 window.startStoreDeployment = startStoreDeployment;
 window.openSearchModal = openSearchModal;
 window.closeSearchModal = closeSearchModal;
+window.switchPricingPreviewTab = switchPricingPreviewTab;
+window.updatePricingCalculator = updatePricingCalculator;
+
 
 
