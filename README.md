@@ -47,9 +47,13 @@ VyaparPe delivers an end-to-end commerce operating system designed with **zero r
 ├─────────────────────────────────────────────────────────────────┤
 │ 7. 9-Column Asymmetric Modern Commerce Bento Grid               │
 ├─────────────────────────────────────────────────────────────────┤
-│ 8. Growth Ideas Call to Action (CTA Banner)                     │
+│ 8. VyaparPe 2.0 Official Pricing & Add-ons Engine (vyaparpe.in) │
 ├─────────────────────────────────────────────────────────────────┤
-│ 9. Multi-Column Elevated Footer with 3D Geometric Backdrop      │
+│ 9. Growth Ideas Call to Action (CTA Banner)                     │
+├─────────────────────────────────────────────────────────────────┤
+│ 10. Multi-Column Elevated Footer with 3D Geometric Backdrop     │
+├─────────────────────────────────────────────────────────────────┤
+│ 11. Interactive Modals (Plan Details, Onboarding Wizard, Cmd+K) │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -123,10 +127,30 @@ Inspired by Clay.com's interactive workflow demonstration:
   - **Dark Store Operations Tech**: Picker app barcode scanning and dispatch workflows.
   - **Partner Ecosystem**: Certified agency network and theme developers.
 
-### 2.8 Growth Ideas Call to Action (CTA)
+### 2.8 VyaparPe 2.0 Official Pricing & Add-ons Engine (Extracted from vyaparpe.in)
+- **Official 4-Tier Pricing Grid**:
+  - **Free Tier** (`₹0/mo`): Free `.vyaparpe.in` subdomain, 50 Products limit, 5% Commission, Unlimited orders, Email support.
+  - **Growth Plan** (`₹999/mo`): Custom `.com` domain connection, 1,000 Products limit, reduced 2% Commission, 3 Staff accounts, AI Analytics reports.
+  - **Ad-Spend Partner** (`₹0/mo` + Min ₹1,000/day Ad Spend): Fully Managed store & ads, 500 Products limit, 3% Revenue share, Dedicated WhatsApp group & account manager, Ad creatives provided, ₹0 setup fee.
+  - **Lifetime Ownership** (`₹50,000` one-time / was ~~₹1L~~): Coming Soon license, Unlimited products, Lowest 1% gateway markup, ₹2,000/yr server & DB maintenance, custom UI/UX requests, Full Headless API access.
+- **Professional Add-ons & Store Setup**:
+  - **One-Time Setup** (`₹2,499`): Complete store setup, About Us, branding, theme, and first 50 Products / 150 SKUs.
+  - **Extra Listings** (`₹499/block`): Catalog upload per 50 Products / 150 SKUs.
+  - **Custom UX Theme** (`₹9,999`): Bespoke handcrafted premium storefront design.
+
+### 2.9 Interactive Modals & Onboarding Wizard (Extracted from vyaparpe.in/start)
+- **Plan Details Modal (`#plan-details-modal`)**: Dynamic side-by-side specification modal comparing Starter, Growth, Partner, and Lifetime plans with 1-click transition to store builder.
+- **Store Builder Wizard (`#store-builder-modal`)**: Multi-step onboarding simulator:
+  - Step 1: Business Profile & category.
+  - Step 2: Instant subdomain slug generator (`yourbrand.vyaparpe.in`) with edge SSL indicator.
+  - Step 3: Interactive plan selection.
+  - Step 4: Real-time provisioning progress simulator with progress bar and success dashboard link.
+- **Command Palette (`#search-modal`)**: `Cmd+K` / `Ctrl+K` quick-launcher to search sections, launch wizard, or navigate.
+
+### 2.10 Growth Ideas Call to Action (CTA)
 - High-contrast conversion banner with primary "Start free store" and secondary "Book a demo" action points.
 
-### 2.9 Multi-Column Elevated Footer
+### 2.11 Multi-Column Elevated Footer
 - **Vibrant 3D Geometric Backdrop**: Full-width dense ocean of glossy candy-coated 3D shapes with soft ambient lighting (`assets/videos/footer-ballpit.mp4` / `assets/images/footer-ballpit.webp`).
 - **Floating Elevated Card**: High-contrast white card (`border-top-left-radius: 28px; border-top-right-radius: 28px`) with structured columns covering E-Commerce, Quick Commerce, Integrations, Resources, Company, and RBI Compliance/Legal links.
 
@@ -147,11 +171,13 @@ vypaarpe/
 │   ├── stacking-cards.css       # Sticky scroll-driven stacking card styles
 │   ├── reps-section.css         # Reps productivity showcase & profitability contraption styles
 │   ├── gtm-engineering.css      # 9-column asymmetric Bento Grid styles (80% width container)
+│   ├── pricing-section.css      # Official pricing grid & add-ons styles (vyaparpe.in)
+│   ├── modals.css               # Plan details, onboarding wizard & command palette modal styles
 │   ├── cta-section.css          # Growth ideas call-to-action banner styles
 │   └── footer-section.css       # Multi-column footer styles with vibrant 3D backdrop
 │
 ├── js/                          # Application Logic (Vanilla ES6+)
-│   └── app.js                   # Header scroll, mobile drawer, glide carousel, stacking cards, modals
+│   └── app.js                   # Header scroll, mobile drawer, glide carousel, stacking cards, modals, onboarding wizard
 │
 └── assets/                      # Static Media
     ├── images/                  # 100% WebP optimized graphics, cards, bento previews, SVG marks

@@ -308,7 +308,7 @@ function initGtmSection() {
     const pillRect = pill.getBoundingClientRect();
     const wrapperRect = tabsWrapper.getBoundingClientRect();
     const delta = (pillRect.left + (pillRect.width / 2)) - (wrapperRect.left + (wrapperRect.width / 2));
-    
+
     tabsWrapper.scrollTo({
       left: Math.max(0, tabsWrapper.scrollLeft + delta),
       behavior: 'smooth'
