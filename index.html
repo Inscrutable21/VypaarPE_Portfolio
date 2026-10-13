@@ -29,8 +29,84 @@
   <link rel="stylesheet" href="css/footer-section.css">
   <link rel="stylesheet" href="css/pricing-section.css">
   <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/intro-splash.css">
 </head>
-<body>
+<body class="splash-active">
+
+  <!-- ── VyaparPe Intro Video Splash Overlay ── -->
+  <div id="site-intro-splash" class="intro-splash-overlay" role="dialog" aria-modal="true" aria-label="Welcome to VyaparPe">
+    <div class="intro-splash-ambient-glow" aria-hidden="true"></div>
+    
+    <div class="intro-splash-content">
+      <!-- Top brand badge & controls -->
+      <div class="intro-splash-header">
+        <div class="intro-splash-brand">
+          <svg width="28" height="22" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 23 C1 11.2 11.2 1 24 1 C26.6 1 28.5 1.5 29 2 V23 H1 Z" fill="#00f59b"/>
+            <path d="M6 23 C6 13.8 13.8 6 24 6 C26.1 6 27.7 6.5 28.5 7 V23 H6 Z" fill="#38BDF8"/>
+            <path d="M11 23 C11 16.5 16.5 11 24 11 C25.5 11 26.8 11.4 27.5 11.8 V23 H11 Z" fill="#FACC15"/>
+          </svg>
+          <span class="intro-splash-brand-title">VyaparPe <span>OS</span></span>
+        </div>
+        <button type="button" class="intro-splash-skip-btn" id="introSkipBtn" aria-label="Skip intro video">
+          <span>Enter Site</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <!-- Cinematic Video Frame -->
+      <div class="intro-splash-video-card">
+        <div class="intro-video-topbar">
+          <div class="intro-video-dots">
+            <span class="intro-dot dot-red"></span>
+            <span class="intro-dot dot-yellow"></span>
+            <span class="intro-dot dot-green"></span>
+          </div>
+          <span class="intro-video-label">AI Commerce Engine · Initializing v2.0</span>
+          <span class="intro-video-badge">1080p 60fps</span>
+        </div>
+        
+        <div class="intro-video-viewport">
+          <video 
+            id="introSplashVideo" 
+            class="intro-splash-video-el" 
+            src="assets/videos/hero-section.mp4" 
+            poster="assets/images/hero-section.webp"
+            muted 
+            playsinline 
+            webkit-playsinline 
+            preload="auto"
+          ></video>
+          
+          <!-- Overlay Taglines -->
+          <div class="intro-video-overlay-caption">
+            <span class="intro-caption-tag">Autonomous Commerce</span>
+            <h3 class="intro-caption-heading">Built for Instant Speed & Precision</h3>
+          </div>
+        </div>
+
+        <!-- Bottom Progress & Telemetry Bar -->
+        <div class="intro-splash-footer">
+          <div class="intro-telemetry">
+            <div class="intro-pulse-indicator">
+              <span class="intro-pulse-ring"></span>
+              <span class="intro-pulse-dot"></span>
+            </div>
+            <span class="intro-status-text" id="introStatusText">Booting sub-second edge network...</span>
+          </div>
+          <div class="intro-counter" id="introPercentText">0%</div>
+        </div>
+
+        <!-- Loader Progress Bar -->
+        <div class="intro-progress-bar-track">
+          <div class="intro-progress-bar-fill" id="introProgressBar"></div>
+        </div>
+      </div>
+
+      <!-- Subtitle / Tag -->
+      <p class="intro-splash-subtext">Powering 10,000+ Indian D2C Brands & Quick Commerce Dark Stores</p>
+    </div>
+  </div>
 
 
   <!-- Sticky Header Container with Top Banner and Floating Nav Card -->
