@@ -9,6 +9,10 @@
 
 A high-performance, responsive frontend showcase engineered with standard **HTML5**, **modular Vanilla CSS3**, and **modern ES6+ JavaScript**. VyaparPe empowers merchants, D2C brands, and dark-store operators to launch lightning-fast digital storefronts and autonomous 10-minute quick commerce engines—combining Shopify simplicity with sub-second edge speeds, autonomous WhatsApp sales copilots, real-time rider telemetry, and responsive mobile architecture.
 
+<p align="center">
+  <img src="assets/images/hero-section.webp" alt="VyaparPe Hero Interface Showcase" width="100%" style="border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);" />
+</p>
+
 ---
 
 ## 1. Overview and Core Capabilities
@@ -103,7 +107,7 @@ The official store creation pipeline operates in an automated 6-step lifecycle:
 
 ---
 
-## 3. Showcase Section Architecture & Interactive Features
+## 3. Showcase Section Architecture & Visual Previews
 
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
@@ -185,26 +189,47 @@ Inspired by Clay.com's interactive workflow demonstration:
 - **Interactive Live Data Grid**: Real-time spreadsheet table showing brands, categories, orders/day, SLAs, and order dispatches with active row click highlighting.
 - **Live Preview Drawer**: Connected preview card showing instant customer confirmation cards and dark store telemetry.
 
+---
+
 ### 3.5 What We Offer (Sticky Stacking Cards)
 - **Scroll-Driven Stacking Execution**: Cards stack sequentially as the user scrolls through the section, powered by `initStackingCards()` in `js/app.js` with `overflow-x: clip` on `html` and `body`.
-- **Four Core Pillars**:
-  1. **AI Storefront Builder**: Prompt to live store in 60 seconds with automated photography.
-  2. **Hyperlocal Quick Commerce**: Transform retail dark stores into 10-minute dispatch engines.
-  3. **Sub-Second Edge Infrastructure**: Shopify simplicity with 5x loading speed (sub-500ms).
-  4. **WhatsApp & AI Sales Agents**: Autonomous sales copilot recovering abandoned carts 24/7.
+
+| **1. AI Storefront Builder** | **2. 10-Minute Quick Commerce** |
+| :---: | :---: |
+| <img src="assets/images/sc-blue.webp" alt="AI Storefront Builder Contraption" width="100%" style="border-radius: 12px;" /> | <img src="assets/images/sc-orange.webp" alt="Hyperlocal Quick Commerce Contraption" width="100%" style="border-radius: 12px;" /> |
+| **Prompt to live store in 60s** with automated studio photography and SEO metadata. | **Automated order batching**, real-time dark store picker app, and rider dispatch. |
+
+| **3. Sub-Second Edge Infrastructure** | **4. WhatsApp & AI Sales Agents** |
+| :---: | :---: |
+| <img src="assets/images/sc-lime.webp" alt="Sub-Second Edge Infrastructure Contraption" width="100%" style="border-radius: 12px;" /> | <img src="assets/images/sc-pink.webp" alt="WhatsApp AI Sales Agents Contraption" width="100%" style="border-radius: 12px;" /> |
+| **Shopify simplicity with 5x speed**. Sub-500ms pages built on global edge CDN. | **Autonomous sales copilot** recovering abandoned carts via 1-tap UPI 24/7. |
+
+---
 
 ### 3.6 Merchant Profitability Showcase
 - **Asymmetric Header**: Highlights how retail brands scale 10x faster with AI automation and customer proof callouts.
 - **3D Mechanical Loop**: High-framerate looping contraption illustrating continuous catalog processing (`assets/videos/reps-contraption.webm`).
 
+<p align="center">
+  <img src="assets/images/reps-card-preview.webp" alt="Merchant Profitability Contraption Preview" width="85%" style="border-radius: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);" />
+</p>
+
+---
+
 ### 3.7 Modern Commerce Resource Bento Grid
-- **9-Column Asymmetric Bento Grid**:
-  - **Commerce Playbook**: The 2026 Modern Commerce Blueprint: Launch in 60s & scale to ₹10 Cr+.
-  - **VyaparPe Commerce University**: 50+ masterclasses on AI storefront setup, headless speed, and sync.
-  - **Founder Masterclass**: How 100+ D2C brands scaled to 10-minute quick delivery.
-  - **Merchant Spotlight**: Transitioning from a Jaipur boutique to a ₹2.4 Cr/month online D2C brand.
-  - **Dark Store Tech**: Blueprint to pick, pack, & dispatch orders in under 90 seconds.
-  - **Partner Ecosystem**: Network of 2,500+ design agencies, developers, and creators.
+- **9-Column Asymmetric Bento Grid**: Curated playbooks, developer guides, and founder masterclasses:
+
+| **Commerce Playbook 2026** | **VyaparPe University** | **Founder Masterclass** |
+| :---: | :---: | :---: |
+| <img src="assets/images/bento-card-1.webp" alt="Modern Commerce Playbook" width="100%" style="border-radius: 10px;" /> | <img src="assets/images/bento-card-2.webp" alt="VyaparPe University" width="100%" style="border-radius: 10px;" /> | <img src="assets/images/bento-card-3.webp" alt="Founder Masterclass" width="100%" style="border-radius: 10px;" /> |
+| Scale to ₹10 Cr+ in 12 months with AI stores. | 50+ masterclasses on headless edge speed. | How 100+ D2C brands hit 10-minute delivery. |
+
+| **Merchant Spotlight** | **Dark Store Technology** | **Partner Ecosystem** |
+| :---: | :---: | :---: |
+| <img src="assets/images/bento-card-4.webp" alt="Merchant Spotlight" width="100%" style="border-radius: 10px;" /> | <img src="assets/images/bento-card-5.webp" alt="Dark Store Technology" width="100%" style="border-radius: 10px;" /> | <img src="assets/images/bento-card-6.webp" alt="Partner Agency Network" width="100%" style="border-radius: 10px;" /> |
+| Scaling boutique retail to ₹2.4 Cr/month. | Pick, pack & dispatch in under 90 seconds. | 2,500+ design agencies & developers. |
+
+---
 
 ### 3.8 Commercial Pricing & Plans Engine (Clay GTM Aesthetic)
 Redesigned to mirror the signature design language of **"The AI commerce engine built for instant speed"**:
@@ -223,6 +248,8 @@ Redesigned to mirror the signature design language of **"The AI commerce engine 
   - **Right Floating Card**: Segmented switch between **Plan Specs** (DNS, limits, payment gateways) and an interactive **Live Revenue / Margin Calculator**.
 - **Add-On Services Cards**: Three clean Clay cards for **One-Time Setup** (`₹2,499`), **Extra Listings** (`₹499`), and **Custom UX Theme** (`₹9,999`).
 
+---
+
 ### 3.9 Interactive Modals & Onboarding Engine
 - **Plan Details Modal (`#plan-details-modal`)**: Deep-dive feature breakdown for each plan with direct handoff to the store builder.
 - **Store Builder Onboarding Wizard (`#store-builder-modal`)**:
@@ -234,11 +261,20 @@ Redesigned to mirror the signature design language of **"The AI commerce engine 
   - Keyboard trigger via `⌘K` or `Ctrl+K`.
   - Instant live filtering across store builder, pricing, quick commerce, and DNS features.
 
+---
+
 ### 3.10 Growth Ideas Call to Action (CTA)
 - High-contrast conversion banner with primary "Start free store" and secondary "Book a demo" action points.
 
+---
+
 ### 3.11 Multi-Column Elevated Footer
-- **Vibrant 3D Geometric Backdrop**: Full-width dense ocean of glossy candy-coated 3D shapes with soft ambient lighting (`assets/images/footer-colorful-bg.webp`).
+- **Vibrant 3D Geometric Backdrop**: Full-width dense ocean of glossy candy-coated 3D shapes with soft ambient lighting:
+
+<p align="center">
+  <img src="assets/images/footer-colorful-bg.webp" alt="VyaparPe Vibrant 3D Geometric Footer Backdrop" width="100%" style="border-radius: 14px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);" />
+</p>
+
 - **Floating Elevated Card**: High-contrast white card (`border-top-left-radius: 28px; border-top-right-radius: 28px`) with structured columns covering E-Commerce, Quick Commerce, Integrations, Resources, Company, Popular Categories, and RBI Compliance/Legal links.
 
 ---
@@ -248,7 +284,7 @@ Redesigned to mirror the signature design language of **"The AI commerce engine 
 ```text
 vypaarpe/
 ├── index.html                   # Primary document markup, SEO meta tags, and structured schema
-├── README.md                    # Project documentation and specifications
+├── README.md                    # Project documentation, specifications, and visual assets
 ├── .gitignore                   # Version control exclusion rules
 │
 ├── css/                         # Modular Vanilla CSS Architecture
